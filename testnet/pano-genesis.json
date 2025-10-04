@@ -1,0 +1,121 @@
+{
+  "_": "Three-validator Pano testnet genesis (generated)",
+  "rules": {
+    "Name": "pano-testnet-3",
+    "NetworkID": 4093,
+    "Dag": {
+      "MaxParents": 10,
+      "MaxFreeParents": 6,
+      "MaxExtraData": 128
+    },
+    "Epochs": {
+      "MaxEpochGas": 1875000000,
+      "MaxEpochDuration": 3600000000000
+    },
+    "Blocks": {
+      "MaxBlockGas": 1000000000,
+      "MaxEmptyBlockSkipPeriod": 60000000000
+    },
+    "Economy": {
+      "BlockMissedSlack": 50,
+      "Gas": {
+        "MaxEventGas": 30030000,
+        "EventGas": 25000,
+        "ParentGas": 1000,
+        "ExtraDataGas": 25,
+        "BlockVotesBaseGas": 0,
+        "BlockVoteGas": 0,
+        "EpochVoteGas": 0,
+        "MisbehaviourProofGas": 0
+      },
+      "MinGasPrice": 1000000000,
+      "MinBaseFee": 1000,
+      "ShortGasPower": {
+        "AllocPerSec": 25250000,
+        "MaxAllocPeriod": 5000000000,
+        "StartupAllocPeriod": 2500000000,
+        "MinStartupGas": 560000
+      },
+      "LongGasPower": {
+        "AllocPerSec": 25250000,
+        "MaxAllocPeriod": 5000000000,
+        "StartupAllocPeriod": 2500000000,
+        "MinStartupGas": 560000
+      }
+    },
+    "Upgrades": {
+      "Berlin": true,
+      "London": true,
+      "Llr": false,
+      "Pano": true,
+      "Allegro": true,
+      "Brio": false,
+      "SingleProposerBlockFormation": false
+    }
+  },
+  "blockZeroTime": "2025-07-01T00:00:00+01:00",
+  "accounts": [
+    {
+      "name": "Network initializer",
+      "address": "0xd1005eed00000000000000000000000000000000",
+      "nonce": 1,
+      "code": "0x60806040..." 
+    },
+    {
+      "name": "NodeDriver",
+      "address": "0xd100a01e00000000000000000000000000000000",
+      "nonce": 1,
+      "code": "0x60806040..."
+    },
+    {
+      "name": "NodeDriverAuth",
+      "address": "0xd100ae0000000000000000000000000000000000",
+      "nonce": 1,
+      "code": "0x60806040..."
+    },
+    {
+      "name": "SFC contract",
+      "address": "0xfc00face00000000000000000000000000000000",
+      "nonce": 1,
+      "code": "0x60806040..."
+    },
+    {
+      "name": "EvmWriter",
+      "address": "0xd100ec0000000000000000000000000000000000",
+      "nonce": 1,
+      "code": "0x00"
+    },
+    {
+      "name": "validator1",
+      "address": "0xBcA3d19C24a0ebFc02b4047977F9473C388e4E98",
+      "balance": 1000000000000000000000000000
+    },
+    {
+      "name": "validator2",
+      "address": "0x993669a7793F24b5F2e81c03dB494e0a83EAAE17",
+      "balance": 1000000000000000000000000000
+    },
+    {
+      "name": "validator3",
+      "address": "0x649A72A7c3b30a8a347dC7A549D3e50c3eD4c97c",
+      "balance": 1000000000000000000000000000
+    },
+    {
+      "name": "user4",
+      "address": "0xE56E6757b8D4124B235436a246af5DCB0a69D14D",
+      "balance": 100000000000000000000000
+    },
+    {
+      "name": "user5",
+      "address": "0x5Ab49BdE3137bE3e1285319B5F789d9f2831d9B5",
+      "balance": 100000000000000000000000
+    }
+  ],
+  "txs": [
+    {
+      "name": "InitializeAll",
+      "to": "0xd1005eed00000000000000000000000000000000",
+      "data": "0x"
+    }
+  ]
+}
