@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package tests
 
@@ -22,7 +22,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/0xsoniclabs/sonic/opera"
+	"github.com/panoptisDev/pano/opera"
 	"github.com/ethereum/go-ethereum/common"
 )
 
@@ -59,7 +59,7 @@ func TestMain(m *testing.M) {
 // A typical use case would look as follows:
 //
 //	t.Run("test_case", func(t *testing.T) {
-//		session := getIntegrationTestNetSession(t, opera.GetSonicUpgrades())
+//		session := getIntegrationTestNetSession(t, opera.GetPanoUpgrades())
 //		t.Parallel()
 //		< use session instead of net of the rest of the test >
 //	})

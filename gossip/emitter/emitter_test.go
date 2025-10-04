@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package emitter
 
@@ -22,21 +22,21 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Fantom-foundation/lachesis-base/hash"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
-	"github.com/Fantom-foundation/lachesis-base/inter/pos"
+	"github.com/panoptisDev/lachesis-base/hash"
+	"github.com/panoptisDev/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base/inter/pos"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/mock/gomock"
 
-	"github.com/0xsoniclabs/sonic/integration/makefakegenesis"
-	"github.com/0xsoniclabs/sonic/inter"
-	"github.com/0xsoniclabs/sonic/logger"
-	"github.com/0xsoniclabs/sonic/opera"
-	"github.com/0xsoniclabs/sonic/utils/txtime"
-	"github.com/0xsoniclabs/sonic/valkeystore"
-	"github.com/0xsoniclabs/sonic/vecmt"
+	"github.com/panoptisDev/pano/integration/makefakegenesis"
+	"github.com/panoptisDev/pano/inter"
+	"github.com/panoptisDev/pano/logger"
+	"github.com/panoptisDev/pano/opera"
+	"github.com/panoptisDev/pano/utils/txtime"
+	"github.com/panoptisDev/pano/valkeystore"
+	"github.com/panoptisDev/pano/vecmt"
 )
 
 func TestEmitter(t *testing.T) {
@@ -81,7 +81,7 @@ func TestEmitter(t *testing.T) {
 
 	t.Run("init", func(t *testing.T) {
 		external.EXPECT().GetRules().
-			Return(opera.FakeNetRules(opera.GetSonicUpgrades())).
+			Return(opera.FakeNetRules(opera.GetPanoUpgrades())).
 			AnyTimes()
 
 		external.EXPECT().GetEpochValidators().
@@ -142,12 +142,12 @@ func (fixedPriceBaseFeeSource) GetCurrentBaseFee() *big.Int {
 func TestEmitter_CreateEvent_CreatesCorrectEventVersion(t *testing.T) {
 
 	tests := map[string]opera.Upgrades{
-		"sonic": {
-			Sonic:   true,
+		"pano": {
+			Pano:   true,
 			Allegro: false,
 		},
 		"allegro": {
-			Sonic:   true,
+			Pano:   true,
 			Allegro: true,
 		},
 	}

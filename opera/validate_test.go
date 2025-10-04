@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package opera
 
@@ -23,7 +23,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/0xsoniclabs/sonic/inter"
+	"github.com/panoptisDev/pano/inter"
 
 	"github.com/stretchr/testify/require"
 )
@@ -500,17 +500,17 @@ func TestUpgradesValidation_DetectsIssues(t *testing.T) {
 			upgrade: Upgrades{Llr: true},
 			issue:   "LLR upgrade is not supported",
 		},
-		"Sonic upgrade requires London": {
-			upgrade: Upgrades{Sonic: true},
-			issue:   "Sonic upgrade requires London",
+		"Pano upgrade requires London": {
+			upgrade: Upgrades{Pano: true},
+			issue:   "Pano upgrade requires London",
 		},
 		"London upgrade requires Berlin": {
 			upgrade: Upgrades{London: true},
 			issue:   "London upgrade requires Berlin",
 		},
-		"Sonic upgrade is required": {
+		"Pano upgrade is required": {
 			upgrade: Upgrades{},
-			issue:   "Sonic upgrade is required",
+			issue:   "Pano upgrade is required",
 		},
 		"Allegro upgrade is required": {
 			upgrade: Upgrades{},
@@ -545,7 +545,7 @@ func TestUpgradesValidation_AcceptsValidRules(t *testing.T) {
 	upgrades := []Upgrades{{
 		Berlin:  true,
 		London:  true,
-		Sonic:   true,
+		Pano:   true,
 		Allegro: true,
 	}}
 

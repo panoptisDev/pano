@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 // add_license_header.go: Add or check license headers in project files
 // Usage: go run add_license_header.go [--check]
@@ -165,7 +165,7 @@ func processFile(file, licenseHeader string, checkOnly bool) error {
 	}
 
 	// this means the file has an old license header, we need to replace it
-	if strings.Contains(lines[0], "Sonic Operations Ltd") {
+	if strings.Contains(lines[0], "Pano Operations Ltd") {
 		// search for the first empty line after the old license header
 		for i, line := range lines {
 			if strings.TrimSpace(line) == "" {

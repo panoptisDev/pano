@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package gas_cost
 
@@ -22,8 +22,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/0xsoniclabs/sonic/opera"
-	"github.com/0xsoniclabs/sonic/tests"
+	"github.com/panoptisDev/pano/opera"
+	"github.com/panoptisDev/pano/tests"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/core"
@@ -52,23 +52,23 @@ func (tc *TestCase) String() string {
 	return strings.Join(tc.names, "/")
 }
 
-func TestGasCostTest_Sonic(t *testing.T) {
+func TestGasCostTest_Pano(t *testing.T) {
 	t.Parallel()
 
 	t.Run("with distributed proposers", func(t *testing.T) {
 		t.Parallel()
 
-		testGasCosts_Sonic(t, false)
+		testGasCosts_Pano(t, false)
 	})
 	t.Run("with single proposer", func(t *testing.T) {
 		t.Parallel()
 
-		testGasCosts_Sonic(t, true)
+		testGasCosts_Pano(t, true)
 	})
 }
 
-func testGasCosts_Sonic(t *testing.T, singleProposer bool) {
-	upgrades := opera.GetSonicUpgrades()
+func testGasCosts_Pano(t *testing.T, singleProposer bool) {
+	upgrades := opera.GetPanoUpgrades()
 	upgrades.SingleProposerBlockFormation = singleProposer
 	net := tests.StartIntegrationTestNet(t, tests.IntegrationTestNetOptions{
 		Upgrades: &upgrades,
@@ -131,7 +131,7 @@ func testGasCosts_Sonic(t *testing.T, singleProposer bool) {
 		}
 	})
 
-	t.Run("Sonic processor charges 10% of unused gas", func(t *testing.T) {
+	t.Run("Pano processor charges 10% of unused gas", func(t *testing.T) {
 		t.Parallel()
 		session := net.SpawnSession(t)
 		for test := range makeGasCostTestInputs(t, session) {
@@ -264,7 +264,7 @@ func testGasCosts_Allegro(t *testing.T, singleProposer bool) {
 		require.Equal(t, 16, corrections, "expected 16 floor data gas corrections in the generated inputs, got %d", corrections)
 	})
 
-	t.Run("Sonic processor charges 10% of unused gas", func(t *testing.T) {
+	t.Run("Pano processor charges 10% of unused gas", func(t *testing.T) {
 		t.Parallel()
 		session := net.SpawnSession(t)
 

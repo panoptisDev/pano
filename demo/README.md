@@ -22,7 +22,7 @@ N=3 ./start.sh
 
 * Attach js-console to running node0:
 ```sh
-../build/sonictool --datadir=tool.datadir cli http://localhost:4000
+../build/panotool --datadir=tool.datadir cli http://localhost:4000
 ```
 
 * Check the balance to ensure that node0 has something to transfer (node0 js-console):
@@ -37,7 +37,7 @@ eth.getBalance(eth.accounts[0]);
 
 * Get node1 address:
 ```sh
-../build/sonictool --datadir=tool.datadir cli --exec "eth.accounts[0]" http://localhost:4001
+../build/panotool --datadir=tool.datadir cli --exec "eth.accounts[0]" http://localhost:4001
 ```
  output shows address:
 ```js
@@ -69,8 +69,8 @@ eth.getTransactionReceipt("0x68a7c1daeee7e7ab5aedf0d0dba337dbf79ce0988387cf6d63e
 
 * As soon as transaction is included into a block you will see new balance of both node addresses:
 ```sh
-../build/sonictool --datadir=tool.datadir cli --exec "eth.getBalance(eth.accounts[0])" http://localhost:4000
-../build/sonictool --datadir=tool.datadir cli --exec "eth.getBalance(eth.accounts[0])" http://localhost:4001
+../build/panotool --datadir=tool.datadir cli --exec "eth.getBalance(eth.accounts[0])" http://localhost:4000
+../build/panotool --datadir=tool.datadir cli --exec "eth.getBalance(eth.accounts[0])" http://localhost:4001
 ```
  outputs:
 ```js

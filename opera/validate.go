@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package opera
 
@@ -22,7 +22,7 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/0xsoniclabs/sonic/inter"
+	"github.com/panoptisDev/pano/inter"
 )
 
 // This file handles the validation of network rules.
@@ -256,18 +256,18 @@ func validateUpgrades(old, new Upgrades) error {
 		issues = append(issues, errors.New("Berlin upgrade is required"))
 	}
 
-	if new.Sonic && !new.London {
+	if new.Pano && !new.London {
 		//nolint:staticcheck // ST1005: allow capitalized error message to preserve proper name
-		issues = append(issues, errors.New("Sonic upgrade requires London"))
+		issues = append(issues, errors.New("Pano upgrade requires London"))
 	}
 	if new.London && !new.Berlin {
 		//nolint:staticcheck // ST1005: allow capitalized error message to preserve proper name
 		issues = append(issues, errors.New("London upgrade requires Berlin"))
 	}
 
-	if !new.Sonic {
+	if !new.Pano {
 		//nolint:staticcheck // ST1005: allow capitalized error message to preserve proper name
-		issues = append(issues, errors.New("Sonic upgrade is required"))
+		issues = append(issues, errors.New("Pano upgrade is required"))
 	}
 
 	if !new.Allegro {

@@ -22,8 +22,8 @@ import (
 	"io"
 	"os"
 
-	"github.com/0xsoniclabs/sonic/utils"
-	"github.com/0xsoniclabs/sonic/utils/caution"
+	"github.com/panoptisDev/pano/utils"
+	"github.com/panoptisDev/pano/utils/caution"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/log"

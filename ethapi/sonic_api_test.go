@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package ethapi
 
@@ -23,15 +23,15 @@ import (
 	"slices"
 	"testing"
 
-	"github.com/0xsoniclabs/sonic/scc"
-	"github.com/0xsoniclabs/sonic/scc/cert"
-	"github.com/0xsoniclabs/sonic/utils/result"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/pano/scc"
+	"github.com/panoptisDev/pano/scc/cert"
+	"github.com/panoptisDev/pano/utils/result"
+	"github.com/panoptisDev/lachesis-base/inter/idx"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/mock/gomock"
 )
 
-func TestSonicApi_GetCommitteeCertificates_CanProduceCertificates(t *testing.T) {
+func TestPanoApi_GetCommitteeCertificates_CanProduceCertificates(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	backend := NewMockSccApiBackend(ctrl)
 	api := NewPublicSccApi(backend)
@@ -59,7 +59,7 @@ func TestSonicApi_GetCommitteeCertificates_CanProduceCertificates(t *testing.T) 
 	}
 }
 
-func TestSonicApi_GetCommitteeCertificates_CanReturnLatestCertificate(t *testing.T) {
+func TestPanoApi_GetCommitteeCertificates_CanReturnLatestCertificate(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	backend := NewMockSccApiBackend(ctrl)
 	api := NewPublicSccApi(backend)
@@ -74,7 +74,7 @@ func TestSonicApi_GetCommitteeCertificates_CanReturnLatestCertificate(t *testing
 	require.Equal(t, certificate, res[0].ToCertificate())
 }
 
-func TestSonicApi_GetCommitteeCertificates_ReportsErrorIfLatestCouldNotBeFound(t *testing.T) {
+func TestPanoApi_GetCommitteeCertificates_ReportsErrorIfLatestCouldNotBeFound(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	backend := NewMockSccApiBackend(ctrl)
 	api := NewPublicSccApi(backend)
@@ -87,7 +87,7 @@ func TestSonicApi_GetCommitteeCertificates_ReportsErrorIfLatestCouldNotBeFound(t
 	require.ErrorIs(t, err, injected)
 }
 
-func TestSonicApi_GetCommitteeCertificates_CanBeCancelled(t *testing.T) {
+func TestPanoApi_GetCommitteeCertificates_CanBeCancelled(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	backend := NewMockSccApiBackend(ctrl)
 	api := NewPublicSccApi(backend)
@@ -113,7 +113,7 @@ func TestSonicApi_GetCommitteeCertificates_CanBeCancelled(t *testing.T) {
 	require.Empty(t, res)
 }
 
-func TestSonicApi_GetCommitteeCertificates_RespectsUserLimit(t *testing.T) {
+func TestPanoApi_GetCommitteeCertificates_RespectsUserLimit(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	backend := NewMockSccApiBackend(ctrl)
 	api := NewPublicSccApi(backend)
@@ -145,7 +145,7 @@ func TestSonicApi_GetCommitteeCertificates_RespectsUserLimit(t *testing.T) {
 	}
 }
 
-func TestSonicApi_GetCommitteeCertificates_ReportsFetchErrors(t *testing.T) {
+func TestPanoApi_GetCommitteeCertificates_ReportsFetchErrors(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	backend := NewMockSccApiBackend(ctrl)
 	api := NewPublicSccApi(backend)
@@ -163,7 +163,7 @@ func TestSonicApi_GetCommitteeCertificates_ReportsFetchErrors(t *testing.T) {
 	require.Empty(t, res)
 }
 
-func TestSonicApi_GetBlockCertificate_CanProduceBlockCertificates(t *testing.T) {
+func TestPanoApi_GetBlockCertificate_CanProduceBlockCertificates(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	backend := NewMockSccApiBackend(ctrl)
 	api := NewPublicSccApi(backend)
@@ -191,7 +191,7 @@ func TestSonicApi_GetBlockCertificate_CanProduceBlockCertificates(t *testing.T) 
 	}
 }
 
-func TestSonicApi_GetBlockCertificates_CanReturnLatestCertificate(t *testing.T) {
+func TestPanoApi_GetBlockCertificates_CanReturnLatestCertificate(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	backend := NewMockSccApiBackend(ctrl)
 	api := NewPublicSccApi(backend)
@@ -206,7 +206,7 @@ func TestSonicApi_GetBlockCertificates_CanReturnLatestCertificate(t *testing.T) 
 	require.Equal(t, certificate, res[0].ToCertificate())
 }
 
-func TestSonicApi_GetBlockCertificates_ReportsErrorIfLatestCouldNotBeFound(t *testing.T) {
+func TestPanoApi_GetBlockCertificates_ReportsErrorIfLatestCouldNotBeFound(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	backend := NewMockSccApiBackend(ctrl)
 	api := NewPublicSccApi(backend)

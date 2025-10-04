@@ -23,7 +23,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/0xsoniclabs/sonic/utils"
+	"github.com/panoptisDev/pano/utils"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/txpool"
 	"github.com/ethereum/go-ethereum/core/types"

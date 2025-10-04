@@ -1,36 +1,36 @@
 .PHONY: all
-all: sonicd sonictool
+all: panod panotool
 
 GOPROXY ?= "https://proxy.golang.org,direct"
-.PHONY: sonicd sonictool
-sonicd:
+.PHONY: panod panotool
+panod:
 	GIT_COMMIT=`git rev-list -1 HEAD 2>/dev/null || echo ""` && \
 	GIT_DATE=`git log -1 --date=short --pretty=format:%ct 2>/dev/null || echo ""` && \
 	GOPROXY=$(GOPROXY) \
 	go build \
-	    -ldflags "-s -w -X github.com/0xsoniclabs/sonic/version.gitCommit=$${GIT_COMMIT} \
-	                    -X github.com/0xsoniclabs/sonic/version.gitDate=$${GIT_DATE}" \
-	    -o build/sonicd \
-	    ./cmd/sonicd && \
-	    ./build/sonicd version
+	    -ldflags "-s -w -X github.com/panoptisDev/pano/version.gitCommit=$${GIT_COMMIT} \
+	                    -X github.com/panoptisDev/pano/version.gitDate=$${GIT_DATE}" \
+	    -o build/panod \
+	    ./cmd/panod && \
+	    ./build/panod version
 
-sonictool:
+panotool:
 	GIT_COMMIT=`git rev-list -1 HEAD 2>/dev/null || echo ""` && \
 	GIT_DATE=`git log -1 --date=short --pretty=format:%ct 2>/dev/null || echo ""` && \
 	GOPROXY=$(GOPROXY) \
 	go build \
-	    -ldflags "-s -w -X github.com/0xsoniclabs/sonic/version.gitCommit=$${GIT_COMMIT} \
-	                    -X github.com/0xsoniclabs/sonic/version.gitDate=$${GIT_DATE}" \
-	    -o build/sonictool \
-	    ./cmd/sonictool && \
-	    ./build/sonictool --version
+	    -ldflags "-s -w -X github.com/panoptisDev/pano/version.gitCommit=$${GIT_COMMIT} \
+	                    -X github.com/panoptisDev/pano/version.gitDate=$${GIT_DATE}" \
+	    -o build/panotool \
+	    ./cmd/panotool && \
+	    ./build/panotool --version
 
 TAG ?= "latest"
-.PHONY: sonic-image
-sonic-image:
+.PHONY: pano-image
+pano-image:
 	docker build \
 		--network=host \
-		-f ./Dockerfile -t "sonic:$(TAG)" .
+		-f ./Dockerfile -t "pano:$(TAG)" .
 
 .PHONY: test
 test:

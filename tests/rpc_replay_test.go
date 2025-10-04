@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package tests
 
@@ -20,7 +20,7 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/0xsoniclabs/sonic/ethapi"
+	"github.com/panoptisDev/pano/ethapi"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/core/types"
@@ -127,7 +127,7 @@ func TestRpcReplay_IsConsistentWithUpgradesAtBlockHeight(t *testing.T) {
 		require.NoError(t, err)
 
 		require.Less(t, (uint64)(result.GasUsed), receiptAfterUpgrade.GasUsed)
-		// because sonic charges a percentage of the unused gas, the gas usage from
+		// because pano charges a percentage of the unused gas, the gas usage from
 		// the block before the upgrade cannot be reproduced after the upgrade
 		require.GreaterOrEqual(t, (uint64)(result.GasUsed), receiptBeforeUpgrade.GasUsed)
 	})
@@ -149,7 +149,7 @@ func TestRpcReplay_IsConsistentWithUpgradesAtBlockHeight(t *testing.T) {
 		gasUsed, ok = res["gas"].(float64)
 		require.True(t, ok)
 		require.Less(t, (uint64)(gasUsed), receiptAfterUpgrade.GasUsed)
-		// because sonic charges a percentage of the unused gas, the gas usage from
+		// because pano charges a percentage of the unused gas, the gas usage from
 		// the block before the upgrade cannot be reproduced after the upgrade
 		require.GreaterOrEqual(t, (uint64)(gasUsed), receiptBeforeUpgrade.GasUsed)
 	})

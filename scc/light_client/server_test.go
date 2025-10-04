@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package light_client
 
@@ -21,10 +21,10 @@ import (
 	"math"
 	"testing"
 
-	"github.com/0xsoniclabs/carmen/go/carmen"
-	"github.com/0xsoniclabs/sonic/ethapi"
-	"github.com/0xsoniclabs/sonic/scc"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/carmen/go/carmen"
+	"github.com/panoptisDev/pano/ethapi"
+	"github.com/panoptisDev/pano/scc"
+	"github.com/panoptisDev/lachesis-base/inter/idx"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/mock/gomock"
@@ -118,11 +118,11 @@ func TestServer_GetCertificates_PropagatesErrorFromClientCall(t *testing.T) {
 	client := NewMockrpcClient(ctrl)
 
 	committeeError := fmt.Errorf("committee error")
-	client.EXPECT().Call(gomock.Any(), "sonic_getCommitteeCertificates",
+	client.EXPECT().Call(gomock.Any(), "pano_getCommitteeCertificates",
 		gomock.Any(), gomock.Any()).Return(committeeError)
 
 	blockError := fmt.Errorf("block error")
-	client.EXPECT().Call(gomock.Any(), "sonic_getBlockCertificates",
+	client.EXPECT().Call(gomock.Any(), "pano_getBlockCertificates",
 		gomock.Any(), gomock.Any()).Return(blockError)
 
 	server, err := newServerFromClient(client)
@@ -157,7 +157,7 @@ func TestServer_GetCommitteeCertificates_ReportsCorruptedCertificatesOutOfOrder(
 		require.NoError(err)
 
 		// client setup
-		client.EXPECT().Call(gomock.Any(), "sonic_getCommitteeCertificates",
+		client.EXPECT().Call(gomock.Any(), "pano_getCommitteeCertificates",
 			gomock.Any(), gomock.Any()).
 			DoAndReturn(
 				func(result *[]ethapi.CommitteeCertificate, method string, args ...interface{}) error {
@@ -178,7 +178,7 @@ func TestServer_GetCommitteeCertificates_DropsExcessCertificates(t *testing.T) {
 	server, err := newServerFromClient(client)
 	require.NoError(err)
 
-	client.EXPECT().Call(gomock.Any(), "sonic_getCommitteeCertificates",
+	client.EXPECT().Call(gomock.Any(), "pano_getCommitteeCertificates",
 		gomock.Any(), gomock.Any()).DoAndReturn(
 		func(result *[]ethapi.CommitteeCertificate, method string, args ...interface{}) error {
 			*result = []ethapi.CommitteeCertificate{
@@ -212,7 +212,7 @@ func TestServer_GetBlockCertificates_ReportsCorruptedCertificatesOutOfOrder(t *t
 	}
 
 	for _, blocks := range tests {
-		client.EXPECT().Call(gomock.Any(), "sonic_getBlockCertificates",
+		client.EXPECT().Call(gomock.Any(), "pano_getBlockCertificates",
 			gomock.Any(), gomock.Any()).DoAndReturn(
 			func(result *[]ethapi.BlockCertificate, method string, args ...interface{}) error {
 				*result = blocks
@@ -232,7 +232,7 @@ func TestServer_GetBlockCertificates_DropsExcessCertificates(t *testing.T) {
 	server, err := newServerFromClient(client)
 	require.NoError(err)
 
-	client.EXPECT().Call(gomock.Any(), "sonic_getBlockCertificates",
+	client.EXPECT().Call(gomock.Any(), "pano_getBlockCertificates",
 		gomock.Any(), gomock.Any()).DoAndReturn(
 		func(result *[]ethapi.BlockCertificate, method string, args ...interface{}) error {
 			*result = []ethapi.BlockCertificate{
@@ -255,7 +255,7 @@ func TestServer_GetBlockCertificates_FailsWhenNoCertificatesReturned(t *testing.
 	server, err := newServerFromClient(client)
 	require.NoError(err)
 
-	client.EXPECT().Call(gomock.Any(), "sonic_getBlockCertificates",
+	client.EXPECT().Call(gomock.Any(), "pano_getBlockCertificates",
 		gomock.Any(), gomock.Any()).DoAndReturn(
 		func(result *[]ethapi.BlockCertificate, method string, args ...interface{}) error {
 			*result = []ethapi.BlockCertificate{}
@@ -276,7 +276,7 @@ func TestServer_GetBlockCertificates_CanFetchLatestBlock(t *testing.T) {
 
 	latestBlockNumber := idx.Block(1024)
 	// block certificates
-	client.EXPECT().Call(gomock.Any(), "sonic_getBlockCertificates",
+	client.EXPECT().Call(gomock.Any(), "pano_getBlockCertificates",
 		"latest", "0x1").DoAndReturn(
 		func(result *[]ethapi.BlockCertificate, method string, args ...interface{}) error {
 			*result = []ethapi.BlockCertificate{
@@ -316,7 +316,7 @@ func TestServer_GetCertificates_ReturnsCertificates(t *testing.T) {
 	require.NoError(err)
 
 	// committee certificates
-	client.EXPECT().Call(gomock.Any(), "sonic_getCommitteeCertificates",
+	client.EXPECT().Call(gomock.Any(), "pano_getCommitteeCertificates",
 		gomock.Any(), gomock.Any()).DoAndReturn(
 		func(result *[]ethapi.CommitteeCertificate, method string, args ...interface{}) error {
 			*result = []ethapi.CommitteeCertificate{
@@ -334,7 +334,7 @@ func TestServer_GetCertificates_ReturnsCertificates(t *testing.T) {
 	require.Equal(scc.Period(1), comCerts[1].Subject().Period)
 
 	// block certificates
-	client.EXPECT().Call(gomock.Any(), "sonic_getBlockCertificates",
+	client.EXPECT().Call(gomock.Any(), "pano_getBlockCertificates",
 		gomock.Any(), gomock.Any()).DoAndReturn(
 		func(result *[]ethapi.BlockCertificate, method string, args ...interface{}) error {
 			*result = []ethapi.BlockCertificate{

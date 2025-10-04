@@ -37,7 +37,7 @@ glide.lock
 *.tgz
 *.zip
 
-# sonic project specific
+# pano project specific
 scripts/certs
 scripts/nodes
 scripts/peers.json

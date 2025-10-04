@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package app_test
 
@@ -27,14 +27,14 @@ import (
 	"strings"
 	"testing"
 
-	sonictool "github.com/0xsoniclabs/sonic/cmd/sonictool/app"
-	"github.com/0xsoniclabs/sonic/cmd/sonictool/genesis"
-	"github.com/0xsoniclabs/sonic/opera"
-	ogenesis "github.com/0xsoniclabs/sonic/opera/genesis"
-	"github.com/0xsoniclabs/sonic/opera/genesisstore"
-	"github.com/0xsoniclabs/sonic/tests"
-	"github.com/0xsoniclabs/sonic/utils/caution"
-	"github.com/0xsoniclabs/sonic/utils/prompt"
+	panotool "github.com/panoptisDev/pano/cmd/panotool/app"
+	"github.com/panoptisDev/pano/cmd/panotool/genesis"
+	"github.com/panoptisDev/pano/opera"
+	ogenesis "github.com/panoptisDev/pano/opera/genesis"
+	"github.com/panoptisDev/pano/opera/genesisstore"
+	"github.com/panoptisDev/pano/tests"
+	"github.com/panoptisDev/pano/utils/caution"
+	"github.com/panoptisDev/pano/utils/prompt"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/core/types"
@@ -43,36 +43,36 @@ import (
 	"go.uber.org/mock/gomock"
 )
 
-func TestSonicTool_check_ExecutesWithoutErrors(t *testing.T) {
+func TestPanoTool_check_ExecutesWithoutErrors(t *testing.T) {
 
 	net := tests.StartIntegrationTestNet(t)
 	generateNBlocks(t, net, 2)
 	net.Stop()
 
-	_, err := executeSonicTool(t,
+	_, err := executePanoTool(t,
 		"--datadir", net.GetDirectory()+"/state",
 		"check", "live")
 	require.NoError(t, err)
 
-	_, err = executeSonicTool(t,
+	_, err = executePanoTool(t,
 		"--datadir", net.GetDirectory()+"/state",
 		"check", "archive")
 	require.NoError(t, err)
 }
 
-func TestSonicTool_compact_ExecutesWithoutErrors(t *testing.T) {
+func TestPanoTool_compact_ExecutesWithoutErrors(t *testing.T) {
 
 	net := tests.StartIntegrationTestNet(t)
 	generateNBlocks(t, net, 2)
 	net.Stop()
 
-	_, err := executeSonicTool(t,
+	_, err := executePanoTool(t,
 		"--datadir", net.GetDirectory()+"/state",
 		"compact")
 	require.NoError(t, err)
 }
 
-func TestSonicTool_account_ExecutesWithoutErrors(t *testing.T) {
+func TestPanoTool_account_ExecutesWithoutErrors(t *testing.T) {
 	keystoreDir := t.TempDir()
 
 	// Make a password in file (in memory process used by these tests do not allow stdinput rebinding)
@@ -84,7 +84,7 @@ func TestSonicTool_account_ExecutesWithoutErrors(t *testing.T) {
 	require.Empty(t, accounts)
 
 	// Create account
-	accountNewOutput, err := executeSonicTool(t,
+	accountNewOutput, err := executePanoTool(t,
 		"--datadir", keystoreDir,
 		"account", "new", "--password", passwordFileName)
 	require.NoError(t, err)
@@ -113,7 +113,7 @@ func TestSonicTool_account_ExecutesWithoutErrors(t *testing.T) {
 	promptMock.EXPECT().PromptPassword("Passphrase: ").Return("this is the passphrase", nil).Times(2)
 	promptMock.EXPECT().PromptPassword("Repeat passphrase: ").Return("this is the passphrase", nil)
 
-	_, err = executeSonicTool(t,
+	_, err = executePanoTool(t,
 		"--datadir", keystoreDir,
 		"account", "update", address)
 	require.NoError(t, err)
@@ -125,7 +125,7 @@ func TestSonicTool_account_ExecutesWithoutErrors(t *testing.T) {
 	require.NoError(t, err)
 
 	// Import the key
-	_, err = executeSonicTool(t,
+	_, err = executePanoTool(t,
 		"--datadir", keystoreDir,
 		"account", "import", privateKeyFileName,
 		"--password", passwordFileName) // key is not encrypted, but we need to provide a password
@@ -136,7 +136,7 @@ func TestSonicTool_account_ExecutesWithoutErrors(t *testing.T) {
 	require.Len(t, accounts, 2)
 }
 
-func TestSonicTool_genesis_ExecutesWithoutErrors(t *testing.T) {
+func TestPanoTool_genesis_ExecutesWithoutErrors(t *testing.T) {
 
 	// Create a history by running some transactions
 	net := tests.StartIntegrationTestNetWithFakeGenesis(t)
@@ -147,7 +147,7 @@ func TestSonicTool_genesis_ExecutesWithoutErrors(t *testing.T) {
 	require.NoError(t, generatePasswordFile(passwordFileName, "this is the passphrase"))
 
 	exportFile := fmt.Sprintf("%s/genesis", t.TempDir())
-	_, err := executeSonicTool(t,
+	_, err := executePanoTool(t,
 		"--datadir", net.GetDirectory()+"/state",
 		"genesis", "export", exportFile)
 	require.NoError(t, err)
@@ -170,7 +170,7 @@ func TestSonicTool_genesis_ExecutesWithoutErrors(t *testing.T) {
 	revertPrompt := replaceUserPrompter(promptMock)
 	promptMock.EXPECT().PromptInput("Signature (hex): ").Return(hexutil.Encode(signature), nil)
 
-	_, err = executeSonicTool(t,
+	_, err = executePanoTool(t,
 		"--datadir", fmt.Sprintf("%s/state", t.TempDir()),
 		"genesis", "sign", exportFile)
 	// Note, this how far we can get without the actual key
@@ -178,34 +178,34 @@ func TestSonicTool_genesis_ExecutesWithoutErrors(t *testing.T) {
 	revertPrompt()
 }
 
-func TestSonicTool_heal_ExecutesWithoutErrors(t *testing.T) {
+func TestPanoTool_heal_ExecutesWithoutErrors(t *testing.T) {
 	net := tests.StartIntegrationTestNet(
 		t,
 		tests.IntegrationTestNetOptions{
-			Upgrades:             tests.AsPointer(opera.GetSonicUpgrades()),
+			Upgrades:             tests.AsPointer(opera.GetPanoUpgrades()),
 			ClientExtraArguments: []string{"--statedb.checkpointinterval", "1"},
 		},
 	)
 	generateNBlocks(t, net, 3)
 	net.Stop()
 
-	_, err := executeSonicTool(t, "--datadir", net.GetDirectory()+"/state", "heal")
+	_, err := executePanoTool(t, "--datadir", net.GetDirectory()+"/state", "heal")
 	require.NoError(t, err)
 }
 
-func TestSonicTool_config_ExecutesWithoutErrors(t *testing.T) {
+func TestPanoTool_config_ExecutesWithoutErrors(t *testing.T) {
 
 	net := tests.StartIntegrationTestNet(t)
 	generateNBlocks(t, net, 2)
 	net.Stop()
 
 	configFileName := t.TempDir() + "config.toml"
-	_, err := executeSonicTool(t,
+	_, err := executePanoTool(t,
 		"--datadir", net.GetDirectory()+"/state",
 		"dumpconfig", configFileName)
 	require.NoError(t, err)
 
-	output, err := executeSonicTool(t,
+	output, err := executePanoTool(t,
 		"--datadir", net.GetDirectory()+"/state",
 		"dumpconfig")
 	require.NoError(t, err)
@@ -220,32 +220,32 @@ func TestSonicTool_config_ExecutesWithoutErrors(t *testing.T) {
 		strings.Contains(output, string(configFromFile)),
 		"config file content is not in the output")
 
-	_, err = executeSonicTool(t,
+	_, err = executePanoTool(t,
 		"--datadir", net.GetDirectory()+"/state",
 		"checkconfig", configFileName)
 	require.NoError(t, err)
 }
 
-func TestSonicTool_events_ExecutesWithoutErrors(t *testing.T) {
+func TestPanoTool_events_ExecutesWithoutErrors(t *testing.T) {
 	net := tests.StartIntegrationTestNet(t)
 	generateNBlocks(t, net, 2)
 	net.Stop()
 
 	eventsExportFile := t.TempDir() + "/events.json"
 
-	_, err := executeSonicTool(t,
+	_, err := executePanoTool(t,
 		"--datadir", net.GetDirectory()+"/state",
 		"events", "export", eventsExportFile)
 	require.NoError(t, err)
 	require.FileExists(t, eventsExportFile)
 
-	_, err = executeSonicTool(t,
+	_, err = executePanoTool(t,
 		"--datadir", net.GetDirectory()+"/state",
 		"events", "import", eventsExportFile)
 	require.NoError(t, err)
 }
 
-func TestSonicTool_validator_ExecutesWithoutErrors(t *testing.T) {
+func TestPanoTool_validator_ExecutesWithoutErrors(t *testing.T) {
 
 	dataDir := t.TempDir()
 
@@ -256,7 +256,7 @@ func TestSonicTool_validator_ExecutesWithoutErrors(t *testing.T) {
 	promptMock.EXPECT().PromptPassword("Repeat passphrase: ").Return("this is the passphrase", nil).AnyTimes()
 
 	// Create a new validator
-	log, err := executeSonicTool(t,
+	log, err := executePanoTool(t,
 		"--datadir", dataDir,
 		"validator", "new")
 	require.NoError(t, err)
@@ -272,7 +272,7 @@ func TestSonicTool_validator_ExecutesWithoutErrors(t *testing.T) {
 	privateKeyFileName := t.TempDir() + "/private_key"
 	key, err := generatePrivateKeyFile(privateKeyFileName)
 	require.NoError(t, err)
-	_, err = executeSonicTool(t,
+	_, err = executePanoTool(t,
 		"--datadir", dataDir,
 		"account", "import", privateKeyFileName)
 	require.NoError(t, err)
@@ -280,7 +280,7 @@ func TestSonicTool_validator_ExecutesWithoutErrors(t *testing.T) {
 	require.Len(t, accounts, 1)
 
 	// Convert new account into a validator
-	log, err = executeSonicTool(t,
+	log, err = executePanoTool(t,
 		"--datadir", dataDir,
 		"validator", "convert", hexutil.Encode(accounts[0][:]),
 		hexutil.Encode(crypto.FromECDSAPub(&key.PublicKey)),
@@ -321,7 +321,7 @@ func getGenesisHeaderHashes(genesisFile string) (ogenesis.Header, ogenesis.Hashe
 var accountsInListRe = regexp.MustCompile(`Account\s+#\d+:\s+\{([a-zA-Z0-9]{40})\}`)
 
 func listAccounts(t *testing.T, keystoreDir string) []common.Address {
-	listAccountsOutput, err := executeSonicTool(t,
+	listAccountsOutput, err := executePanoTool(t,
 		"--datadir", keystoreDir,
 		"account", "list")
 	require.NoError(t, err)
@@ -384,12 +384,12 @@ func createAccount(t *testing.T, net *tests.IntegrationTestNet) {
 	)
 }
 
-// executeSonicTool executes the sonictool as if the provided arguments were
+// executePanoTool executes the panotool as if the provided arguments were
 // passed on the command line.
 // The standard out of the process is returned as a string.
 // Only direct errors resulting from the run itself are returned, to allow
 // checking specific error messages.
-func executeSonicTool(t *testing.T, args ...string) (string, error) {
+func executePanoTool(t *testing.T, args ...string) (string, error) {
 	t.Helper()
 	var err error
 
@@ -404,9 +404,9 @@ func executeSonicTool(t *testing.T, args ...string) (string, error) {
 
 	originalArgs := os.Args
 	defer func() { os.Args = originalArgs }()
-	os.Args = append([]string{"sonictool"}, args...)
+	os.Args = append([]string{"panotool"}, args...)
 
-	executionErr := sonictool.Run()
+	executionErr := panotool.Run()
 	require.NoError(t, w.Close())
 
 	output, err := io.ReadAll(r)

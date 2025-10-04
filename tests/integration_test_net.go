@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package tests
 
@@ -39,15 +39,15 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	sonicd "github.com/0xsoniclabs/sonic/cmd/sonicd/app"
-	sonictool "github.com/0xsoniclabs/sonic/cmd/sonictool/app"
-	"github.com/0xsoniclabs/sonic/config"
-	"github.com/0xsoniclabs/sonic/evmcore"
-	"github.com/0xsoniclabs/sonic/gossip/contract/driverauth100"
-	"github.com/0xsoniclabs/sonic/integration/makefakegenesis"
-	"github.com/0xsoniclabs/sonic/inter"
-	"github.com/0xsoniclabs/sonic/opera"
-	"github.com/0xsoniclabs/sonic/opera/contracts/driverauth"
+	panod "github.com/panoptisDev/pano/cmd/panod/app"
+	panotool "github.com/panoptisDev/pano/cmd/panotool/app"
+	"github.com/panoptisDev/pano/config"
+	"github.com/panoptisDev/pano/evmcore"
+	"github.com/panoptisDev/pano/gossip/contract/driverauth100"
+	"github.com/panoptisDev/pano/integration/makefakegenesis"
+	"github.com/panoptisDev/pano/inter"
+	"github.com/panoptisDev/pano/opera"
+	"github.com/panoptisDev/pano/opera/contracts/driverauth"
 	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
@@ -137,7 +137,7 @@ func AsPointer[T any](v T) *T {
 // IntegrationTestNetOptions are configuration options for the integration test network.
 type IntegrationTestNetOptions struct {
 	// Upgrades specifies the upgrades to be used for the integration test network.
-	// nil value will initialize network using SonicUpgrades.
+	// nil value will initialize network using PanoUpgrades.
 	Upgrades *opera.Upgrades
 	// NumNodes specifies the number of nodes to be started on the integration
 	// test network. A value of 0 is interpreted as 1.
@@ -159,7 +159,7 @@ type IntegrationTestNetOptions struct {
 }
 
 // IntegrationTestNet is a in-process test network for integration tests. When
-// started, it runs full Sonic nodes maintaining a chain within the process
+// started, it runs full Pano nodes maintaining a chain within the process
 // containing this object. The network can be used to run transactions on and
 // to perform queries against.
 //
@@ -199,7 +199,7 @@ type integrationTestNode struct {
 
 ////////////////////////////////////////////////////////////////////////////////
 // Memory profiler.
-// if enabled with the `SONIC_TEST_HEAP_PROFILE` env var, it will write a heap dump to
+// if enabled with the `PANO_TEST_HEAP_PROFILE` env var, it will write a heap dump to
 // the `../build/profile/` directory at the end of the test run.
 // The file will be named `mem_<test_name>.pprof` where `<test_name>` is the name
 // of the test that started the profiling.
@@ -207,7 +207,7 @@ type integrationTestNode struct {
 // to enable the profiling.
 ////////////////////////////////////////////////////////////////////////////////
 
-const heapProfileEnvVar = "SONIC_TEST_HEAP_PROFILE"
+const heapProfileEnvVar = "PANO_TEST_HEAP_PROFILE"
 
 // startHeapProfiler starts a goroutine that periodically checks the heap memory
 // usage and at the end of the test, writes a heap profile to a file in
@@ -294,12 +294,12 @@ func StartIntegrationTestNetWithFakeGenesis(
 		"fake genesis does not support custom accounts")
 
 	var upgrades string
-	if *effectiveOptions.Upgrades == opera.GetSonicUpgrades() {
-		upgrades = "sonic"
+	if *effectiveOptions.Upgrades == opera.GetPanoUpgrades() {
+		upgrades = "pano"
 	} else if *effectiveOptions.Upgrades == opera.GetAllegroUpgrades() {
 		upgrades = "allegro"
 	} else {
-		t.Fatal("fake genesis only supports sonic and allegro feature sets")
+		t.Fatal("fake genesis only supports pano and allegro feature sets")
 	}
 
 	net, err := startIntegrationTestNet(
@@ -316,7 +316,7 @@ func StartIntegrationTestNetWithFakeGenesis(
 // StartIntegrationTestNetWithJsonGenesis starts a single-node test network for
 // integration tests using the JSON-Genesis procedure. The JSON genesis procedure
 // is the genesis procedure used in long-running production networks like the
-// Sonic mainnet and the testnet.
+// Pano mainnet and the testnet.
 func StartIntegrationTestNetWithJsonGenesis(
 	t *testing.T,
 	options ...IntegrationTestNetOptions,
@@ -361,7 +361,7 @@ func StartIntegrationTestNetWithJsonGenesis(
 func startIntegrationTestNet(
 	t *testing.T,
 	directory string,
-	sonicToolArguments []string,
+	panoToolArguments []string,
 	options IntegrationTestNetOptions,
 ) (*IntegrationTestNet, error) {
 	net := &IntegrationTestNet{
@@ -376,8 +376,8 @@ func startIntegrationTestNet(
 
 	startHeapProfiler(t)
 
-	if verbosityVariable := os.Getenv("SONIC_VERBOSITY"); verbosityVariable == "" {
-		require.NoError(t, os.Setenv("SONIC_VERBOSITY", "1"), "failed to set verbosity")
+	if verbosityVariable := os.Getenv("PANO_VERBOSITY"); verbosityVariable == "" {
+		require.NoError(t, os.Setenv("PANO_VERBOSITY", "1"), "failed to set verbosity")
 	}
 
 	// start the integration test nodes
@@ -387,13 +387,13 @@ func startIntegrationTestNet(
 		// initialize the data directory for the single node on the test network
 		// using the configuration arguments provided by the caller
 		args := append([]string{
-			"sonictool",
+			"panotool",
 			"--datadir", net.nodes[i].getStateDir(),
 			"--statedb.livecache", "1",
 			"--statedb.archivecache", "1",
 			"--statedb.cache", "1024",
-		}, sonicToolArguments...)
-		require.NoError(t, sonictool.RunWithArgs(args), "failed to initialize the test network")
+		}, panoToolArguments...)
+		require.NoError(t, panotool.RunWithArgs(args), "failed to initialize the test network")
 	}
 
 	require.NoError(t, net.start(), "failed to start the integration test network")
@@ -430,7 +430,7 @@ func (n *IntegrationTestNet) start() error {
 
 			// MacOS uses other temporary directories than Linux, which is a too long name for the Unix domain socket.
 			// Since /tmp is also available on MacOS, we can use it as a short temporary directory.
-			tmp, err := os.MkdirTemp("/tmp", "sonic_integration_test_*")
+			tmp, err := os.MkdirTemp("/tmp", "pano_integration_test_*")
 			if err != nil {
 				panic(fmt.Sprintf("Failed to create temporary directory: %v", err))
 			}
@@ -440,10 +440,10 @@ func (n *IntegrationTestNet) start() error {
 				}
 			}()
 
-			// start the fakenet sonic node
-			// equivalent to running `sonicd ...` but in this local process
+			// start the fakenet pano node
+			// equivalent to running `panod ...` but in this local process
 			args := append([]string{
-				"sonicd",
+				"panod",
 
 				// data storage options
 				"--datadir", n.nodes[i].getStateDir(),
@@ -454,7 +454,7 @@ func (n *IntegrationTestNet) start() error {
 
 				// http-client option
 				"--http", "--http.addr", "127.0.0.1", "--http.port", "0",
-				"--http.api", "admin,eth,dag,web3,net,txpool,trace,debug,sonic",
+				"--http.api", "admin,eth,dag,web3,net,txpool,trace,debug,pano",
 
 				// websocket-client options
 				"--ws", "--ws.addr", "127.0.0.1", "--ws.port", "0",
@@ -470,7 +470,7 @@ func (n *IntegrationTestNet) start() error {
 				"--statedb.archivecache", "1",
 				"--statedb.cache", "1024",
 
-				"--ipcpath", fmt.Sprintf("%s/sonic.ipc", tmp),
+				"--ipcpath", fmt.Sprintf("%s/pano.ipc", tmp),
 			},
 				// append extra arguments
 				n.options.ClientExtraArguments...,
@@ -478,7 +478,7 @@ func (n *IntegrationTestNet) start() error {
 
 			if n.options.ModifyConfig != nil {
 				configFile := filepath.Join(tmp, "config.toml")
-				if err := sonicd.RunWithArgs(append(args, "--dump-config", configFile), nil); err != nil {
+				if err := panod.RunWithArgs(append(args, "--dump-config", configFile), nil); err != nil {
 					panic(fmt.Sprint("Failed to dump config file:", err))
 				}
 				var loadedConfig config.Config
@@ -492,13 +492,13 @@ func (n *IntegrationTestNet) start() error {
 				args = append(args, "--config", configFile)
 			}
 
-			control := &sonicd.AppControl{
+			control := &panod.AppControl{
 				NodeIdAnnouncement:   nodeIds[i],
 				HttpPortAnnouncement: httpPorts[i],
 				Shutdown:             stop,
 			}
 
-			if err := sonicd.RunWithArgs(args, control); err != nil {
+			if err := panod.RunWithArgs(args, control); err != nil {
 				panic(fmt.Sprint("Failed to start the fake network:", err))
 			}
 		}()
@@ -662,8 +662,8 @@ func (n *IntegrationTestNet) RestartWithExportImport() error {
 	for _, node := range n.nodes {
 		// export
 		genesisFile := filepath.Join(node.directory, "testGenesis.g")
-		err := sonictool.RunWithArgs([]string{
-			"sonictool",
+		err := panotool.RunWithArgs([]string{
+			"panotool",
 			"--datadir", node.getStateDir(),
 			"genesis", "export", genesisFile,
 		})
@@ -680,8 +680,8 @@ func (n *IntegrationTestNet) RestartWithExportImport() error {
 		fmt.Println("State directory cleaned. Importing genesis file...")
 
 		// import genesis file
-		err = sonictool.RunWithArgs([]string{
-			"sonictool",
+		err = panotool.RunWithArgs([]string{
+			"panotool",
 			"--datadir", node.getStateDir(),
 			"genesis", "--experimental", genesisFile,
 		})
@@ -1109,7 +1109,7 @@ func validateAndSanitizeOptions(options ...IntegrationTestNetOptions) (Integrati
 
 	if len(options) == 0 {
 		return IntegrationTestNetOptions{
-			Upgrades: AsPointer(opera.GetSonicUpgrades()),
+			Upgrades: AsPointer(opera.GetPanoUpgrades()),
 			NumNodes: 1,
 		}, nil
 	}
@@ -1117,7 +1117,7 @@ func validateAndSanitizeOptions(options ...IntegrationTestNetOptions) (Integrati
 		options[0].NumNodes = 1
 	}
 	if options[0].Upgrades == nil {
-		options[0].Upgrades = AsPointer(opera.GetSonicUpgrades())
+		options[0].Upgrades = AsPointer(opera.GetPanoUpgrades())
 	}
 
 	return options[0], nil

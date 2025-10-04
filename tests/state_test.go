@@ -22,9 +22,9 @@ import (
 	"path/filepath"
 	"testing"
 
-	carmen "github.com/0xsoniclabs/carmen/go/state"
-	"github.com/0xsoniclabs/carmen/go/state/gostate"
-	"github.com/0xsoniclabs/sonic/opera"
+	carmen "github.com/panoptisDev/carmen/go/state"
+	"github.com/panoptisDev/carmen/go/state/gostate"
+	"github.com/panoptisDev/pano/opera"
 	"github.com/ethereum/go-ethereum/tests"
 	"github.com/stretchr/testify/require"
 )
@@ -46,7 +46,7 @@ var (
 )
 
 func initMatcher(st *tests.TestMatcher) {
-	// EOF is not yet supported by sonic.
+	// EOF is not yet supported by pano.
 	st.SkipLoad(`^stEOF/`)
 }
 

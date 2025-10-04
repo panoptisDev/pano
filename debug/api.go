@@ -32,7 +32,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/0xsoniclabs/sonic/utils"
+	"github.com/panoptisDev/pano/utils"
 	"github.com/ethereum/go-ethereum/log"
 )
 

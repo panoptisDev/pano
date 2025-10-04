@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package app
 
@@ -20,9 +20,9 @@ import (
 	"os"
 	"sort"
 
-	"github.com/0xsoniclabs/sonic/config/flags"
-	"github.com/0xsoniclabs/sonic/debug"
-	"github.com/0xsoniclabs/sonic/version"
+	"github.com/panoptisDev/pano/config/flags"
+	"github.com/panoptisDev/pano/debug"
+	"github.com/panoptisDev/pano/version"
 	"gopkg.in/urfave/cli.v1"
 )
 
@@ -32,8 +32,8 @@ func Run() error {
 
 func RunWithArgs(args []string) error {
 	app := cli.NewApp()
-	app.Name = "sonictool"
-	app.Usage = "the Sonic management tool"
+	app.Name = "panotool"
+	app.Usage = "the Pano management tool"
 	app.Version = version.StringWithCommit()
 	app.Flags = []cli.Flag{
 		flags.DataDirFlag,
@@ -49,7 +49,7 @@ func RunWithArgs(args []string) error {
 			Name:  "genesis",
 			Usage: "Initialize the database from a genesis file",
 			Description: `
-    sonictool --datadir=<datadir> genesis genesis-file.g
+    panotool --datadir=<datadir> genesis genesis-file.g
 
 Requires a first argument of the genesis file to import.
 Initialize the database using data from the genesis file.
@@ -73,7 +73,7 @@ Initialize the database using data from the genesis file.
 						ModeFlag,
 					},
 					Description: `
-    sonictool --datadir=<datadir> genesis json --experimental genesis-file.json
+    panotool --datadir=<datadir> genesis json --experimental genesis-file.json
 
 Requires a first argument of the JSON genesis file to import.
 Initialize the database using data from the experimental genesis file.
@@ -89,11 +89,11 @@ Initialize the database using data from the experimental genesis file.
 						FakeUpgrades,
 					},
 					Description: `
-    sonictool --datadir=<datadir> genesis fake <N> [--mode=validator] [--upgrades=upgrades]
+    panotool --datadir=<datadir> genesis fake <N> [--mode=validator] [--upgrades=upgrades]
 
 Requires the number of validators in the fake network as the first argument.
 Initialize the database for a testing fakenet.
---upgrades can be used to define the network features, default is sonic hardfork feature set.
+--upgrades can be used to define the network features, default is pano hardfork feature set.
 `,
 				},
 				{
@@ -132,7 +132,7 @@ Add signature into an exported genesis file.
 					Usage:  "Check EVM live state database",
 					Action: checkLive,
 					Description: `
-    sonictool --datadir=<datadir> check live
+    panotool --datadir=<datadir> check live
 
 Verifies the consistency of the EVM state database.
 The live state is used for blocks processing.
@@ -143,7 +143,7 @@ The live state is used for blocks processing.
 					Usage:  "Check EVM archive states database",
 					Action: checkArchive,
 					Description: `
-    sonictool --datadir=<datadir> check archive
+    panotool --datadir=<datadir> check archive
 
 Verifies the consistency of the EVM state database.
 The archive state is used for RPC - allows to handle state-related RPC queries.
@@ -177,10 +177,10 @@ The archive state is used for RPC - allows to handle state-related RPC queries.
 				ExecFlag,
 			},
 			Description: `
-The Sonic console is an interactive shell for the JavaScript runtime environment
+The Pano console is an interactive shell for the JavaScript runtime environment
 which exposes a node admin interface as well as the Dapp JavaScript API.
 See https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console.
-This command allows to open a console attached to a running Sonic node.`,
+This command allows to open a console attached to a running Pano node.`,
 		},
 
 		{
@@ -211,7 +211,7 @@ be gzipped.
 						flags.SuppressFramePanicFlag,
 					},
 					Description: `
-    sonictool --datadir=<datadir> events import <filenames> [--mode=validator]
+    panotool --datadir=<datadir> events import <filenames> [--mode=validator]
 
 The import command imports events from RLP-encoded files.
 Events are fully verified.`,
@@ -291,7 +291,7 @@ You must remember this passphrase to unlock your account in the future.
 
 For non-interactive use the passphrase can be specified with the --password flag:
 
-    sonictool account new --password=file
+    panotool account new --password=file
 
 Note, this is meant to be used for testing only, it is a bad idea to save your
 password to file or expose in any other way.
@@ -318,7 +318,7 @@ format to the newest format or change the password for an account.
 
 For non-interactive use the passphrase can be specified with the --password flag:
 
-    sonictool account update --password=file <address>
+    panotool account update --password=file <address>
 
 Since only one password can be given, only format update can be performed,
 changing your password is only possible interactively.
@@ -336,7 +336,7 @@ changing your password is only possible interactively.
 					},
 					ArgsUsage: "<keyFile>",
 					Description: `
-    sonictool account import <keyfile>
+    panotool account import <keyfile>
 
 Imports an unencrypted private key from <keyfile> and creates a new account.
 Prints the address.
@@ -349,10 +349,10 @@ You must remember this passphrase to unlock your account in the future.
 
 For non-interactive use the passphrase can be specified with the --password flag:
 
-    sonictool account import --password=file <keyfile>
+    panotool account import --password=file <keyfile>
 
 Note:
-As you can directly copy your encrypted accounts to another Sonic instance,
+As you can directly copy your encrypted accounts to another Pano instance,
 this import mechanism is not needed when you transfer an account between
 nodes.
 `,
@@ -379,7 +379,7 @@ Note that exporting your key in unencrypted format is NOT supported.
 
 Keys are stored under <DATADIR>/keystore/validator.
 It is safe to transfer the entire directory or the individual keys therein
-between Sonic nodes by simply copying.
+between Pano nodes by simply copying.
 
 Make sure you backup your keys regularly.
 `,

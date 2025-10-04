@@ -8,13 +8,13 @@ set -e
 
 echo -e "\nStart $N nodes:\n"
 pushd ..
-make all && mv ./build/sonicd ./build/demo_sonicd
+make all && mv ./build/panod ./build/demo_panod
 popd
 
 rm -f ./transactions.rlp
 for ((i=0;i<N;i+=1))
 do
-    DATADIR="${PWD}/sonic$i.datadir"
+    DATADIR="${PWD}/pano$i.datadir"
     PORT=$((PORT_BASE + i))
     RPCP=$((RPCP_BASE + i))
     WSP=$((WSP_BASE + i))
@@ -25,10 +25,10 @@ do
     then
         echo "Import fake genesis $ACC/$N"
         mkdir -p "$DATADIR"
-        ../build/sonictool --datadir "$DATADIR" genesis fake "$N" --mode=rpc
+        ../build/panotool --datadir "$DATADIR" genesis fake "$N" --mode=rpc
     fi
 
-    (../build/demo_sonicd \
+    (../build/demo_panod \
 	--datadir "$DATADIR" \
 	--mode rpc \
 	--fakenet "$ACC/$N" \
@@ -37,7 +37,7 @@ do
 	--http --http.addr "127.0.0.1" --http.port "$RPCP" --http.corsdomain "*" --http.api "eth,debug,net,admin,web3,personal,txpool,dag" \
 	--ws --ws.addr "127.0.0.1" --ws.port "$WSP" --ws.origins "*" --ws.api "eth,debug,net,admin,web3,personal,txpool,dag" \
 	--metrics --metrics.addr 127.0.0.1 --metrics.port "$METRICSP" \
-	--verbosity 3 >> "sonicd${i}.log" 2>&1)&
+	--verbosity 3 >> "panod${i}.log" 2>&1)&
 
     echo -e "\tnode$i ok"
 done

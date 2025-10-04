@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package tests
 
@@ -23,8 +23,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/0xsoniclabs/sonic/opera"
-	"github.com/0xsoniclabs/sonic/tests/contracts/counter_event_emitter"
+	"github.com/panoptisDev/pano/opera"
+	"github.com/panoptisDev/pano/tests/contracts/counter_event_emitter"
 	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/stretchr/testify/require"
@@ -34,7 +34,7 @@ func TestLogSubscription_CanGetCallBacksForLogEvents(t *testing.T) {
 
 	const NumEvents = 10
 	require := require.New(t)
-	session := getIntegrationTestNetSession(t, opera.GetSonicUpgrades())
+	session := getIntegrationTestNetSession(t, opera.GetPanoUpgrades())
 
 	contract, _, err := DeployContract(session, counter_event_emitter.DeployCounterEventEmitter)
 	require.NoError(err)
@@ -77,7 +77,7 @@ func TestLogBloom_query(t *testing.T) {
 	// This test can reuse an existing blockchain history, but should not
 	// run concurrently to other tests. It requires logs to exist in at least one
 	// transaction per block while testFunction is running.
-	net := getIntegrationTestNetSession(t, opera.GetSonicUpgrades())
+	net := getIntegrationTestNetSession(t, opera.GetPanoUpgrades())
 
 	contract, _, err := DeployContract(net, counter_event_emitter.DeployCounterEventEmitter)
 	require.NoError(err)

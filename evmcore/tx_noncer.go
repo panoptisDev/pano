@@ -19,7 +19,7 @@ package evmcore
 import (
 	"sync"
 
-	"github.com/0xsoniclabs/sonic/inter/state"
+	"github.com/panoptisDev/pano/inter/state"
 	"github.com/ethereum/go-ethereum/common"
 )
 

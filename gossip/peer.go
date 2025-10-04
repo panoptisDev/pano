@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package gossip
 
@@ -23,10 +23,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/Fantom-foundation/lachesis-base/hash"
-	"github.com/Fantom-foundation/lachesis-base/inter/dag"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
-	"github.com/Fantom-foundation/lachesis-base/utils/datasemaphore"
+	"github.com/panoptisDev/lachesis-base/hash"
+	"github.com/panoptisDev/lachesis-base/inter/dag"
+	"github.com/panoptisDev/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base/utils/datasemaphore"
 	mapset "github.com/deckarep/golang-set"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
@@ -35,8 +35,8 @@ import (
 	"github.com/ethereum/go-ethereum/p2p/enode"
 	"github.com/ethereum/go-ethereum/rlp"
 
-	"github.com/0xsoniclabs/sonic/gossip/protocols/dag/dagstream"
-	"github.com/0xsoniclabs/sonic/inter"
+	"github.com/panoptisDev/pano/gossip/protocols/dag/dagstream"
+	"github.com/panoptisDev/pano/inter"
 )
 
 var (
@@ -566,7 +566,7 @@ func (p *peer) SendPeerInfoRequest() error {
 	// If the peer doesn't support the peer info protocol, don't bother
 	// sending the request. This request would lead to a disconnect
 	// if the peer doesn't understand it.
-	if !p.RunningCap(ProtocolName, []uint{_Sonic_64, _Sonic_65}) {
+	if !p.RunningCap(ProtocolName, []uint{_Pano_64, _Pano_65}) {
 		return nil
 	}
 	return p2p.Send(p.rw, GetPeerInfosMsg, struct{}{})
@@ -578,7 +578,7 @@ func (p *peer) SendEndPointUpdateRequest() error {
 	// If the peer doesn't support version 65 of this protocol, don't bother
 	// sending the request. This request would lead to a disconnect
 	// if the peer doesn't understand it.
-	if !p.RunningCap(ProtocolName, []uint{_Sonic_65}) {
+	if !p.RunningCap(ProtocolName, []uint{_Pano_65}) {
 		return nil
 	}
 	return p2p.Send(p.rw, GetEndPointMsg, struct{}{})

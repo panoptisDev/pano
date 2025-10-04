@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package network_rules_update
 
@@ -22,12 +22,12 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/0xsoniclabs/sonic/ethapi"
-	"github.com/0xsoniclabs/sonic/evmcore"
-	"github.com/0xsoniclabs/sonic/gossip/contract/driverauth100"
-	"github.com/0xsoniclabs/sonic/opera"
-	"github.com/0xsoniclabs/sonic/opera/contracts/driverauth"
-	"github.com/0xsoniclabs/sonic/tests"
+	"github.com/panoptisDev/pano/ethapi"
+	"github.com/panoptisDev/pano/evmcore"
+	"github.com/panoptisDev/pano/gossip/contract/driverauth100"
+	"github.com/panoptisDev/pano/opera"
+	"github.com/panoptisDev/pano/opera/contracts/driverauth"
+	"github.com/panoptisDev/pano/tests"
 	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
@@ -106,7 +106,7 @@ func TestNetworkRule_Update_RulesChangeDuringEpoch_PreAllegro(t *testing.T) {
 	require := require.New(t)
 	net := tests.StartIntegrationTestNetWithFakeGenesis(t,
 		tests.IntegrationTestNetOptions{
-			Upgrades: tests.AsPointer(opera.GetSonicUpgrades()),
+			Upgrades: tests.AsPointer(opera.GetPanoUpgrades()),
 		})
 
 	client, err := net.GetClient()
@@ -289,7 +289,7 @@ func TestNetworkRule_MinEventGas_AllowsChangingRules(t *testing.T) {
 	require := require.New(t)
 	net := tests.StartIntegrationTestNetWithFakeGenesis(t,
 		tests.IntegrationTestNetOptions{
-			Upgrades: tests.AsPointer(opera.GetSonicUpgrades()),
+			Upgrades: tests.AsPointer(opera.GetPanoUpgrades()),
 		})
 
 	client, err := net.GetClient()
@@ -335,8 +335,8 @@ func TestNetworkRules_PragueFeaturesBecomeAvailableWithAllegroUpgrade(t *testing
 
 	net := tests.StartIntegrationTestNetWithFakeGenesis(t,
 		tests.IntegrationTestNetOptions{
-			// Explicitly set the network to use the Sonic Hard Fork
-			Upgrades: tests.AsPointer(opera.GetSonicUpgrades()),
+			// Explicitly set the network to use the Pano Hard Fork
+			Upgrades: tests.AsPointer(opera.GetPanoUpgrades()),
 			// Use 2 nodes to test the rules update propagation
 			NumNodes: 2,
 		},
@@ -344,7 +344,7 @@ func TestNetworkRules_PragueFeaturesBecomeAvailableWithAllegroUpgrade(t *testing
 
 	account := tests.MakeAccountWithBalance(t, net, big.NewInt(1e18))
 
-	t.Run("expectations before sonic-allegro hardfork", func(t *testing.T) {
+	t.Run("expectations before pano-allegro hardfork", func(t *testing.T) {
 		forEachClientInNet(t, net, func(t *testing.T, client *tests.PooledEhtClient) {
 			tx := makeSetCodeTx(t, net, account)
 			err := client.SendTransaction(t.Context(), tx)
@@ -372,7 +372,7 @@ func TestNetworkRules_PragueFeaturesBecomeAvailableWithAllegroUpgrade(t *testing
 	require.NoError(t, err, "failed to endow account with balance")
 	require.Equal(t, types.ReceiptStatusSuccessful, receipt.Status)
 
-	t.Run("expectations before sonic-allegro hardfork", func(t *testing.T) {
+	t.Run("expectations before pano-allegro hardfork", func(t *testing.T) {
 
 		// Submit a transaction that requires the new behavior
 		tx := makeSetCodeTx(t, net, account)

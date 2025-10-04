@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package scrambler
 
@@ -25,7 +25,7 @@ import (
 	"slices"
 	"testing"
 
-	"github.com/0xsoniclabs/sonic/gossip/emitter"
+	"github.com/panoptisDev/pano/gossip/emitter"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	"go.uber.org/mock/gomock"
@@ -622,20 +622,20 @@ func TestTxScrambler_FilterAndOrderTransactions_RandomInput(t *testing.T) {
 	}
 }
 
-func TestGetExecutionOrder_ScramblerIsUsedOnlyForSonic(t *testing.T) {
+func TestGetExecutionOrder_ScramblerIsUsedOnlyForPano(t *testing.T) {
 	tests := []struct {
 		name        string
-		isSonic     bool
+		isPano     bool
 		expectedLen int
 	}{
 		{
-			name:        "SonicIsDisabled-InputStaysUnchanged",
-			isSonic:     false,
+			name:        "PanoIsDisabled-InputStaysUnchanged",
+			isPano:     false,
 			expectedLen: 4,
 		},
 		{
-			name:        "SonicIsEnabled-InputIsChanged",
-			isSonic:     true,
+			name:        "PanoIsEnabled-InputIsChanged",
+			isPano:     true,
 			expectedLen: 3,
 		},
 	}
@@ -661,7 +661,7 @@ func TestGetExecutionOrder_ScramblerIsUsedOnlyForSonic(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	signer := emitter.NewMockTxSigner(ctrl)
 
-	// Only one loop is expected because the scrambler is disabled if Sonic is not enabled.
+	// Only one loop is expected because the scrambler is disabled if Pano is not enabled.
 	gomock.InOrder(
 		signer.EXPECT().Sender(input[0]).Return(common.Address{1}, nil),
 		signer.EXPECT().Sender(input[1]).Return(common.Address{2}, nil),
@@ -671,7 +671,7 @@ func TestGetExecutionOrder_ScramblerIsUsedOnlyForSonic(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			txs := GetExecutionOrder(input, signer, test.isSonic)
+			txs := GetExecutionOrder(input, signer, test.isPano)
 			// one transaction is removed from the list
 			if got, want := len(txs), test.expectedLen; got != want {
 				t.Errorf("unexpected number of transasctions, got: %d, want: %d", got, want)

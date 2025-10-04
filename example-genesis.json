@@ -1,7 +1,7 @@
 {
-  "_": "This is a sample JSON genesis file. Use 'sonictool genesis json example-genesis.json' to generate a database from it.",
+  "_": "This is a sample JSON genesis file. Use 'panotool genesis json example-genesis.json' to generate a database from it.",
   "rules": {
-    "Name": "sample-sonic-network",
+    "Name": "sample-pano-network",
     "NetworkID": 4003,
     "Dag": {
       "MaxParents": 10,
@@ -47,7 +47,7 @@
       "Berlin": true,
       "London": true,
       "Llr": false,
-      "Sonic": true,
+      "Pano": true,
       "Allegro": true,
       "Brio": false,
       "SingleProposerBlockFormation": false

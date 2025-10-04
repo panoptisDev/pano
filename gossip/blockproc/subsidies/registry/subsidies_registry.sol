@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.24;
 
-// SubsidiesRegistry is a stand-in contract for Sonic's on-chain subsidies 
+// SubsidiesRegistry is a stand-in contract for Pano's on-chain subsidies 
 // registry to be used in local testing and development environments.
 contract SubsidiesRegistry {
 
@@ -54,7 +54,7 @@ contract SubsidiesRegistry {
         contributor.transfer(share);
     }
 
-    // --- Funding infrastructure used by the Sonic client ---
+    // --- Funding infrastructure used by the Pano client ---
 
     function getGasConfig() public pure returns (
         uint256 chooseFundLimit, 
@@ -118,7 +118,7 @@ contract SubsidiesRegistry {
     // --- Fund Identifiers ---
 
     // Global sponsorships cover all transactions. They may be used for
-    // Sonic wide marketing campaigns.
+    // Pano wide marketing campaigns.
     function globalSponsorshipFundId() public pure returns (bool, bytes32) {
         return (true, keccak256(abi.encodePacked("g")));
     }

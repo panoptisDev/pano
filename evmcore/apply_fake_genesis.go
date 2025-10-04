@@ -21,7 +21,7 @@ import (
 	"errors"
 	"time"
 
-	"github.com/0xsoniclabs/sonic/inter"
+	"github.com/panoptisDev/pano/inter"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/crypto"
 )

@@ -1,40 +1,40 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package gossip
 
 import (
 	"math/big"
 
-	"github.com/Fantom-foundation/lachesis-base/hash"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base/hash"
+	"github.com/panoptisDev/lachesis-base/inter/idx"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	notify "github.com/ethereum/go-ethereum/event"
 
-	"github.com/0xsoniclabs/sonic/evmcore"
-	"github.com/0xsoniclabs/sonic/gossip/emitter"
-	"github.com/0xsoniclabs/sonic/inter"
+	"github.com/panoptisDev/pano/evmcore"
+	"github.com/panoptisDev/pano/gossip/emitter"
+	"github.com/panoptisDev/pano/inter"
 )
 
 // Constants to match up protocol versions and messages
 const (
 	_FTM62    = 62
-	_Sonic_64 = 64
-	_Sonic_65 = 65
+	_Pano_64 = 64
+	_Pano_65 = 65
 )
 
 // ProtocolName is the official short name of the protocol used during capability negotiation.
@@ -42,15 +42,15 @@ const ProtocolName = "opera"
 
 // ProtocolVersions are the supported versions of the protocol (first is primary).
 var ProtocolVersions = []uint{
-	_Sonic_65,
-	_Sonic_64,
+	_Pano_65,
+	_Pano_64,
 	_FTM62,
 }
 
 // protocolLengths are the number of implemented message corresponding to different protocol versions.
 var protocolLengths = map[uint]uint64{
-	_Sonic_65: EndPointUpdateMsg + 1,
-	_Sonic_64: PeerInfosMsg + 1,
+	_Pano_65: EndPointUpdateMsg + 1,
+	_Pano_64: PeerInfosMsg + 1,
 	_FTM62:    EventsStreamResponse + 1,
 }
 

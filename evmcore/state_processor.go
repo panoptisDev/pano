@@ -28,11 +28,11 @@ import (
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/ethereum/go-ethereum/params"
 
-	"github.com/0xsoniclabs/sonic/gossip/blockproc/subsidies"
-	"github.com/0xsoniclabs/sonic/inter/state"
-	"github.com/0xsoniclabs/sonic/opera"
-	"github.com/0xsoniclabs/sonic/utils/signers/gsignercache"
-	"github.com/0xsoniclabs/sonic/utils/signers/internaltx"
+	"github.com/panoptisDev/pano/gossip/blockproc/subsidies"
+	"github.com/panoptisDev/pano/inter/state"
+	"github.com/panoptisDev/pano/opera"
+	"github.com/panoptisDev/pano/utils/signers/gsignercache"
+	"github.com/panoptisDev/pano/utils/signers/internaltx"
 )
 
 //go:generate mockgen -source=state_processor.go -destination=state_processor_mock.go -package=evmcore
@@ -88,7 +88,7 @@ type ProcessedTransaction struct {
 //
 // Note that these rules are part of the replicated state machine and must be
 // consistent among all nodes on the network. The encoded rules have been
-// inherited from the Fantom network and are active in the Sonic network.
+// inherited from the panoptis network and are active in the Pano network.
 // Future hard-forks may be used to clean up the rules and make them more
 // consistent.
 func (p *StateProcessor) Process(
@@ -407,7 +407,7 @@ func ApplyTransactionWithEVM(msg *core.Message, config *params.ChainConfig, gp *
 	txContext := NewEVMTxContext(msg)
 	evm.SetTxContext(txContext)
 
-	// For now, Sonic only supports Blob transactions without blob data.
+	// For now, Pano only supports Blob transactions without blob data.
 	if msg.BlobHashes != nil {
 		if len(msg.BlobHashes) > 0 {
 			statedb.EndTransaction()
@@ -507,7 +507,7 @@ func applyTransaction(
 	// Skip checking of base fee limits for internal transactions.
 	evm.Config.NoBaseFee = evm.Config.NoBaseFee || msg.SkipNonceChecks
 
-	// For now, Sonic only supports Blob transactions without blob data.
+	// For now, Pano only supports Blob transactions without blob data.
 	if msg.BlobHashes != nil {
 		if len(msg.BlobHashes) > 0 {
 			statedb.EndTransaction()
