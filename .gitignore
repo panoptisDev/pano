@@ -64,3 +64,8 @@ testnet.g
 # Validator datadirs
 testnet/validator*/carmen/
 testnet/validator*/chaindata/
+
+# Validator runtime data
+testnet/validator*/emitter/
+testnet/validator*/p2p/
+testnet/validator*/keystore/UTC--*
