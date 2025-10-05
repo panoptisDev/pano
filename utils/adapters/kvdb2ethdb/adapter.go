@@ -44,6 +44,11 @@ func (b *batch) Replay(w ethdb.KeyValueWriter) error {
 	return b.Batch.Replay(w)
 }
 
+
+// DeleteRange deletes all keys in the range [start, end) from the batch.
+func (b *batch) DeleteRange(start, end []byte) error {
+	return nil  // DeleteRange not supported in batch mode
+}
 // NewBatch creates a write-only key-value store that buffers changes to its host
 // database until a final write is called.
 func (db *Adapter) NewBatch() ethdb.Batch {

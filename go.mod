@@ -19,9 +19,6 @@ module github.com/panoptisDev/pano
 go 1.24.0
 
 require (
-	github.com/panoptisDev/carmen/go v0.0.0-20250708101910-3666ec34654c
-	github.com/panoptisDev/tosca v0.0.0-20250905062239-b2db1e70e826
-	github.com/panoptisDev/lachesis-base v0.0.0-20240116072301-a75735c4ef00
 	github.com/cespare/cp v1.1.1
 	github.com/consensys/gnark-crypto v0.18.0
 	github.com/davecgh/go-spew v1.1.1
@@ -35,6 +32,9 @@ require (
 	github.com/mattn/go-colorable v0.1.13
 	github.com/mattn/go-isatty v0.0.20
 	github.com/naoina/toml v0.1.2-0.20170918210437-9fafd6967416
+	github.com/panoptisDev/carmen/go v0.0.0-20251004215022-450ae6f398a6
+	github.com/panoptisDev/lachesis-base v0.0.0-20251004204903-e74438b1fd75
+	github.com/panoptisDev/tosca v0.0.0-20251004220424-7ee74388a674
 	github.com/pkg/errors v0.9.1
 	github.com/status-im/keycard-go v0.3.2
 	github.com/stretchr/testify v1.10.0
@@ -42,6 +42,7 @@ require (
 	github.com/syndtr/goleveldb v1.0.1-0.20210819022825-2ae1ddf74ef7
 	github.com/tyler-smith/go-bip39 v1.1.0
 	go.uber.org/mock v0.4.0
+	golang.org/x/crypto v0.36.0
 	golang.org/x/exp v0.0.0-20241204233417-43b7b7cde48d
 	golang.org/x/sys v0.31.0
 	google.golang.org/protobuf v1.34.2
@@ -132,7 +133,6 @@ require (
 	github.com/urfave/cli/v2 v2.27.5 // indirect
 	github.com/xrash/smetrics v0.0.0-20240521201337-686a1a2994c1 // indirect
 	github.com/yusufpapurcu/wmi v1.2.4 // indirect
-	golang.org/x/crypto v0.36.0 // indirect
 	golang.org/x/net v0.38.0 // indirect
 	golang.org/x/sync v0.12.0 // indirect
 	golang.org/x/text v0.23.0 // indirect
@@ -144,5 +144,3 @@ require (
 )
 
 replace github.com/ethereum/go-ethereum => github.com/panoptisDev/go-ethereum v0.0.0-20250827114033-a49cee8740d2
-
-replace github.com/panoptisDev/lachesis-base => github.com/panoptisDev/lachesis-base-pano v0.0.0-20250701061954-44075d09185c
