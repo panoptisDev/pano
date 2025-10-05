@@ -60,3 +60,7 @@ testnet.g
 .#*
 
 **/coverage.txt
+
+# Validator datadirs
+testnet/validator*/carmen/
+testnet/validator*/chaindata/
