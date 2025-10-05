@@ -48,6 +48,14 @@ certs
 lachesis_*
 !*.go
 *.log
+
+# Testnet runtime data
+testnet/node_modules/
+testnet/validator*/chaindata/
+testnet/validator*/carmen/
+testnet/validator*/emitter/
+testnet/validator*/p2p/
+testnet/validator*/*.log
 *.graph
 *.gv
 *.finality

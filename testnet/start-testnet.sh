@@ -21,12 +21,12 @@ echo "Starting Validator 1 on port 30303, HTTP 9545..."
   --http \
   --http.addr=127.0.0.1 \
   --http.port=9545 \
-  --http.api=eth,web3,net,pano,admin \
-  --mode=validator \
+  --http.api=eth,web3,net,pano,admin,debug \
   --fakenet=1/3 \
   --verbosity=3 \
   --maxpeers=10 \
   --nat=none \
+  --statedb.archivecache=1073741824 \
   > /tmp/validator1.log 2>&1 &
 
 VAL1_PID=$!
@@ -42,12 +42,12 @@ echo "Starting Validator 2 on port 30304, HTTP 9546..."
   --http \
   --http.addr=127.0.0.1 \
   --http.port=9546 \
-  --http.api=eth,web3,net,pano,admin \
-  --mode=validator \
+  --http.api=eth,web3,net,pano,admin,debug \
   --fakenet=2/3 \
   --verbosity=3 \
   --maxpeers=10 \
   --nat=none \
+  --statedb.archivecache=1073741824 \
   > /tmp/validator2.log 2>&1 &
 
 VAL2_PID=$!
@@ -63,12 +63,12 @@ echo "Starting Validator 3 on port 30305, HTTP 9547..."
   --http \
   --http.addr=127.0.0.1 \
   --http.port=9547 \
-  --http.api=eth,web3,net,pano,admin \
-  --mode=validator \
+  --http.api=eth,web3,net,pano,admin,debug \
   --fakenet=3/3 \
   --verbosity=3 \
   --maxpeers=10 \
   --nat=none \
+  --statedb.archivecache=1073741824 \
   > /tmp/validator3.log 2>&1 &
 
 VAL3_PID=$!
