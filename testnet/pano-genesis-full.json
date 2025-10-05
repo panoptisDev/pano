@@ -13,7 +13,7 @@
       "MaxEpochDuration": 3600000000000
     },
     "Blocks": {
-      "MaxBlockGas": 1000000000,
+      "MaxBlockGas": 5000000000,
       "MaxEmptyBlockSkipPeriod": 60000000000
     },
     "Economy": {
