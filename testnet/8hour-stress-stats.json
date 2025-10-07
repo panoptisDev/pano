@@ -1,0 +1,49 @@
+{
+  "test_start": "2025-10-07 00:58:35",
+  "elapsed_hours": 7.95,
+  "total_transactions_sent": 480,
+  "total_success": 480,
+  "total_failed": 0,
+  "total_confirmed": 480,
+  "success_rate": "100.00%",
+  "confirmation_rate": "100.00%",
+  "batches_completed": 48,
+  "last_update": "2025-10-07 08:55:45",
+  "recent_batches": [
+    {
+      "batch": 44,
+      "timestamp": "2025-10-07 08:15:00",
+      "success": 10,
+      "failed": 0,
+      "confirmed": 10
+    },
+    {
+      "batch": 45,
+      "timestamp": "2025-10-07 08:25:09",
+      "success": 10,
+      "failed": 0,
+      "confirmed": 10
+    },
+    {
+      "batch": 46,
+      "timestamp": "2025-10-07 08:35:18",
+      "success": 10,
+      "failed": 0,
+      "confirmed": 10
+    },
+    {
+      "batch": 47,
+      "timestamp": "2025-10-07 08:45:27",
+      "success": 10,
+      "failed": 0,
+      "confirmed": 10
+    },
+    {
+      "batch": 48,
+      "timestamp": "2025-10-07 08:55:36",
+      "success": 10,
+      "failed": 0,
+      "confirmed": 10
+    }
+  ]
+}
