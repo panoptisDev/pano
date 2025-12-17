@@ -448,6 +448,107 @@ func TestProcess_EnforcesGasLimitBySkippingExcessiveTransactions(t *testing.T) {
 	}
 }
 
+func TestProcess_UsesDifficultyOfOne(t *testing.T) {
+	ctrl := gomock.NewController(t)
+	processor := NewStateProcessor(&params.ChainConfig{}, nil, opera.Upgrades{})
+
+	state, block := createScenarioWithTxCheckingDifficulty(ctrl, big.NewInt(1))
+
+	// Check that the difficulty of 1 is used.
+	results := processor.Process(block, state, vm.Config{}, math.MaxUint64, new(uint64), nil)
+	require.Len(t, results, 1)
+	require.NotNil(t, results[0].Receipt)
+	require.Equal(t, types.ReceiptStatusSuccessful, results[0].Receipt.Status)
+
+	// Check that an unexpected difficulty causes a revert.
+	wrongDifficulty := big.NewInt(2)
+	state, block = createScenarioWithTxCheckingDifficulty(ctrl, wrongDifficulty)
+	results = processor.Process(block, state, vm.Config{}, math.MaxUint64, new(uint64), nil)
+	require.Len(t, results, 1)
+	require.NotNil(t, results[0].Receipt)
+	require.Equal(t, types.ReceiptStatusFailed, results[0].Receipt.Status)
+
+}
+
+func TestProcessWithDifficulty_UsesProvidedDifficulty(t *testing.T) {
+	for _, difficulty := range []*big.Int{big.NewInt(0), big.NewInt(2), big.NewInt(42)} {
+		t.Run(fmt.Sprintf("difficulty=%s", difficulty.String()), func(t *testing.T) {
+			ctrl := gomock.NewController(t)
+			processor := NewStateProcessor(&params.ChainConfig{}, nil, opera.Upgrades{})
+
+			state, block := createScenarioWithTxCheckingDifficulty(ctrl, difficulty)
+			results := processor.ProcessWithDifficulty(
+				block, state, vm.Config{}, math.MaxUint64,
+				new(uint64), nil, difficulty,
+			)
+			require.Len(t, results, 1)
+			require.NotNil(t, results[0].Receipt)
+			require.Equal(t, types.ReceiptStatusSuccessful, results[0].Receipt.Status)
+		})
+	}
+}
+
+// createScenarioWithTxCheckingDifficulty creates a test scenario where a single
+// transaction checks that the block difficulty matches the expected value.
+func createScenarioWithTxCheckingDifficulty(
+	ctrl *gomock.Controller, expectedDifficulty *big.Int,
+) (
+	*state.MockStateDB,
+	*EvmBlock,
+) {
+	// Prepare code that checks for the expected difficulty.
+	code := []byte{
+		byte(vm.DIFFICULTY),                              // fetch the difficulty
+		byte(vm.PUSH1), byte(expectedDifficulty.Int64()), // push expected difficulty
+		byte(vm.EQ),          // compare
+		byte(vm.PUSH1), 0x09, // push jump-dest address
+		byte(vm.JUMPI), 0x0a, // jump to success if equal
+		byte(vm.REVERT),   // revert if difficulty is not expected
+		byte(vm.JUMPDEST), // success
+		byte(vm.STOP),     // stop execution without revert
+	}
+
+	// Create a state mock that is able to run a full transaction.
+	any := gomock.Any()
+	state := state.NewMockStateDB(ctrl)
+	state.EXPECT().SetTxContext(any, any).AnyTimes()
+	state.EXPECT().GetBalance(any).Return(uint256.NewInt(math.MaxInt64)).AnyTimes()
+	state.EXPECT().SubBalance(any, any, any).AnyTimes()
+	state.EXPECT().Prepare(any, any, any, any, any, any).AnyTimes()
+	state.EXPECT().GetNonce(any).AnyTimes()
+	state.EXPECT().SetNonce(any, any, any).AnyTimes()
+	state.EXPECT().GetCode(any).Return(code).AnyTimes()
+	state.EXPECT().Snapshot().AnyTimes()
+	state.EXPECT().Exist(any).Return(true).AnyTimes()
+	state.EXPECT().AddBalance(any, any, any).AnyTimes()
+	state.EXPECT().GetCodeHash(any).Return(crypto.Keccak256Hash(code)).AnyTimes()
+	state.EXPECT().RevertToSnapshot(any).AnyTimes()
+	state.EXPECT().GetRefund().AnyTimes()
+	state.EXPECT().AddRefund(any).AnyTimes()
+	state.EXPECT().SubRefund(any).AnyTimes()
+	state.EXPECT().GetLogs(any, any).AnyTimes()
+	state.EXPECT().EndTransaction().AnyTimes()
+	state.EXPECT().TxIndex().AnyTimes()
+
+	// Create a block with a single transaction calling the smart contract
+	// checking the difficulty.
+	transactions := []*types.Transaction{
+		types.NewTx(&types.LegacyTx{
+			To:  &common.Address{1, 2, 3},
+			Gas: 100_000,
+		}),
+	}
+
+	block := &EvmBlock{
+		EvmHeader: EvmHeader{
+			Number: big.NewInt(1),
+		},
+		Transactions: transactions,
+	}
+
+	return state, block
+}
+
 func TestApplyTransaction_InternalTransactionsSkipBaseFeeCharges(t *testing.T) {
 	for _, internal := range []bool{true, false} {
 		t.Run("internal="+fmt.Sprint(internal), func(t *testing.T) {

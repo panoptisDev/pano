@@ -94,11 +94,23 @@ func (p *StateProcessor) Process(
 	block *EvmBlock, statedb state.StateDB, cfg vm.Config, gasLimit uint64,
 	usedGas *uint64, onNewLog func(*types.Log),
 ) []ProcessedTransaction {
+	sonicDifficulty := big.NewInt(1)
+	return p.ProcessWithDifficulty(block, statedb, cfg, gasLimit, usedGas, onNewLog, sonicDifficulty)
+}
+
+// ProcessWithDifficulty is the same as Process, but allows specifying a custom
+// difficulty for the block context. This is mainly intended for testing
+// purposes, when processing blocks from non-Sonic networks exhibiting different
+// difficulty values than Sonic's constant difficulty of 1.
+func (p *StateProcessor) ProcessWithDifficulty(
+	block *EvmBlock, statedb state.StateDB, cfg vm.Config, gasLimit uint64,
+	usedGas *uint64, onNewLog func(*types.Log), difficulty *big.Int,
+) []ProcessedTransaction {
 	var (
 		gp           = new(core.GasPool).AddGas(gasLimit)
 		header       = block.Header()
 		time         = uint64(block.Time.Unix())
-		blockContext = NewEVMBlockContext(header, p.bc, nil)
+		blockContext = NewEVMBlockContextWithDifficulty(header, p.bc, nil, difficulty)
 		vmenv        = vm.NewEVM(blockContext, statedb, p.config, cfg)
 		blockNumber  = block.Number
 		signer       = types.LatestSignerForChainID(p.config.ChainID)
