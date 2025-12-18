@@ -216,6 +216,20 @@ func (mr *MockBackendMockRecorder) ExtRPCEnabled() *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ExtRPCEnabled", reflect.TypeOf((*MockBackend)(nil).ExtRPCEnabled))
 }
 
+// FetchReceiptsForBlock mocks base method.
+func (m *MockBackend) FetchReceiptsForBlock(block *evmcore.EvmBlock) types.Receipts {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "FetchReceiptsForBlock", block)
+	ret0, _ := ret[0].(types.Receipts)
+	return ret0
+}
+
+// FetchReceiptsForBlock indicates an expected call of FetchReceiptsForBlock.
+func (mr *MockBackendMockRecorder) FetchReceiptsForBlock(block any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FetchReceiptsForBlock", reflect.TypeOf((*MockBackend)(nil).FetchReceiptsForBlock), block)
+}
+
 // GetDowntime mocks base method.
 func (m *MockBackend) GetDowntime(ctx context.Context, vid idx.ValidatorID) (idx.Block, inter.Timestamp, error) {
 	m.ctrl.T.Helper()
