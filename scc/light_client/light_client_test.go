@@ -25,7 +25,7 @@ import (
 	"github.com/panoptisDev/pano/scc"
 	"github.com/panoptisDev/pano/scc/bls"
 	"github.com/panoptisDev/pano/scc/cert"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/holiman/uint256"
 	"github.com/stretchr/testify/require"

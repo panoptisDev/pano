@@ -17,7 +17,7 @@
 package eventcheck
 
 import (
-	base "github.com/Fantom-foundation/lachesis-base/eventcheck"
+	base "github.com/panoptisDev/lachesis-base-pano/eventcheck"
 
 	"github.com/panoptisDev/pano/eventcheck/epochcheck"
 )

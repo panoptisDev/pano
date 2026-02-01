@@ -22,14 +22,14 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Fantom-foundation/lachesis-base/utils/cachescale"
+	"github.com/panoptisDev/lachesis-base-pano/utils/cachescale"
 
 	"github.com/panoptisDev/pano/cmd/panotool/genesis"
 	"github.com/panoptisDev/pano/config"
 	"github.com/panoptisDev/pano/integration/makefakegenesis"
 	"github.com/panoptisDev/pano/opera"
 	futils "github.com/panoptisDev/pano/utils"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 	"github.com/docker/docker/pkg/reexec"
 	"github.com/ethereum/go-ethereum/common"
 

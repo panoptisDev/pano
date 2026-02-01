@@ -19,7 +19,7 @@ package genesis
 import (
 	"io"
 
-	"github.com/Fantom-foundation/lachesis-base/hash"
+	"github.com/panoptisDev/lachesis-base-pano/hash"
 
 	"github.com/panoptisDev/pano/inter/ibr"
 	"github.com/panoptisDev/pano/inter/ier"

@@ -20,9 +20,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/Fantom-foundation/lachesis-base/emitter/doublesign"
-	"github.com/Fantom-foundation/lachesis-base/hash"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/emitter/doublesign"
+	"github.com/panoptisDev/lachesis-base-pano/hash"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 
 	"github.com/panoptisDev/pano/inter"
 )

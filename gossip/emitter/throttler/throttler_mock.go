@@ -14,8 +14,8 @@ import (
 
 	inter "github.com/panoptisDev/pano/inter"
 	opera "github.com/panoptisDev/pano/opera"
-	idx "github.com/Fantom-foundation/lachesis-base/inter/idx"
-	pos "github.com/Fantom-foundation/lachesis-base/inter/pos"
+	idx "github.com/panoptisDev/lachesis-base-pano/inter/idx"
+	pos "github.com/panoptisDev/lachesis-base-pano/inter/pos"
 	gomock "go.uber.org/mock/gomock"
 )
 

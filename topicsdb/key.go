@@ -17,7 +17,7 @@
 package topicsdb
 
 import (
-	"github.com/Fantom-foundation/lachesis-base/common/bigendian"
+	"github.com/panoptisDev/lachesis-base-pano/common/bigendian"
 	"github.com/ethereum/go-ethereum/common"
 )
 

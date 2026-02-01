@@ -19,10 +19,10 @@ package emitter
 import (
 	"time"
 
-	"github.com/Fantom-foundation/lachesis-base/emitter/ancestor"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
-	"github.com/Fantom-foundation/lachesis-base/inter/pos"
-	"github.com/Fantom-foundation/lachesis-base/utils/piecefunc"
+	"github.com/panoptisDev/lachesis-base-pano/emitter/ancestor"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/pos"
+	"github.com/panoptisDev/lachesis-base-pano/utils/piecefunc"
 
 	"github.com/panoptisDev/pano/opera"
 )

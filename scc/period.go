@@ -16,7 +16,7 @@
 
 package scc
 
-import "github.com/Fantom-foundation/lachesis-base/inter/idx"
+import "github.com/panoptisDev/lachesis-base-pano/inter/idx"
 
 // BLOCKS_PER_PERIOD is the number of blocks in a period.
 const BLOCKS_PER_PERIOD = 1024

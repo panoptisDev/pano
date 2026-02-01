@@ -23,9 +23,9 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/rlp"
 
-	"github.com/Fantom-foundation/lachesis-base/gossip/basestream"
-	"github.com/Fantom-foundation/lachesis-base/hash"
-	"github.com/Fantom-foundation/lachesis-base/inter/dag"
+	"github.com/panoptisDev/lachesis-base-pano/gossip/basestream"
+	"github.com/panoptisDev/lachesis-base-pano/hash"
+	"github.com/panoptisDev/lachesis-base-pano/inter/dag"
 )
 
 type Request struct {

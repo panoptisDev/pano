@@ -21,11 +21,11 @@ import (
 	"slices"
 	"time"
 
-	"github.com/Fantom-foundation/lachesis-base/gossip/basestream/basestreamleecher"
-	"github.com/Fantom-foundation/lachesis-base/gossip/basestream/basestreamleecher/basepeerleecher"
-	"github.com/Fantom-foundation/lachesis-base/hash"
-	"github.com/Fantom-foundation/lachesis-base/inter/dag"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/gossip/basestream/basestreamleecher"
+	"github.com/panoptisDev/lachesis-base-pano/gossip/basestream/basestreamleecher/basepeerleecher"
+	"github.com/panoptisDev/lachesis-base-pano/hash"
+	"github.com/panoptisDev/lachesis-base-pano/inter/dag"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 
 	"github.com/panoptisDev/pano/gossip/protocols/dag/dagstream"
 )

@@ -29,7 +29,7 @@ import (
 	"github.com/panoptisDev/pano/evmcore"
 
 	"github.com/panoptisDev/pano/ethapi"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 	ethereum "github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"

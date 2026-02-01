@@ -17,7 +17,7 @@
 package emitter
 
 import (
-	"github.com/Fantom-foundation/lachesis-base/utils/piecefunc"
+	"github.com/panoptisDev/lachesis-base-pano/utils/piecefunc"
 )
 
 var (

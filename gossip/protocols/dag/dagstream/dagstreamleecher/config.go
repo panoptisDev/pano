@@ -19,7 +19,7 @@ package dagstreamleecher
 import (
 	"time"
 
-	"github.com/Fantom-foundation/lachesis-base/gossip/basestream/basestreamleecher/basepeerleecher"
+	"github.com/panoptisDev/lachesis-base-pano/gossip/basestream/basestreamleecher/basepeerleecher"
 )
 
 type Config struct {

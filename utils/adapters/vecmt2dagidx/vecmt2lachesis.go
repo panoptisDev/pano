@@ -17,11 +17,11 @@
 package vecmt2dagidx
 
 import (
-	"github.com/Fantom-foundation/lachesis-base/abft"
-	"github.com/Fantom-foundation/lachesis-base/abft/dagidx"
-	"github.com/Fantom-foundation/lachesis-base/hash"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
-	"github.com/Fantom-foundation/lachesis-base/vecfc"
+	"github.com/panoptisDev/lachesis-base-pano/abft"
+	"github.com/panoptisDev/lachesis-base-pano/abft/dagidx"
+	"github.com/panoptisDev/lachesis-base-pano/hash"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/vecfc"
 
 	"github.com/panoptisDev/pano/vecmt"
 )

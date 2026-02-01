@@ -29,13 +29,13 @@ import (
 	"github.com/panoptisDev/pano/logger"
 	"github.com/panoptisDev/pano/utils/eventid"
 	"github.com/panoptisDev/pano/utils/rlpstore"
-	"github.com/Fantom-foundation/lachesis-base/common/bigendian"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
-	"github.com/Fantom-foundation/lachesis-base/kvdb"
-	"github.com/Fantom-foundation/lachesis-base/kvdb/flushable"
-	"github.com/Fantom-foundation/lachesis-base/kvdb/memorydb"
-	"github.com/Fantom-foundation/lachesis-base/kvdb/table"
-	"github.com/Fantom-foundation/lachesis-base/utils/wlru"
+	"github.com/panoptisDev/lachesis-base-pano/common/bigendian"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb/flushable"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb/memorydb"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb/table"
+	"github.com/panoptisDev/lachesis-base-pano/utils/wlru"
 )
 
 // Store is a node persistent storage working over physical key-value database.

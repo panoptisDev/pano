@@ -31,7 +31,7 @@ import (
 	carmen "github.com/panoptisDev/carmen/go/carmen"
 	scc "github.com/panoptisDev/pano/scc"
 	cert "github.com/panoptisDev/pano/scc/cert"
-	idx "github.com/Fantom-foundation/lachesis-base/inter/idx"
+	idx "github.com/panoptisDev/lachesis-base-pano/inter/idx"
 	common "github.com/ethereum/go-ethereum/common"
 	gomock "go.uber.org/mock/gomock"
 )

@@ -30,7 +30,7 @@ import (
 
 	"github.com/panoptisDev/pano/inter"
 	"github.com/panoptisDev/pano/opera"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 )
 
 type (

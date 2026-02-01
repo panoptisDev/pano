@@ -25,7 +25,7 @@ import (
 
 	"github.com/panoptisDev/pano/utils/dbutil"
 
-	"github.com/Fantom-foundation/lachesis-base/kvdb"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb"
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/ethereum/go-ethereum/metrics"
 )

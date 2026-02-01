@@ -25,7 +25,7 @@ import (
 
 	"github.com/panoptisDev/pano/inter/validatorpk"
 	"github.com/panoptisDev/pano/opera"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 )
 
 // EmitIntervals is the configuration of emit intervals.

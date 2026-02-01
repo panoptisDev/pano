@@ -17,8 +17,8 @@
 package vecmt
 
 import (
-	"github.com/Fantom-foundation/lachesis-base/hash"
-	"github.com/Fantom-foundation/lachesis-base/kvdb"
+	"github.com/panoptisDev/lachesis-base-pano/hash"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb"
 )
 
 func (vi *Index) getBytes(table kvdb.Store, id hash.Event) []byte {

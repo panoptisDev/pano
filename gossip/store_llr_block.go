@@ -19,7 +19,7 @@ package gossip
 import (
 	"github.com/panoptisDev/pano/inter/ibr"
 	"github.com/panoptisDev/pano/inter/ier"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 	"github.com/ethereum/go-ethereum/core/types"
 )
 

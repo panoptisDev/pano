@@ -26,7 +26,7 @@ import (
 	"github.com/panoptisDev/pano/opera/genesis"
 	"github.com/panoptisDev/pano/scc/cert"
 	"github.com/panoptisDev/pano/utils/dbutil/autocompact"
-	"github.com/Fantom-foundation/lachesis-base/kvdb/batched"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb/batched"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/syndtr/goleveldb/leveldb/opt"
 )

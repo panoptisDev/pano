@@ -23,8 +23,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
-	"github.com/Fantom-foundation/lachesis-base/utils/piecefunc"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/utils/piecefunc"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	lru "github.com/hashicorp/golang-lru"

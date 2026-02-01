@@ -21,11 +21,11 @@ import (
 
 	"github.com/panoptisDev/pano/gossip/emitter/config"
 	"github.com/panoptisDev/pano/vecmt"
-	"github.com/Fantom-foundation/lachesis-base/emitter/ancestor"
-	"github.com/Fantom-foundation/lachesis-base/hash"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
-	"github.com/Fantom-foundation/lachesis-base/inter/pos"
-	"github.com/Fantom-foundation/lachesis-base/kvdb/memorydb"
+	"github.com/panoptisDev/lachesis-base-pano/emitter/ancestor"
+	"github.com/panoptisDev/lachesis-base-pano/hash"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/pos"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb/memorydb"
 	"go.uber.org/mock/gomock"
 )
 

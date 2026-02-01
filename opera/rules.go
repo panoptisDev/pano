@@ -24,7 +24,7 @@ import (
 	"slices"
 	"time"
 
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 	ethparams "github.com/ethereum/go-ethereum/params"
 
 	"github.com/panoptisDev/pano/inter"

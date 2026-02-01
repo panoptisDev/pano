@@ -19,8 +19,8 @@ package epochcheck
 import (
 	"errors"
 
-	base "github.com/Fantom-foundation/lachesis-base/eventcheck/epochcheck"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	base "github.com/panoptisDev/lachesis-base-pano/eventcheck/epochcheck"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 	"github.com/ethereum/go-ethereum/core/types"
 
 	"github.com/panoptisDev/pano/inter"

@@ -22,8 +22,8 @@ import (
 	"fmt"
 
 	"github.com/panoptisDev/pano/inter/pb"
-	"github.com/Fantom-foundation/lachesis-base/hash"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/hash"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 	"google.golang.org/protobuf/proto"
 )
 

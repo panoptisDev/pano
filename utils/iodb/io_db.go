@@ -19,8 +19,8 @@ package iodb
 import (
 	"io"
 
-	"github.com/Fantom-foundation/lachesis-base/common/bigendian"
-	"github.com/Fantom-foundation/lachesis-base/kvdb"
+	"github.com/panoptisDev/lachesis-base-pano/common/bigendian"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb"
 
 	"github.com/panoptisDev/pano/utils/ioread"
 )

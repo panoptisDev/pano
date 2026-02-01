@@ -17,16 +17,16 @@
 package vecmt
 
 import (
-	"github.com/Fantom-foundation/lachesis-base/hash"
-	"github.com/Fantom-foundation/lachesis-base/inter/dag"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
-	"github.com/Fantom-foundation/lachesis-base/inter/pos"
-	"github.com/Fantom-foundation/lachesis-base/kvdb"
-	"github.com/Fantom-foundation/lachesis-base/kvdb/table"
-	"github.com/Fantom-foundation/lachesis-base/utils/cachescale"
-	"github.com/Fantom-foundation/lachesis-base/utils/wlru"
-	"github.com/Fantom-foundation/lachesis-base/vecengine"
-	"github.com/Fantom-foundation/lachesis-base/vecfc"
+	"github.com/panoptisDev/lachesis-base-pano/hash"
+	"github.com/panoptisDev/lachesis-base-pano/inter/dag"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/pos"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb/table"
+	"github.com/panoptisDev/lachesis-base-pano/utils/cachescale"
+	"github.com/panoptisDev/lachesis-base-pano/utils/wlru"
+	"github.com/panoptisDev/lachesis-base-pano/vecengine"
+	"github.com/panoptisDev/lachesis-base-pano/vecfc"
 	"github.com/syndtr/goleveldb/leveldb/opt"
 )
 

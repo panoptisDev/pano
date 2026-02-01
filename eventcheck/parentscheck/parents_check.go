@@ -19,7 +19,7 @@ package parentscheck
 import (
 	"errors"
 
-	base "github.com/Fantom-foundation/lachesis-base/eventcheck/parentscheck"
+	base "github.com/panoptisDev/lachesis-base-pano/eventcheck/parentscheck"
 
 	"github.com/panoptisDev/pano/inter"
 )

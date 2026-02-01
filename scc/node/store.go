@@ -19,7 +19,7 @@ package node
 import (
 	"github.com/panoptisDev/pano/scc"
 	"github.com/panoptisDev/pano/scc/cert"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 )
 
 //go:generate mockgen -source=store.go -destination=store_mock.go -package=node

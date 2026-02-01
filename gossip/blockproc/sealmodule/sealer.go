@@ -19,9 +19,9 @@ package sealmodule
 import (
 	"math/big"
 
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
-	"github.com/Fantom-foundation/lachesis-base/inter/pos"
-	"github.com/Fantom-foundation/lachesis-base/lachesis"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/pos"
+	"github.com/panoptisDev/lachesis-base-pano/lachesis"
 
 	"github.com/panoptisDev/pano/gossip/blockproc"
 	"github.com/panoptisDev/pano/inter/iblockproc"

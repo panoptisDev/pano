@@ -18,7 +18,7 @@ package rlpstore
 
 import (
 	"github.com/panoptisDev/pano/logger"
-	"github.com/Fantom-foundation/lachesis-base/kvdb"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb"
 	"github.com/ethereum/go-ethereum/rlp"
 )
 

@@ -19,10 +19,10 @@ package topicsdb
 import (
 	"context"
 
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
-	"github.com/Fantom-foundation/lachesis-base/kvdb"
-	"github.com/Fantom-foundation/lachesis-base/kvdb/batched"
-	"github.com/Fantom-foundation/lachesis-base/kvdb/table"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb/batched"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb/table"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 )

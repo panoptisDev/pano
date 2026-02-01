@@ -17,10 +17,10 @@
 package vecmt
 
 import (
-	"github.com/Fantom-foundation/lachesis-base/inter/dag"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
-	"github.com/Fantom-foundation/lachesis-base/vecengine"
-	"github.com/Fantom-foundation/lachesis-base/vecfc"
+	"github.com/panoptisDev/lachesis-base-pano/inter/dag"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/vecengine"
+	"github.com/panoptisDev/lachesis-base-pano/vecfc"
 
 	"github.com/panoptisDev/pano/inter"
 )

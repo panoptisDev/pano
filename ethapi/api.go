@@ -38,7 +38,7 @@ import (
 	"github.com/panoptisDev/pano/opera"
 	"github.com/panoptisDev/pano/utils"
 	"github.com/panoptisDev/pano/utils/signers/internaltx"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 	"github.com/davecgh/go-spew/spew"
 	"github.com/ethereum/go-ethereum/accounts"
 	"github.com/ethereum/go-ethereum/accounts/abi"

@@ -20,8 +20,8 @@ import (
 	"github.com/panoptisDev/pano/gossip/emitter/config"
 	"github.com/panoptisDev/pano/inter"
 	"github.com/panoptisDev/pano/opera"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
-	"github.com/Fantom-foundation/lachesis-base/inter/pos"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/pos"
 )
 
 //go:generate mockgen -source=throttler.go -destination=throttler_mock.go -package=throttler

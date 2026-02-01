@@ -19,7 +19,7 @@ package inter
 import (
 	"testing"
 
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 )
 
 func TestIsValidTurnProgression_ExampleCasesAndResults(t *testing.T) {

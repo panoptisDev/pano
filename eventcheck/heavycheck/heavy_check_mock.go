@@ -29,7 +29,7 @@ import (
 	reflect "reflect"
 
 	validatorpk "github.com/panoptisDev/pano/inter/validatorpk"
-	idx "github.com/Fantom-foundation/lachesis-base/inter/idx"
+	idx "github.com/panoptisDev/lachesis-base-pano/inter/idx"
 	gomock "go.uber.org/mock/gomock"
 )
 

@@ -20,10 +20,10 @@ import (
 	"fmt"
 
 	"github.com/panoptisDev/pano/opera"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 
 	"github.com/panoptisDev/pano/utils/migration"
-	"github.com/Fantom-foundation/lachesis-base/kvdb"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb"
 )
 
 func isEmptyDB(db kvdb.Iteratee) bool {

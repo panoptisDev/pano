@@ -22,7 +22,7 @@ import (
 	"github.com/panoptisDev/pano/evmcore"
 	"github.com/panoptisDev/pano/inter/state"
 	"github.com/panoptisDev/pano/opera"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/params"
 )

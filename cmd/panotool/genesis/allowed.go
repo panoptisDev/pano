@@ -20,7 +20,7 @@ import (
 	"github.com/panoptisDev/pano/opera"
 	"github.com/panoptisDev/pano/opera/genesis"
 	"github.com/panoptisDev/pano/opera/genesisstore"
-	"github.com/Fantom-foundation/lachesis-base/hash"
+	"github.com/panoptisDev/lachesis-base-pano/hash"
 	"github.com/ethereum/go-ethereum/common"
 )
 

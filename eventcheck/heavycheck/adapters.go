@@ -17,7 +17,7 @@
 package heavycheck
 
 import (
-	"github.com/Fantom-foundation/lachesis-base/inter/dag"
+	"github.com/panoptisDev/lachesis-base-pano/inter/dag"
 
 	"github.com/panoptisDev/pano/inter"
 )

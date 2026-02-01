@@ -34,8 +34,8 @@ import (
 	"github.com/panoptisDev/pano/version"
 	"github.com/ethereum/go-ethereum/common/fdlimit"
 
-	"github.com/Fantom-foundation/lachesis-base/abft"
-	"github.com/Fantom-foundation/lachesis-base/utils/cachescale"
+	"github.com/panoptisDev/lachesis-base-pano/abft"
+	"github.com/panoptisDev/lachesis-base-pano/utils/cachescale"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/ethereum/go-ethereum/node"

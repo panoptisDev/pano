@@ -19,7 +19,7 @@ package emitter
 import (
 	"io"
 
-	"github.com/Fantom-foundation/lachesis-base/hash"
+	"github.com/panoptisDev/lachesis-base-pano/hash"
 	"github.com/ethereum/go-ethereum/log"
 
 	"github.com/panoptisDev/pano/utils"

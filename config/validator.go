@@ -22,7 +22,7 @@ import (
 	"github.com/pkg/errors"
 	cli "gopkg.in/urfave/cli.v1"
 
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 
 	"github.com/panoptisDev/pano/integration/makefakegenesis"
 	"github.com/panoptisDev/pano/inter/validatorpk"

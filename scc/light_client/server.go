@@ -24,7 +24,7 @@ import (
 	"github.com/panoptisDev/pano/ethapi"
 	"github.com/panoptisDev/pano/scc"
 	"github.com/panoptisDev/pano/scc/cert"
-	idx "github.com/Fantom-foundation/lachesis-base/inter/idx"
+	idx "github.com/panoptisDev/lachesis-base-pano/inter/idx"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/rpc"

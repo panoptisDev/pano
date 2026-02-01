@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package sonic.inter.proto;
+package pano.inter.proto;
 
 option go_package = ".;pb";
 

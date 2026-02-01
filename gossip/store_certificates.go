@@ -25,8 +25,8 @@ import (
 	"github.com/panoptisDev/pano/scc"
 	"github.com/panoptisDev/pano/scc/cert"
 	"github.com/panoptisDev/pano/utils/result"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
-	"github.com/Fantom-foundation/lachesis-base/kvdb"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb"
 	"github.com/ethereum/go-ethereum/log"
 )
 

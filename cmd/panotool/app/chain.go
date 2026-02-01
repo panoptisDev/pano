@@ -29,7 +29,7 @@ import (
 
 	"github.com/panoptisDev/pano/cmd/panotool/chain"
 	"github.com/panoptisDev/pano/config/flags"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 	"github.com/ethereum/go-ethereum/log"
 	"gopkg.in/urfave/cli.v1"
 )

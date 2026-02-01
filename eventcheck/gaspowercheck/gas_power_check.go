@@ -21,10 +21,10 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/Fantom-foundation/lachesis-base/eventcheck/epochcheck"
-	"github.com/Fantom-foundation/lachesis-base/hash"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
-	"github.com/Fantom-foundation/lachesis-base/inter/pos"
+	"github.com/panoptisDev/lachesis-base-pano/eventcheck/epochcheck"
+	"github.com/panoptisDev/lachesis-base-pano/hash"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/pos"
 
 	"github.com/panoptisDev/pano/inter"
 	"github.com/panoptisDev/pano/inter/iblockproc"

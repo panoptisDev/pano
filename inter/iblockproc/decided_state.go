@@ -20,10 +20,10 @@ import (
 	"crypto/sha256"
 	"math/big"
 
-	"github.com/Fantom-foundation/lachesis-base/hash"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
-	"github.com/Fantom-foundation/lachesis-base/inter/pos"
-	"github.com/Fantom-foundation/lachesis-base/lachesis"
+	"github.com/panoptisDev/lachesis-base-pano/hash"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/pos"
+	"github.com/panoptisDev/lachesis-base-pano/lachesis"
 	"github.com/ethereum/go-ethereum/rlp"
 
 	"github.com/panoptisDev/pano/inter"

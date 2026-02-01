@@ -22,9 +22,9 @@ import (
 
 	"github.com/panoptisDev/pano/inter"
 	"github.com/panoptisDev/pano/opera"
-	base "github.com/Fantom-foundation/lachesis-base/eventcheck/epochcheck"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
-	pos "github.com/Fantom-foundation/lachesis-base/inter/pos"
+	base "github.com/panoptisDev/lachesis-base-pano/eventcheck/epochcheck"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
+	pos "github.com/panoptisDev/lachesis-base-pano/inter/pos"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/mock/gomock"
 )

@@ -20,8 +20,8 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/Fantom-foundation/lachesis-base/abft"
-	"github.com/Fantom-foundation/lachesis-base/utils/cachescale"
+	"github.com/panoptisDev/lachesis-base-pano/abft"
+	"github.com/panoptisDev/lachesis-base-pano/utils/cachescale"
 	"github.com/ethereum/go-ethereum/p2p/enode"
 	"github.com/stretchr/testify/require"
 

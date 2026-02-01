@@ -21,9 +21,9 @@ import (
 
 	"github.com/ethereum/go-ethereum/rlp"
 
-	"github.com/Fantom-foundation/lachesis-base/gossip/basestream"
-	"github.com/Fantom-foundation/lachesis-base/gossip/basestream/basestreamseeder"
-	"github.com/Fantom-foundation/lachesis-base/hash"
+	"github.com/panoptisDev/lachesis-base-pano/gossip/basestream"
+	"github.com/panoptisDev/lachesis-base-pano/gossip/basestream/basestreamseeder"
+	"github.com/panoptisDev/lachesis-base-pano/hash"
 
 	"github.com/panoptisDev/pano/gossip/protocols/dag/dagstream"
 )

@@ -19,7 +19,7 @@ package concurrent
 import (
 	"sync"
 
-	"github.com/Fantom-foundation/lachesis-base/hash"
+	"github.com/panoptisDev/lachesis-base-pano/hash"
 )
 
 type EventsSet struct {

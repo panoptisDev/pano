@@ -21,7 +21,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 
 	"github.com/panoptisDev/pano/inter/validatorpk"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 )
 
 type (

@@ -25,9 +25,9 @@ import (
 	"github.com/panoptisDev/pano/logger"
 	"github.com/panoptisDev/pano/topicsdb"
 	"github.com/panoptisDev/pano/utils/rlpstore"
-	"github.com/Fantom-foundation/lachesis-base/kvdb"
-	"github.com/Fantom-foundation/lachesis-base/kvdb/table"
-	"github.com/Fantom-foundation/lachesis-base/utils/wlru"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb/table"
+	"github.com/panoptisDev/lachesis-base-pano/utils/wlru"
 	"github.com/ethereum/go-ethereum/core/types"
 )
 

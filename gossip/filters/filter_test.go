@@ -27,7 +27,7 @@ import (
 	"github.com/panoptisDev/pano/gossip/evmstore"
 	"github.com/panoptisDev/pano/inter"
 	"github.com/panoptisDev/pano/utils/adapters/ethdb2kvdb"
-	"github.com/Fantom-foundation/lachesis-base/kvdb/table"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb/table"
 	"github.com/stretchr/testify/require"
 	gomock "go.uber.org/mock/gomock"
 

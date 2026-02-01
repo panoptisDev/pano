@@ -21,8 +21,8 @@ import (
 
 	"github.com/panoptisDev/carmen/go/common"
 	"github.com/panoptisDev/pano/inter"
-	"github.com/Fantom-foundation/lachesis-base/hash"
-	"github.com/Fantom-foundation/lachesis-base/inter/pos"
+	"github.com/panoptisDev/lachesis-base-pano/hash"
+	"github.com/panoptisDev/lachesis-base-pano/inter/pos"
 )
 
 //go:generate mockgen -source=proposal_check.go -destination=proposal_check_mock.go -package=proposalcheck

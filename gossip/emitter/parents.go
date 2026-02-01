@@ -19,9 +19,9 @@ package emitter
 import (
 	"time"
 
-	"github.com/Fantom-foundation/lachesis-base/emitter/ancestor"
-	"github.com/Fantom-foundation/lachesis-base/hash"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/emitter/ancestor"
+	"github.com/panoptisDev/lachesis-base-pano/hash"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 )
 
 // buildSearchStrategies returns a strategy for each parent search

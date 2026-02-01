@@ -26,7 +26,7 @@ import (
 	"github.com/panoptisDev/pano/opera/contracts/sfc"
 	"github.com/panoptisDev/pano/tests"
 	"github.com/panoptisDev/pano/utils"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/stretchr/testify/require"

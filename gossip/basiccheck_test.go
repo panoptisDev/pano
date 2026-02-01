@@ -22,9 +22,9 @@ import (
 	"math/big"
 	"testing"
 
-	lbasiccheck "github.com/Fantom-foundation/lachesis-base/eventcheck/basiccheck"
-	"github.com/Fantom-foundation/lachesis-base/hash"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	lbasiccheck "github.com/panoptisDev/lachesis-base-pano/eventcheck/basiccheck"
+	"github.com/panoptisDev/lachesis-base-pano/hash"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/stretchr/testify/require"
 

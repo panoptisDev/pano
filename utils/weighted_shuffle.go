@@ -19,9 +19,9 @@ package utils
 import (
 	"crypto/sha256"
 
-	"github.com/Fantom-foundation/lachesis-base/common/littleendian"
-	"github.com/Fantom-foundation/lachesis-base/hash"
-	"github.com/Fantom-foundation/lachesis-base/inter/pos"
+	"github.com/panoptisDev/lachesis-base-pano/common/littleendian"
+	"github.com/panoptisDev/lachesis-base-pano/hash"
+	"github.com/panoptisDev/lachesis-base-pano/inter/pos"
 )
 
 type weightedShuffleNode struct {

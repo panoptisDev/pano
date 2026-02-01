@@ -34,7 +34,7 @@ import (
 	"github.com/panoptisDev/pano/inter"
 	"github.com/panoptisDev/pano/inter/state"
 	"github.com/panoptisDev/pano/opera"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	geth_math "github.com/ethereum/go-ethereum/common/math"
 	"github.com/ethereum/go-ethereum/consensus"

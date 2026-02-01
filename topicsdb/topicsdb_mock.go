@@ -29,7 +29,7 @@ import (
 	context "context"
 	reflect "reflect"
 
-	idx "github.com/Fantom-foundation/lachesis-base/inter/idx"
+	idx "github.com/panoptisDev/lachesis-base-pano/inter/idx"
 	common "github.com/ethereum/go-ethereum/common"
 	types "github.com/ethereum/go-ethereum/core/types"
 	gomock "go.uber.org/mock/gomock"

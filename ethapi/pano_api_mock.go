@@ -16,7 +16,7 @@ import (
 	scc "github.com/panoptisDev/pano/scc"
 	cert "github.com/panoptisDev/pano/scc/cert"
 	result "github.com/panoptisDev/pano/utils/result"
-	idx "github.com/Fantom-foundation/lachesis-base/inter/idx"
+	idx "github.com/panoptisDev/lachesis-base-pano/inter/idx"
 	gomock "go.uber.org/mock/gomock"
 )
 

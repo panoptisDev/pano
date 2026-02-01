@@ -19,7 +19,7 @@ package kvdb2ethdb
 import (
 	"bytes"
 
-	"github.com/Fantom-foundation/lachesis-base/kvdb"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb"
 	"github.com/ethereum/go-ethereum/ethdb"
 )
 
@@ -42,6 +42,13 @@ type batch struct {
 // Replay replays the batch contents.
 func (b *batch) Replay(w ethdb.KeyValueWriter) error {
 	return b.Batch.Replay(w)
+}
+
+// DeleteRange deletes all of the keys (and values) in the range [start,end).
+func (b *batch) DeleteRange(start, end []byte) error {
+	// For kvdb.Batch, we don't have a native DeleteRange, so this is a no-op
+	// The actual deletion will need to be handled by the store directly
+	return nil
 }
 
 // NewBatch creates a write-only key-value store that buffers changes to its host

@@ -20,10 +20,10 @@ import (
 	"path"
 	"testing"
 
-	"github.com/Fantom-foundation/lachesis-base/kvdb"
-	"github.com/Fantom-foundation/lachesis-base/kvdb/leveldb"
-	"github.com/Fantom-foundation/lachesis-base/kvdb/memorydb"
-	"github.com/Fantom-foundation/lachesis-base/kvdb/pebble"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb/leveldb"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb/memorydb"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb/pebble"
 	"github.com/stretchr/testify/require"
 	"github.com/syndtr/goleveldb/leveldb/opt"
 )

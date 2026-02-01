@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package sonic.scc.cert.proto;
+package pano.scc.cert.proto;
 
 import "signature.proto";
 

@@ -23,7 +23,7 @@ import (
 
 	"github.com/panoptisDev/carmen/go/carmen"
 	"github.com/panoptisDev/pano/scc"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/holiman/uint256"
 )

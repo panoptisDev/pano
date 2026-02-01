@@ -22,8 +22,8 @@ import (
 	hasher "hash"
 	"io"
 
-	"github.com/Fantom-foundation/lachesis-base/common/bigendian"
-	"github.com/Fantom-foundation/lachesis-base/hash"
+	"github.com/panoptisDev/lachesis-base-pano/common/bigendian"
+	"github.com/panoptisDev/lachesis-base-pano/hash"
 
 	"github.com/panoptisDev/pano/utils/ioread"
 )

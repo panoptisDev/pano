@@ -23,7 +23,7 @@ import (
 	"github.com/panoptisDev/pano/evmcore"
 	"github.com/panoptisDev/pano/gossip"
 	emitter_config "github.com/panoptisDev/pano/gossip/emitter/config"
-	"github.com/Fantom-foundation/lachesis-base/utils/cachescale"
+	"github.com/panoptisDev/lachesis-base-pano/utils/cachescale"
 	pcsclite "github.com/gballet/go-libpcsclite"
 	"gopkg.in/urfave/cli.v1"
 

@@ -20,7 +20,7 @@ import (
 	"errors"
 	"math"
 
-	base "github.com/Fantom-foundation/lachesis-base/eventcheck/basiccheck"
+	base "github.com/panoptisDev/lachesis-base-pano/eventcheck/basiccheck"
 	"github.com/ethereum/go-ethereum/core/types"
 
 	"github.com/panoptisDev/pano/inter"

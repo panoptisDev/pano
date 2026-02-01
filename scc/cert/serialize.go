@@ -22,7 +22,7 @@ import (
 	"github.com/panoptisDev/pano/scc"
 	"github.com/panoptisDev/pano/scc/bls"
 	"github.com/panoptisDev/pano/scc/cert/pb"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 	"github.com/ethereum/go-ethereum/common"
 	"google.golang.org/protobuf/proto"
 )

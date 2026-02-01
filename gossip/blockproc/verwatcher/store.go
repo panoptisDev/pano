@@ -19,7 +19,7 @@ package verwatcher
 import (
 	"sync/atomic"
 
-	"github.com/Fantom-foundation/lachesis-base/kvdb"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb"
 
 	"github.com/panoptisDev/pano/logger"
 )

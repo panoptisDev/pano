@@ -17,7 +17,7 @@
 package verwatcher
 
 import (
-	"github.com/Fantom-foundation/lachesis-base/common/bigendian"
+	"github.com/panoptisDev/lachesis-base-pano/common/bigendian"
 )
 
 const (

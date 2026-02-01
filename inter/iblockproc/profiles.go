@@ -20,8 +20,8 @@ import (
 	"io"
 	"math/big"
 
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
-	"github.com/Fantom-foundation/lachesis-base/inter/pos"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/pos"
 	"github.com/ethereum/go-ethereum/rlp"
 
 	"github.com/panoptisDev/pano/inter/drivertype"

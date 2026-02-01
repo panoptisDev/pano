@@ -34,7 +34,7 @@ import (
 	"github.com/panoptisDev/pano/config"
 	"github.com/panoptisDev/pano/config/flags"
 	"github.com/panoptisDev/pano/utils/caution"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 	"github.com/ethereum/go-ethereum/log"
 	"gopkg.in/urfave/cli.v1"
 )

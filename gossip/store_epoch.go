@@ -25,10 +25,10 @@ import (
 	"fmt"
 	"sync/atomic"
 
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
-	"github.com/Fantom-foundation/lachesis-base/kvdb"
-	"github.com/Fantom-foundation/lachesis-base/kvdb/skiperrors"
-	"github.com/Fantom-foundation/lachesis-base/kvdb/table"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb/skiperrors"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb/table"
 
 	"github.com/panoptisDev/pano/logger"
 )

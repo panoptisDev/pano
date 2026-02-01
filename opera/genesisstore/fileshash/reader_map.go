@@ -19,7 +19,7 @@ package fileshash
 import (
 	"io"
 
-	"github.com/Fantom-foundation/lachesis-base/hash"
+	"github.com/panoptisDev/lachesis-base-pano/hash"
 )
 
 func Wrap(backend func(string) (io.Reader, error), maxMemoryUsage uint64, roots map[string]hash.Hash) func(string) (io.Reader, error) {

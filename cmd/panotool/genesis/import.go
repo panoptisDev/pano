@@ -24,10 +24,10 @@ import (
 	"github.com/panoptisDev/pano/opera/genesis"
 	"github.com/panoptisDev/pano/opera/genesisstore"
 	"github.com/panoptisDev/pano/utils/caution"
-	"github.com/Fantom-foundation/lachesis-base/abft"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
-	"github.com/Fantom-foundation/lachesis-base/kvdb"
-	"github.com/Fantom-foundation/lachesis-base/utils/cachescale"
+	"github.com/panoptisDev/lachesis-base-pano/abft"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb"
+	"github.com/panoptisDev/lachesis-base-pano/utils/cachescale"
 	"github.com/ethereum/go-ethereum/log"
 )
 

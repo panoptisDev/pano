@@ -17,7 +17,7 @@
 package threads
 
 import (
-	"github.com/Fantom-foundation/lachesis-base/kvdb"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb"
 
 	"github.com/panoptisDev/pano/logger"
 )

@@ -30,7 +30,7 @@ import (
 	"github.com/panoptisDev/pano/gossip/contract/driverauth100"
 	"github.com/panoptisDev/pano/opera"
 	"github.com/panoptisDev/pano/opera/contracts/driverauth"
-	"github.com/Fantom-foundation/lachesis-base/hash"
+	"github.com/panoptisDev/lachesis-base-pano/hash"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"

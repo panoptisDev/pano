@@ -23,7 +23,7 @@ import (
 	"time"
 
 	"github.com/panoptisDev/pano/utils"
-	"github.com/Fantom-foundation/lachesis-base/utils/piecefunc"
+	"github.com/panoptisDev/lachesis-base-pano/utils/piecefunc"
 	"github.com/ethereum/go-ethereum/core/types"
 )
 

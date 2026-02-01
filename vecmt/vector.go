@@ -19,8 +19,8 @@ package vecmt
 import (
 	"encoding/binary"
 
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
-	"github.com/Fantom-foundation/lachesis-base/vecfc"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/vecfc"
 
 	"github.com/panoptisDev/pano/inter"
 )

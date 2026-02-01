@@ -17,7 +17,7 @@
 package evmstore
 
 import (
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 	"github.com/ethereum/go-ethereum/common"
 
 	"github.com/panoptisDev/pano/evmcore"

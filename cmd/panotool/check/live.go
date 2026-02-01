@@ -25,8 +25,8 @@ import (
 	"github.com/panoptisDev/carmen/go/database/mpt/io"
 	carmen "github.com/panoptisDev/carmen/go/state"
 	"github.com/panoptisDev/pano/utils/caution"
-	"github.com/Fantom-foundation/lachesis-base/hash"
-	"github.com/Fantom-foundation/lachesis-base/utils/cachescale"
+	"github.com/panoptisDev/lachesis-base-pano/hash"
+	"github.com/panoptisDev/lachesis-base-pano/utils/cachescale"
 	"github.com/ethereum/go-ethereum/log"
 )
 

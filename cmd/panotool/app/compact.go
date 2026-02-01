@@ -25,7 +25,7 @@ import (
 	"github.com/panoptisDev/pano/utils/caution"
 	"github.com/panoptisDev/pano/utils/dbutil"
 	"github.com/panoptisDev/pano/utils/dbutil/compactdb"
-	"github.com/Fantom-foundation/lachesis-base/kvdb"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb"
 	"github.com/ethereum/go-ethereum/ethdb"
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/syndtr/goleveldb/leveldb/opt"

@@ -25,8 +25,8 @@ import (
 	carmen "github.com/panoptisDev/carmen/go/state"
 	"github.com/panoptisDev/pano/gossip"
 	"github.com/panoptisDev/pano/integration"
-	"github.com/Fantom-foundation/lachesis-base/kvdb"
-	"github.com/Fantom-foundation/lachesis-base/utils/cachescale"
+	"github.com/panoptisDev/lachesis-base-pano/kvdb"
+	"github.com/panoptisDev/lachesis-base-pano/utils/cachescale"
 	"github.com/ethereum/go-ethereum/common/fdlimit"
 	"github.com/syndtr/goleveldb/leveldb/opt"
 )

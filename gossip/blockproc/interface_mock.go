@@ -18,7 +18,7 @@ import (
 	iblockproc "github.com/panoptisDev/pano/inter/iblockproc"
 	state "github.com/panoptisDev/pano/inter/state"
 	opera "github.com/panoptisDev/pano/opera"
-	idx "github.com/Fantom-foundation/lachesis-base/inter/idx"
+	idx "github.com/panoptisDev/lachesis-base-pano/inter/idx"
 	common "github.com/ethereum/go-ethereum/common"
 	types "github.com/ethereum/go-ethereum/core/types"
 	params "github.com/ethereum/go-ethereum/params"

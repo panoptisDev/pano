@@ -35,7 +35,7 @@ import (
 	"github.com/panoptisDev/pano/integration"
 	"github.com/panoptisDev/pano/utils/errlock"
 	"github.com/panoptisDev/pano/valkeystore"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 	"github.com/ethereum/go-ethereum/accounts/keystore"
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/ethereum/go-ethereum/node"

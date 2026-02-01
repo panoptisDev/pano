@@ -22,11 +22,11 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/Fantom-foundation/lachesis-base/gossip/dagprocessor"
-	"github.com/Fantom-foundation/lachesis-base/gossip/itemsfetcher"
-	"github.com/Fantom-foundation/lachesis-base/inter/dag"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
-	"github.com/Fantom-foundation/lachesis-base/utils/cachescale"
+	"github.com/panoptisDev/lachesis-base-pano/gossip/dagprocessor"
+	"github.com/panoptisDev/lachesis-base-pano/gossip/itemsfetcher"
+	"github.com/panoptisDev/lachesis-base-pano/inter/dag"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/utils/cachescale"
 	"github.com/syndtr/goleveldb/leveldb/opt"
 
 	"github.com/panoptisDev/pano/eventcheck/heavycheck"

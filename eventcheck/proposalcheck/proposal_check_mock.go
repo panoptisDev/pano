@@ -29,8 +29,8 @@ import (
 	reflect "reflect"
 
 	inter "github.com/panoptisDev/pano/inter"
-	hash "github.com/Fantom-foundation/lachesis-base/hash"
-	pos "github.com/Fantom-foundation/lachesis-base/inter/pos"
+	hash "github.com/panoptisDev/lachesis-base-pano/hash"
+	pos "github.com/panoptisDev/lachesis-base-pano/inter/pos"
 	gomock "go.uber.org/mock/gomock"
 )
 

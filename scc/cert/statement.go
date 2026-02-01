@@ -20,7 +20,7 @@ import (
 	"encoding/binary"
 
 	"github.com/panoptisDev/pano/scc"
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
 	"github.com/ethereum/go-ethereum/common"
 )
 

@@ -19,8 +19,8 @@ package throttler
 import (
 	"math"
 
-	"github.com/Fantom-foundation/lachesis-base/inter/idx"
-	"github.com/Fantom-foundation/lachesis-base/inter/pos"
+	"github.com/panoptisDev/lachesis-base-pano/inter/idx"
+	"github.com/panoptisDev/lachesis-base-pano/inter/pos"
 )
 
 // dominantSet represents a set of validator IDs which cannot skip event emission.
