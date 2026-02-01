@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package gas_subsidies
 
@@ -24,18 +24,18 @@ import (
 	"sync"
 	"testing"
 
-	cc "github.com/0xsoniclabs/carmen/go/common"
-	"github.com/0xsoniclabs/carmen/go/common/amount"
-	carmen "github.com/0xsoniclabs/carmen/go/state"
-	"github.com/0xsoniclabs/sonic/evmcore"
-	"github.com/0xsoniclabs/sonic/gossip/blockproc/subsidies"
-	"github.com/0xsoniclabs/sonic/gossip/blockproc/subsidies/registry"
-	"github.com/0xsoniclabs/sonic/gossip/evmstore"
-	"github.com/0xsoniclabs/sonic/integration/makefakegenesis"
-	"github.com/0xsoniclabs/sonic/inter"
-	"github.com/0xsoniclabs/sonic/opera"
-	"github.com/0xsoniclabs/sonic/tests"
-	"github.com/0xsoniclabs/sonic/utils/signers/internaltx"
+	cc "github.com/panoptisDev/carmen/go/common"
+	"github.com/panoptisDev/carmen/go/common/amount"
+	carmen "github.com/panoptisDev/carmen/go/state"
+	"github.com/panoptisDev/pano/evmcore"
+	"github.com/panoptisDev/pano/gossip/blockproc/subsidies"
+	"github.com/panoptisDev/pano/gossip/blockproc/subsidies/registry"
+	"github.com/panoptisDev/pano/gossip/evmstore"
+	"github.com/panoptisDev/pano/integration/makefakegenesis"
+	"github.com/panoptisDev/pano/inter"
+	"github.com/panoptisDev/pano/opera"
+	"github.com/panoptisDev/pano/tests"
+	"github.com/panoptisDev/pano/utils/signers/internaltx"
 	"github.com/Fantom-foundation/lachesis-base/inter/idx"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind/v2"
 	"github.com/ethereum/go-ethereum/common"
@@ -46,7 +46,7 @@ import (
 
 func TestBlockVerifiability(t *testing.T) {
 	tests := map[string]opera.Upgrades{
-		"sonic":   opera.GetSonicUpgrades(),
+		"pano":   opera.GetSonicUpgrades(),
 		"allegro": opera.GetAllegroUpgrades(),
 		"brio":    opera.GetBrioUpgrades(),
 	}

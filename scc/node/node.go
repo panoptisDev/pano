@@ -1,29 +1,29 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package node
 
 import (
 	"fmt"
 
-	"github.com/0xsoniclabs/sonic/scc"
-	"github.com/0xsoniclabs/sonic/scc/cert"
+	"github.com/panoptisDev/pano/scc"
+	"github.com/panoptisDev/pano/scc/cert"
 )
 
-// Node is a node in the Sonic Certification Chain. It is responsible for
+// Node is a node in the Pano Certification Chain. It is responsible for
 // handling the progression of the chain by responding to new block statements
 // and creating new certificates.
 type Node struct {
@@ -40,7 +40,7 @@ func NewNode(store Store, committee scc.Committee) *Node {
 	}
 }
 
-// NewBlock should be called after a new block is added to the Sonic chain. It
+// NewBlock should be called after a new block is added to the Pano chain. It
 // starts the creation of a corresponding block certificate and, if the block is
 // the last one of the period, a new committee certificate for the following
 // period.

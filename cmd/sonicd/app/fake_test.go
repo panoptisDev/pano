@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package app
 
@@ -22,12 +22,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/0xsoniclabs/sonic/config"
-	"github.com/0xsoniclabs/sonic/version"
+	"github.com/panoptisDev/pano/config"
+	"github.com/panoptisDev/pano/version"
 	"github.com/ethereum/go-ethereum/crypto"
 
-	"github.com/0xsoniclabs/sonic/integration/makefakegenesis"
-	"github.com/0xsoniclabs/sonic/inter/validatorpk"
+	"github.com/panoptisDev/pano/integration/makefakegenesis"
+	"github.com/panoptisDev/pano/inter/validatorpk"
 )
 
 const (
@@ -35,7 +35,7 @@ const (
 )
 
 func TestFakeNetFlag_NonValidator(t *testing.T) {
-	// Start an sonic console, make sure it's cleaned up and terminate the console
+	// Start an pano console, make sure it's cleaned up and terminate the console
 	dataDir := tmpdir(t)
 	initFakenetDatadir(dataDir, 3)
 	cli := exec(t,
@@ -63,7 +63,7 @@ func TestFakeNetFlag_NonValidator(t *testing.T) {
 }
 
 func TestFakeNetFlag_Validator(t *testing.T) {
-	// Start a sonic console, make sure it's cleaned up and terminate the console
+	// Start a pano console, make sure it's cleaned up and terminate the console
 	dataDir := tmpdir(t)
 	initFakenetDatadir(dataDir, 3)
 	cli := exec(t,
@@ -94,7 +94,7 @@ func TestFakeNetFlag_Validator(t *testing.T) {
 }
 
 func TestFakeNEtFlag_ValidatorID_NotPresentInGenesis_FailsToStart(t *testing.T) {
-	// Start a sonic console, make sure it's cleaned up and terminate the console
+	// Start a pano console, make sure it's cleaned up and terminate the console
 	dataDir := tmpdir(t)
 	// initialize with a single validator
 	initFakenetDatadir(dataDir, 1)

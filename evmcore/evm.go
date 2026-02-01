@@ -40,7 +40,7 @@ type DummyChain interface {
 
 // NewEVMBlockContext creates a new context for use in the EVM.
 func NewEVMBlockContext(header *EvmHeader, chain DummyChain, author *common.Address) vm.BlockContext {
-	// For legacy Sonic network, the difficulty is always 1
+	// For legacy Pano network, the difficulty is always 1
 	difficulty := big.NewInt(1)
 	return NewEVMBlockContextWithDifficulty(header, chain, author, difficulty)
 }

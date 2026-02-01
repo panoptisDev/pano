@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package app
 
@@ -26,11 +26,11 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/0xsoniclabs/sonic/cmd/sonicd/diskusage"
-	"github.com/0xsoniclabs/sonic/cmd/sonicd/metrics"
-	"github.com/0xsoniclabs/sonic/config"
-	"github.com/0xsoniclabs/sonic/config/flags"
-	"github.com/0xsoniclabs/sonic/version"
+	"github.com/panoptisDev/pano/cmd/sonicd/diskusage"
+	"github.com/panoptisDev/pano/cmd/sonicd/metrics"
+	"github.com/panoptisDev/pano/config"
+	"github.com/panoptisDev/pano/config/flags"
+	"github.com/panoptisDev/pano/version"
 	"github.com/ethereum/go-ethereum/accounts"
 	"github.com/ethereum/go-ethereum/console/prompt"
 	"github.com/ethereum/go-ethereum/ethclient"
@@ -41,7 +41,7 @@ import (
 
 	ethmetrics "github.com/ethereum/go-ethereum/metrics"
 
-	"github.com/0xsoniclabs/sonic/debug"
+	"github.com/panoptisDev/pano/debug"
 
 	// Force-load the tracer engines to trigger registration
 	_ "github.com/ethereum/go-ethereum/eth/tracers/js"
@@ -200,7 +200,7 @@ func initApp() *cli.App {
 
 	app := cli.NewApp()
 	app.Name = "sonicd"
-	app.Usage = "the Sonic network client"
+	app.Usage = "the Pano network client"
 	app.Version = version.StringWithCommit()
 	app.Action = lachesisMain
 	app.HideVersion = true // we have a command to print the version
@@ -273,8 +273,8 @@ func lachesisMainInternal(
 			if strings.ToLower(module) == "ftm" {
 				log.Warn(fmt.Sprintf("The 'ftm' API is deprecated, use 'eth' instead (--%s).", flag))
 			}
-			if strings.ToLower(module) == "sonic" {
-				log.Warn(fmt.Sprintf("The 'sonic' API is experimental and should not be used in production environments (--%s).", flag))
+			if strings.ToLower(module) == "pano" {
+				log.Warn(fmt.Sprintf("The 'pano' API is experimental and should not be used in production environments (--%s).", flag))
 			}
 		}
 	}
@@ -386,7 +386,7 @@ func startNode(ctx *cli.Context, stack *node.Node, stop <-chan bool) error {
 	events := make(chan accounts.WalletEvent, 16)
 	stack.AccountManager().Subscribe(events)
 
-	// Create a client to interact with local sonic node.
+	// Create a client to interact with local pano node.
 	rpcClient := stack.Attach()
 	ethClient := ethclient.NewClient(rpcClient)
 	go func() {

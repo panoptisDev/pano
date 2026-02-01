@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package opera
 
@@ -27,7 +27,7 @@ import (
 	"github.com/Fantom-foundation/lachesis-base/inter/idx"
 	ethparams "github.com/ethereum/go-ethereum/params"
 
-	"github.com/0xsoniclabs/sonic/inter"
+	"github.com/panoptisDev/pano/inter"
 )
 
 const (
@@ -77,7 +77,7 @@ type RulesRLP struct {
 	Upgrades Upgrades `rlp:"-"`
 }
 
-// Rules describes sonic net.
+// Rules describes pano net.
 // Note keep track of all the non-copiable variables in Copy()
 type Rules RulesRLP
 
@@ -94,9 +94,9 @@ type GasRulesRLPV1 struct {
 	//
 	// Starting from Brio and later upgrades, this value is also used to calculate
 	// the maximum gas allowed for a single transaction in EvmStateReader.MaxGasLimit()
-	// https://github.com/0xsoniclabs/sonic/blob/main/gossip/evm_state_reader.go#L47
+	// https://github.com/panoptisDev/pano/blob/main/gossip/evm_state_reader.go#L47
 	//
-	// This mechanism in Sonic serves as an equivalent to the limit described in EIP-7825.
+	// This mechanism in Pano serves as an equivalent to the limit described in EIP-7825.
 	MaxEventGas  uint64
 	EventGas     uint64
 	ParentGas    uint64
@@ -172,23 +172,23 @@ type EconomyRules struct {
 
 	// MinGasPrice defines a lower boundary for the gas price
 	// on the network. However, its interpretation is different
-	// in the context of the Sonic networks.
+	// in the context of the Pano networks.
 	//
-	// On the Sonic network: MinGasPrice is the minimum gas price
+	// On the Pano network: MinGasPrice is the minimum gas price
 	// defining the base fee of a block. The MinGasPrice is set by
-	// the node driver and SFC on the Sonic network and adjusted
+	// the node driver and SFC on the Pano network and adjusted
 	// based on load observed during an epoch. Base fees charged
 	// on the network correspond exactly to the MinGasPrice.
 	//
-	// On the Sonic network: this parameter is ignored. Base fees
+	// On the Pano network: this parameter is ignored. Base fees
 	// are controlled by the MinBaseFee parameter.
 	MinGasPrice *big.Int
 
 	// MinBaseFee is a lower bound for the base fee on the network.
-	// This option is only supported by the Sonic network. On the
-	// Sonic network it is ignored.
+	// This option is only supported by the Pano network. On the
+	// Pano network it is ignored.
 	//
-	// On the Sonic network, base fees are automatically adjusted
+	// On the Pano network, base fees are automatically adjusted
 	// after each block based on the observed gas consumption rate.
 	// The value set by this parameter is a lower bound for these
 	// adjustments. Base fees may never fall below this value.
@@ -208,21 +208,21 @@ type BlocksRules struct {
 }
 
 type Upgrades struct {
-	// -- Sonic Chain --
+	// -- Pano Chain --
 	Berlin bool
 	London bool
 	Llr    bool
 
-	// -- Sonic Chain Hard Forks --
-	Sonic   bool // < launch version of the Sonic chain, introducing Cancun features
-	Allegro bool // < first hard fork of the Sonic chain, introducing Prague features
-	Brio    bool // < second hard fork of the Sonic chain, introducing Osaka features
+	// -- Pano Chain Hard Forks --
+	Pano   bool // < launch version of the Pano chain, introducing Cancun features
+	Allegro bool // < first hard fork of the Pano chain, introducing Prague features
+	Brio    bool // < second hard fork of the Pano chain, introducing Osaka features
 
 	// -- Optional Features --
 
 	// SingleProposerBlockFormation enables the creation of full block proposals
 	// by a single proposer, rather than a distributed event-based protocol.
-	// This feature is introduced by V2.1 of the Sonic client. It thus
+	// This feature is introduced by V2.1 of the Pano client. It thus
 	//
 	//    MUST ONLY BE ENABLED WHEN ALL NODES ARE RUNNING V2.1 OR LATER
 	//
@@ -238,7 +238,7 @@ type Upgrades struct {
 	// GasSubsidies enables the gas subsidies feature, allowing
 	// transactions with zero gas price to be processed, provided
 	// that they are subsidized.
-	// This feature is introduced by V2.1.2 of the Sonic client. It thus
+	// This feature is introduced by V2.1.2 of the Pano client. It thus
 	//
 	//    MUST ONLY BE ENABLED WHEN ALL NODES ARE RUNNING V2.1.2 OR LATER
 	//
@@ -253,7 +253,7 @@ type Upgrades struct {
 
 // UpgradeHeight contains the information about the block height at which
 // the upgrades become effective. The upgrades are defined by the Upgrades
-// struct, which contains the feature flags for the Sonic chain.
+// struct, which contains the feature flags for the Pano chain.
 // The Height field is the block height at which the upgrades become effective.
 // The Time field is the timestamp, in the current implementation, it is ignored
 // (See [CreateTransientEvmChainConfig] for details).
@@ -277,10 +277,10 @@ type UpgradeHeight struct {
 //
 // Note about timestamps:
 // go-ethereum's ChainConfig uses timestamps to determine the activation of
-// upgrades from Shanghai onwards. However, Sonic timestamps are measure in
-// nanoseconds, go-ethereum routines use seconds, and the Sonic network has a
+// upgrades from Shanghai onwards. However, Pano timestamps are measure in
+// nanoseconds, go-ethereum routines use seconds, and the Pano network has a
 // sub second cadence.  Therefore it is not possible to use timestamps to
-// determine the activation of upgrades. Instead, Sonic relies solely on block
+// determine the activation of upgrades. Instead, Pano relies solely on block
 // heights.
 // Timestamps contained in the returned instance are always set to 0, which
 // considered to be always a past timestamp. This is the reason why the returned
@@ -296,7 +296,7 @@ func CreateTransientEvmChainConfig(
 
 	cfg := ethparams.ChainConfig{
 		ChainID: new(big.Int).SetUint64(chainID),
-		// Following upgrades are always enabled in Sonic (from block height 0):
+		// Following upgrades are always enabled in Pano (from block height 0):
 		HomesteadBlock:      big.NewInt(0),
 		EIP150Block:         big.NewInt(0),
 		EIP155Block:         big.NewInt(0),
@@ -307,7 +307,7 @@ func CreateTransientEvmChainConfig(
 		IstanbulBlock:       big.NewInt(0),
 		BerlinBlock:         big.NewInt(0),
 		LondonBlock:         big.NewInt(0),
-		// Following upgrades are always enabled in Sonic (past timestamp):
+		// Following upgrades are always enabled in Pano (past timestamp):
 		ShanghaiTime: &timestampInThePast,
 		CancunTime:   &timestampInThePast,
 	}
@@ -338,13 +338,13 @@ func CreateTransientEvmChainConfig(
 	return &cfg
 }
 
-// GetSonicUpgrades contains the feature flags for the Sonic upgrade.
+// GetSonicUpgrades contains the feature flags for the Pano upgrade.
 func GetSonicUpgrades() Upgrades {
 	return Upgrades{
 		Berlin:  true,
 		London:  true,
 		Llr:     false,
-		Sonic:   true,
+		Pano:   true,
 		Allegro: false,
 	}
 }
@@ -355,7 +355,7 @@ func GetAllegroUpgrades() Upgrades {
 		Berlin:  true,
 		London:  true,
 		Llr:     false,
-		Sonic:   true,
+		Pano:   true,
 		Allegro: true,
 	}
 }
@@ -366,7 +366,7 @@ func GetBrioUpgrades() Upgrades {
 		Berlin:  true,
 		London:  true,
 		Llr:     false,
-		Sonic:   true,
+		Pano:   true,
 		Allegro: true,
 		Brio:    true,
 	}
@@ -378,7 +378,7 @@ func MakeUpgradeHeight(upgrades Upgrades, height idx.Block) UpgradeHeight {
 	return UpgradeHeight{
 		Upgrades: upgrades,
 		Height:   height,
-		Time:     0, // ignored in Sonic
+		Time:     0, // ignored in Pano
 	}
 }
 

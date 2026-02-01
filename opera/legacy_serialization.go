@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package opera
 
@@ -109,7 +109,7 @@ func (u Upgrades) EncodeRLP(w io.Writer) error {
 	if u.Llr {
 		bitmap.V |= llrBit
 	}
-	if u.Sonic {
+	if u.Pano {
 		bitmap.V |= sonicBit
 	}
 	if u.Allegro {
@@ -139,7 +139,7 @@ func (u *Upgrades) DecodeRLP(s *rlp.Stream) error {
 	u.Berlin = (bitmap.V & berlinBit) != 0
 	u.London = (bitmap.V & londonBit) != 0
 	u.Llr = (bitmap.V & llrBit) != 0
-	u.Sonic = (bitmap.V & sonicBit) != 0
+	u.Pano = (bitmap.V & sonicBit) != 0
 	u.Allegro = (bitmap.V & allegroBit) != 0
 	u.Brio = (bitmap.V & brioBit) != 0
 

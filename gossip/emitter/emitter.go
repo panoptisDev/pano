@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package emitter
 
@@ -27,8 +27,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/0xsoniclabs/sonic/utils"
-	"github.com/0xsoniclabs/sonic/utils/txtime"
+	"github.com/panoptisDev/pano/utils"
+	"github.com/panoptisDev/pano/utils/txtime"
 	"github.com/Fantom-foundation/lachesis-base/emitter/ancestor"
 	"github.com/Fantom-foundation/lachesis-base/hash"
 	"github.com/Fantom-foundation/lachesis-base/inter/idx"
@@ -38,13 +38,13 @@ import (
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/ethereum/go-ethereum/metrics"
 
-	"github.com/0xsoniclabs/sonic/gossip/emitter/config"
-	"github.com/0xsoniclabs/sonic/gossip/emitter/originatedtxs"
-	"github.com/0xsoniclabs/sonic/gossip/emitter/throttler"
-	"github.com/0xsoniclabs/sonic/gossip/gasprice/gaspricelimits"
-	"github.com/0xsoniclabs/sonic/inter"
-	"github.com/0xsoniclabs/sonic/logger"
-	"github.com/0xsoniclabs/sonic/utils/errlock"
+	"github.com/panoptisDev/pano/gossip/emitter/config"
+	"github.com/panoptisDev/pano/gossip/emitter/originatedtxs"
+	"github.com/panoptisDev/pano/gossip/emitter/throttler"
+	"github.com/panoptisDev/pano/gossip/gasprice/gaspricelimits"
+	"github.com/panoptisDev/pano/inter"
+	"github.com/panoptisDev/pano/logger"
+	"github.com/panoptisDev/pano/utils/errlock"
 )
 
 //go:generate mockgen -source=emitter.go -destination=emitter_mock.go -package=emitter
@@ -486,7 +486,7 @@ func (em *Emitter) createEvent(sortedTxs *transactionsByPriceAndNonce) (*inter.E
 	version := uint8(0)
 	if em.world.GetRules().Upgrades.SingleProposerBlockFormation {
 		version = 3
-	} else if em.world.GetRules().Upgrades.Sonic {
+	} else if em.world.GetRules().Upgrades.Pano {
 		version = 2
 	} else if em.world.GetRules().Upgrades.Llr {
 		version = 1

@@ -13,8 +13,8 @@ import (
 	big "math/big"
 	reflect "reflect"
 
-	state "github.com/0xsoniclabs/sonic/inter/state"
-	opera "github.com/0xsoniclabs/sonic/opera"
+	state "github.com/panoptisDev/pano/inter/state"
+	opera "github.com/panoptisDev/pano/opera"
 	common "github.com/ethereum/go-ethereum/common"
 	event "github.com/ethereum/go-ethereum/event"
 	params "github.com/ethereum/go-ethereum/params"

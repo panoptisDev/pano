@@ -1,10 +1,10 @@
-# Sonic
+# Pano
 
 EVM-compatible chain secured by the Lachesis consensus algorithm.
 
 ## Building the source
 
-Building Sonic requires both a Go (version 1.25 or later) and a C compiler. You can install
+Building Pano requires both a Go (version 1.25 or later) and a C compiler. You can install
 them using your favourite package manager. Once the dependencies are installed, run:
 
 ```sh
@@ -12,7 +12,7 @@ make all
 ```
 The build outputs are ```build/sonicd``` and ```build/sonictool``` executables.
 
-## Initialization of the Sonic Database
+## Initialization of the Pano Database
 
 You will need a genesis file to join a network. See [lachesis_launch](https://github.com/Fantom-foundation/lachesis_launch) for details on obtaining one. Once you have a genesis file, initialize the DB:
 
@@ -58,7 +58,7 @@ To create a new validator private key:
 sonictool --datadir=<DB path> validator new
 ```
 
-To launch a validator, use the `--validator.id` and `--validator.pubkey` flags. See the [Sonic Documentation](https://docs.soniclabs.com/) for details on obtaining a validator ID and registering your initial stake.
+To launch a validator, use the `--validator.id` and `--validator.pubkey` flags. See the [Pano Documentation](https://docs.soniclabs.com/) for details on obtaining a validator ID and registering your initial stake.
 
 ```sh
 sonicd --datadir=<DB path> --validator.id=YOUR_ID --validator.pubkey=0xYOUR_PUBKEY

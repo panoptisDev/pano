@@ -1,29 +1,29 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package gossip
 
 import (
 	"testing"
 
-	"github.com/0xsoniclabs/sonic/eventcheck"
-	"github.com/0xsoniclabs/sonic/eventcheck/gaspowercheck"
-	"github.com/0xsoniclabs/sonic/eventcheck/parentscheck"
-	"github.com/0xsoniclabs/sonic/eventcheck/proposalcheck"
-	"github.com/0xsoniclabs/sonic/inter"
+	"github.com/panoptisDev/pano/eventcheck"
+	"github.com/panoptisDev/pano/eventcheck/gaspowercheck"
+	"github.com/panoptisDev/pano/eventcheck/parentscheck"
+	"github.com/panoptisDev/pano/eventcheck/proposalcheck"
+	"github.com/panoptisDev/pano/inter"
 	parentscheckbase "github.com/Fantom-foundation/lachesis-base/eventcheck/parentscheck"
 	"github.com/Fantom-foundation/lachesis-base/hash"
 	"github.com/Fantom-foundation/lachesis-base/inter/idx"
@@ -132,13 +132,13 @@ func TestValidateEventPropertiesDependingOnParents(t *testing.T) {
 
 func TestIsUseless(t *testing.T) {
 	validEnode := enode.MustParse("enode://3f4306c065eaa5d8079e17feb56c03a97577e67af3c9c17496bb8916f102f1ff603e87d2a4ebfa0a2f70b780b85db212618857ea4e9627b24a9b0dd2faeb826e@127.0.0.1:5050")
-	sonicName := "Sonic/v1.0.0-a-61af51c2-1715085138/linux-amd64/go1.21.7"
+	sonicName := "Pano/v1.0.0-a-61af51c2-1715085138/linux-amd64/go1.21.7"
 	operaName := "go-opera/v1.1.2-rc.6-8e84c9dc-1688013329/linux-amd64/go1.19.11"
 	invalidName := "bot"
 
 	discfilter.Enable()
 	if isUseless(validEnode, sonicName) {
-		t.Errorf("sonic peer reported as useless")
+		t.Errorf("pano peer reported as useless")
 	}
 	if isUseless(validEnode, operaName) {
 		t.Errorf("opera peer reported as useless")

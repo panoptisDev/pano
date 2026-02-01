@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package gossip
 
@@ -42,33 +42,33 @@ import (
 	"github.com/ethereum/go-ethereum/p2p/enr"
 	"github.com/ethereum/go-ethereum/rpc"
 
-	"github.com/0xsoniclabs/sonic/ethapi"
-	"github.com/0xsoniclabs/sonic/eventcheck"
-	"github.com/0xsoniclabs/sonic/eventcheck/basiccheck"
-	"github.com/0xsoniclabs/sonic/eventcheck/epochcheck"
-	"github.com/0xsoniclabs/sonic/eventcheck/gaspowercheck"
-	"github.com/0xsoniclabs/sonic/eventcheck/heavycheck"
-	"github.com/0xsoniclabs/sonic/eventcheck/parentscheck"
-	"github.com/0xsoniclabs/sonic/eventcheck/proposalcheck"
-	"github.com/0xsoniclabs/sonic/evmcore"
-	"github.com/0xsoniclabs/sonic/gossip/blockproc"
-	"github.com/0xsoniclabs/sonic/gossip/blockproc/drivermodule"
-	"github.com/0xsoniclabs/sonic/gossip/blockproc/eventmodule"
-	"github.com/0xsoniclabs/sonic/gossip/blockproc/evmmodule"
-	"github.com/0xsoniclabs/sonic/gossip/blockproc/sealmodule"
-	"github.com/0xsoniclabs/sonic/gossip/blockproc/verwatcher"
-	"github.com/0xsoniclabs/sonic/gossip/emitter"
-	"github.com/0xsoniclabs/sonic/gossip/evmstore"
-	"github.com/0xsoniclabs/sonic/gossip/filters"
-	"github.com/0xsoniclabs/sonic/gossip/gasprice"
-	"github.com/0xsoniclabs/sonic/gossip/proclogger"
-	"github.com/0xsoniclabs/sonic/inter"
-	"github.com/0xsoniclabs/sonic/logger"
-	scc_node "github.com/0xsoniclabs/sonic/scc/node"
-	"github.com/0xsoniclabs/sonic/utils/txtime"
-	"github.com/0xsoniclabs/sonic/utils/wgmutex"
-	"github.com/0xsoniclabs/sonic/valkeystore"
-	"github.com/0xsoniclabs/sonic/vecmt"
+	"github.com/panoptisDev/pano/ethapi"
+	"github.com/panoptisDev/pano/eventcheck"
+	"github.com/panoptisDev/pano/eventcheck/basiccheck"
+	"github.com/panoptisDev/pano/eventcheck/epochcheck"
+	"github.com/panoptisDev/pano/eventcheck/gaspowercheck"
+	"github.com/panoptisDev/pano/eventcheck/heavycheck"
+	"github.com/panoptisDev/pano/eventcheck/parentscheck"
+	"github.com/panoptisDev/pano/eventcheck/proposalcheck"
+	"github.com/panoptisDev/pano/evmcore"
+	"github.com/panoptisDev/pano/gossip/blockproc"
+	"github.com/panoptisDev/pano/gossip/blockproc/drivermodule"
+	"github.com/panoptisDev/pano/gossip/blockproc/eventmodule"
+	"github.com/panoptisDev/pano/gossip/blockproc/evmmodule"
+	"github.com/panoptisDev/pano/gossip/blockproc/sealmodule"
+	"github.com/panoptisDev/pano/gossip/blockproc/verwatcher"
+	"github.com/panoptisDev/pano/gossip/emitter"
+	"github.com/panoptisDev/pano/gossip/evmstore"
+	"github.com/panoptisDev/pano/gossip/filters"
+	"github.com/panoptisDev/pano/gossip/gasprice"
+	"github.com/panoptisDev/pano/gossip/proclogger"
+	"github.com/panoptisDev/pano/inter"
+	"github.com/panoptisDev/pano/logger"
+	scc_node "github.com/panoptisDev/pano/scc/node"
+	"github.com/panoptisDev/pano/utils/txtime"
+	"github.com/panoptisDev/pano/utils/wgmutex"
+	"github.com/panoptisDev/pano/valkeystore"
+	"github.com/panoptisDev/pano/vecmt"
 )
 
 //go:generate mockgen -source=service.go -package=gossip -destination=service_mock.go
@@ -387,9 +387,9 @@ func newService(config Config, store *Store, blockProc BlockProc, engine lachesi
 	svc.verWatcher = verwatcher.New(netVerStore)
 	svc.tflusher = svc.makePeriodicFlusher()
 
-	// create Sonic Certification Chain node
+	// create Pano Certification Chain node
 	// TODO: track the current committee inside the scc Node instance
-	// (see https://github.com/0xsoniclabs/sonic-admin/issues/22)
+	// (see https://github.com/panoptisDev/pano-admin/issues/22)
 	genesisCommitteeCertificate, err := store.GetCommitteeCertificate(0)
 	if err == nil {
 		svc.sccNode = scc_node.NewNode(store, genesisCommitteeCertificate.Subject().Committee)
@@ -564,7 +564,7 @@ func (s *Service) APIs() []rpc.API {
 			Service:   ethapi.NewPublicTxTraceAPI(s.EthAPI, s.config.MaxResponseSize),
 			Public:    true,
 		}, {
-			Namespace: "sonic",
+			Namespace: "pano",
 			Version:   "1.0",
 			Service:   ethapi.NewPublicSccApi(s.EthAPI),
 			Public:    true,
@@ -628,7 +628,7 @@ func (s *Service) WaitBlockEnd() {
 
 // Stop method invoked when the node terminates the service.
 func (s *Service) Stop() error {
-	defer log.Info("Sonic service stopped")
+	defer log.Info("Pano service stopped")
 
 	s.txpool.Stop()
 

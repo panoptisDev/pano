@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package scrambler
 
@@ -25,7 +25,7 @@ import (
 	"slices"
 	"testing"
 
-	"github.com/0xsoniclabs/sonic/gossip/emitter"
+	"github.com/panoptisDev/pano/gossip/emitter"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	"go.uber.org/mock/gomock"
@@ -661,7 +661,7 @@ func TestGetExecutionOrder_ScramblerIsUsedOnlyForSonic(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	signer := emitter.NewMockTxSigner(ctrl)
 
-	// Only one loop is expected because the scrambler is disabled if Sonic is not enabled.
+	// Only one loop is expected because the scrambler is disabled if Pano is not enabled.
 	gomock.InOrder(
 		signer.EXPECT().Sender(input[0]).Return(common.Address{1}, nil),
 		signer.EXPECT().Sender(input[1]).Return(common.Address{2}, nil),

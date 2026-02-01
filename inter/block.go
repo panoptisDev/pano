@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package inter
 
@@ -107,7 +107,7 @@ func (b *Block) GetEthereumHeader() *types.Header {
 	return &types.Header{
 		ParentHash:  b.ParentHash,
 		UncleHash:   types.EmptyUncleHash,
-		Coinbase:    common.Address{}, // < in Sonic, the coinbase is always 0
+		Coinbase:    common.Address{}, // < in Pano, the coinbase is always 0
 		Root:        b.StateRoot,
 		TxHash:      b.TransactionsHashRoot,
 		ReceiptHash: b.ReceiptsHashRoot,
@@ -125,17 +125,17 @@ func (b *Block) GetEthereumHeader() *types.Header {
 		Nonce:     types.BlockNonce{}, // constant 0 in Ethereum
 		BaseFee:   b.BaseFee,
 
-		// Sonic does not have a beacon chain and no withdrawals.
+		// Pano does not have a beacon chain and no withdrawals.
 		WithdrawalsHash: &types.EmptyWithdrawalsHash,
 
-		// Sonic does not support blobs, so no blob gas is used and there is
+		// Pano does not support blobs, so no blob gas is used and there is
 		// no excess blob gas.
 		BlobGasUsed:   new(uint64), // = 0
 		ExcessBlobGas: new(uint64), // = 0
 	}
 }
 
-// EncodeExtraData produces the ExtraData field encoding Sonic-specific data
+// EncodeExtraData produces the ExtraData field encoding Pano-specific data
 // in the Ethereum block header. This data includes:
 //   - the nano-second part of the block's timestamp, for sub-second precision;
 //   - the duration of the block, in nanoseconds, defined as the time elapsed
@@ -151,7 +151,7 @@ func EncodeExtraData(time time.Time, duration time.Duration) []byte {
 	return extra
 }
 
-// DecodeExtraData decodes the ExtraData field encoding Sonic-specific data
+// DecodeExtraData decodes the ExtraData field encoding Pano-specific data
 // in the Ethereum block header. See EncodeExtraData for details.
 func DecodeExtraData(extra []byte) (
 	nanos int,

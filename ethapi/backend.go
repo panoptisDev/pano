@@ -33,11 +33,11 @@ import (
 	"github.com/ethereum/go-ethereum/params"
 	"github.com/ethereum/go-ethereum/rpc"
 
-	"github.com/0xsoniclabs/sonic/evmcore"
-	"github.com/0xsoniclabs/sonic/inter"
-	"github.com/0xsoniclabs/sonic/inter/iblockproc"
-	"github.com/0xsoniclabs/sonic/inter/state"
-	"github.com/0xsoniclabs/sonic/opera"
+	"github.com/panoptisDev/pano/evmcore"
+	"github.com/panoptisDev/pano/inter"
+	"github.com/panoptisDev/pano/inter/iblockproc"
+	"github.com/panoptisDev/pano/inter/state"
+	"github.com/panoptisDev/pano/opera"
 )
 
 // PeerProgress is synchronization status of a peer
@@ -163,7 +163,7 @@ func GetAPIs(apiBackend Backend) []rpc.API {
 			Service:   NewPublicAbftAPI(apiBackend),
 			Public:    true,
 		}, {
-			Namespace: "sonic",
+			Namespace: "pano",
 			Version:   "1.0",
 			Service:   NewPublicSccApi(apiBackend),
 			Public:    true,

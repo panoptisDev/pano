@@ -25,7 +25,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/0xsoniclabs/sonic/evmcore"
+	"github.com/panoptisDev/pano/evmcore"
 	ethereum "github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/core/types"
 	notify "github.com/ethereum/go-ethereum/event"

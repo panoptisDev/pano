@@ -14,9 +14,9 @@ import (
 	reflect "reflect"
 	time "time"
 
-	scheduler "github.com/0xsoniclabs/sonic/gossip/emitter/scheduler"
-	inter "github.com/0xsoniclabs/sonic/inter"
-	opera "github.com/0xsoniclabs/sonic/opera"
+	scheduler "github.com/panoptisDev/pano/gossip/emitter/scheduler"
+	inter "github.com/panoptisDev/pano/inter"
+	opera "github.com/panoptisDev/pano/opera"
 	hash "github.com/Fantom-foundation/lachesis-base/hash"
 	idx "github.com/Fantom-foundation/lachesis-base/inter/idx"
 	txpool "github.com/ethereum/go-ethereum/core/txpool"

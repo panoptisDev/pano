@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package gossip
 
@@ -20,12 +20,12 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/0xsoniclabs/sonic/inter/iblockproc"
-	"github.com/0xsoniclabs/sonic/inter/ibr"
-	"github.com/0xsoniclabs/sonic/inter/ier"
-	"github.com/0xsoniclabs/sonic/opera/genesis"
-	"github.com/0xsoniclabs/sonic/scc/cert"
-	"github.com/0xsoniclabs/sonic/utils/dbutil/autocompact"
+	"github.com/panoptisDev/pano/inter/iblockproc"
+	"github.com/panoptisDev/pano/inter/ibr"
+	"github.com/panoptisDev/pano/inter/ier"
+	"github.com/panoptisDev/pano/opera/genesis"
+	"github.com/panoptisDev/pano/scc/cert"
+	"github.com/panoptisDev/pano/utils/dbutil/autocompact"
 	"github.com/Fantom-foundation/lachesis-base/kvdb/batched"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/syndtr/goleveldb/leveldb/opt"
@@ -86,23 +86,23 @@ func (s *Store) ApplyGenesis(g genesis.Genesis) (err error) {
 	// write EVM items
 	liveReader, err := g.FwsLiveSection.GetReader()
 	if err != nil {
-		s.Log.Info("Sonic World State Live data not available in the genesis", "err", err)
+		s.Log.Info("Pano World State Live data not available in the genesis", "err", err)
 	}
 
 	if liveReader != nil { // has S5 section - import S5 data
-		s.Log.Info("Importing Sonic World State Live data from genesis")
+		s.Log.Info("Importing Pano World State Live data from genesis")
 		err = s.evm.ImportLiveWorldState(liveReader)
 		if err != nil {
-			return fmt.Errorf("failed to import Sonic World State data from genesis; %v", err)
+			return fmt.Errorf("failed to import Pano World State data from genesis; %v", err)
 		}
 
 		// import S5 archive
 		archiveReader, _ := g.FwsArchiveSection.GetReader()
 		if archiveReader != nil { // has archive section
-			s.Log.Info("Importing Sonic World State Archive data from genesis")
+			s.Log.Info("Importing Pano World State Archive data from genesis")
 			err = s.evm.ImportArchiveWorldState(archiveReader)
 			if err != nil {
-				return fmt.Errorf("failed to import Sonic World State Archive data from genesis; %v", err)
+				return fmt.Errorf("failed to import Pano World State Archive data from genesis; %v", err)
 			}
 		} else { // no archive section - initialize archive from the live section
 			s.Log.Info("No archive in the genesis file - initializing the archive from the live state", "blockNum", lastBlock.Idx)
@@ -112,7 +112,7 @@ func (s *Store) ApplyGenesis(g genesis.Genesis) (err error) {
 			}
 			err = s.evm.InitializeArchiveWorldState(liveToArchiveReader, uint64(lastBlock.Idx))
 			if err != nil {
-				return fmt.Errorf("failed to import Sonic World State data from genesis; %v", err)
+				return fmt.Errorf("failed to import Pano World State data from genesis; %v", err)
 			}
 		}
 	} else { // no S5 section in the genesis file

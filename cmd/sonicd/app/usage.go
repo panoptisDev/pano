@@ -23,11 +23,11 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/0xsoniclabs/sonic/cmd/sonicd/cmdhelper"
+	"github.com/panoptisDev/pano/cmd/sonicd/cmdhelper"
 
 	cli "gopkg.in/urfave/cli.v1"
 
-	"github.com/0xsoniclabs/sonic/debug"
+	"github.com/panoptisDev/pano/debug"
 )
 
 // AppHelpFlagGroups is the application flags, grouped by functionality.

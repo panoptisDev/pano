@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package config
 
@@ -28,13 +28,13 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/usbwallet"
 	"github.com/ethereum/go-ethereum/metrics"
 
-	"github.com/0xsoniclabs/sonic/config/flags"
-	"github.com/0xsoniclabs/sonic/evmcore"
-	"github.com/0xsoniclabs/sonic/gossip"
-	"github.com/0xsoniclabs/sonic/gossip/emitter"
-	"github.com/0xsoniclabs/sonic/integration"
-	"github.com/0xsoniclabs/sonic/utils/errlock"
-	"github.com/0xsoniclabs/sonic/valkeystore"
+	"github.com/panoptisDev/pano/config/flags"
+	"github.com/panoptisDev/pano/evmcore"
+	"github.com/panoptisDev/pano/gossip"
+	"github.com/panoptisDev/pano/gossip/emitter"
+	"github.com/panoptisDev/pano/integration"
+	"github.com/panoptisDev/pano/utils/errlock"
+	"github.com/panoptisDev/pano/valkeystore"
 	"github.com/Fantom-foundation/lachesis-base/inter/idx"
 	"github.com/ethereum/go-ethereum/accounts/keystore"
 	"github.com/ethereum/go-ethereum/log"

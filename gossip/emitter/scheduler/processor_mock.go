@@ -12,9 +12,9 @@ package scheduler
 import (
 	reflect "reflect"
 
-	evmcore "github.com/0xsoniclabs/sonic/evmcore"
-	state "github.com/0xsoniclabs/sonic/inter/state"
-	opera "github.com/0xsoniclabs/sonic/opera"
+	evmcore "github.com/panoptisDev/pano/evmcore"
+	state "github.com/panoptisDev/pano/inter/state"
+	opera "github.com/panoptisDev/pano/opera"
 	idx "github.com/Fantom-foundation/lachesis-base/inter/idx"
 	common "github.com/ethereum/go-ethereum/common"
 	types "github.com/ethereum/go-ethereum/core/types"

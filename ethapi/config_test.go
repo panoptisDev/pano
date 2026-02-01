@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package ethapi
 
@@ -25,10 +25,10 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/0xsoniclabs/sonic/evmcore"
-	"github.com/0xsoniclabs/sonic/gossip/blockproc/subsidies/registry"
-	"github.com/0xsoniclabs/sonic/inter"
-	"github.com/0xsoniclabs/sonic/opera"
+	"github.com/panoptisDev/pano/evmcore"
+	"github.com/panoptisDev/pano/gossip/blockproc/subsidies/registry"
+	"github.com/panoptisDev/pano/inter"
+	"github.com/panoptisDev/pano/opera"
 	"github.com/Fantom-foundation/lachesis-base/inter/idx"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
@@ -44,7 +44,7 @@ func TestForkId_FollowsFormula(t *testing.T) {
 	// CRC32(genesisId || bigEndian(upgrade.Height) || Rlp(upgrade))
 
 	upgradeHeights := map[string]opera.Upgrades{
-		"sonic":   opera.GetSonicUpgrades(),
+		"pano":   opera.GetSonicUpgrades(),
 		"allegro": opera.GetAllegroUpgrades(),
 		"brio":    opera.GetBrioUpgrades(),
 	}
@@ -89,7 +89,7 @@ func TestForkId_UpgradesProduceDifferentIds(t *testing.T) {
 		upgradesHeight opera.UpgradeHeight
 		want           forkId
 	}{
-		"Sonic": {
+		"Pano": {
 			upgradesHeight: opera.MakeUpgradeHeight(opera.GetSonicUpgrades(), 1),
 			want:           forkId{0x75, 0x45, 0xd7, 0x6e},
 		},
@@ -104,7 +104,7 @@ func TestForkId_UpgradesProduceDifferentIds(t *testing.T) {
 		// In a real case scenario, SingleProposer and GasSubsidies would be
 		// turned on while another upgrade is activated, so we check that the
 		// ForkId reflects these changes.
-		"Sonic+SingleProposer": {
+		"Pano+SingleProposer": {
 			upgradesHeight: func() opera.UpgradeHeight {
 				upgrades := opera.GetSonicUpgrades()
 				upgrades.SingleProposerBlockFormation = true
@@ -170,7 +170,7 @@ func TestMakeConfigFromUpgrade_Reports_AvailableSystemContracts(t *testing.T) {
 		upgradeHeight    opera.UpgradeHeight
 		wantSysContracts contractRegistry
 	}{
-		"Sonic": {
+		"Pano": {
 			upgradeHeight: opera.UpgradeHeight{
 				Upgrades: opera.GetSonicUpgrades(),
 				Height:   sonicHeight,
@@ -193,7 +193,7 @@ func TestMakeConfigFromUpgrade_Reports_AvailableSystemContracts(t *testing.T) {
 			},
 			wantSysContracts: contractRegistry{"GAS_SUBSIDY_REGISTRY_ADDRESS": registry.GetAddress()},
 		},
-		"Sonic+GasSubsidies": {
+		"Pano+GasSubsidies": {
 			upgradeHeight: opera.UpgradeHeight{
 				Upgrades: func() opera.Upgrades {
 					upgrades := opera.GetSonicUpgrades()
@@ -385,7 +385,7 @@ func TestEIP7910_Config_ReturnsConfigs(t *testing.T) {
 			},
 			wantConfig: func() configResponse {
 				sonicId, err := MakeForkId(opera.MakeUpgradeHeight(opera.GetSonicUpgrades(), 1), common.Hash{0x42})
-				require.NoError(t, err, "makeForkId failed for sonic upgrades")
+				require.NoError(t, err, "makeForkId failed for pano upgrades")
 				return configResponse{Current: &config{
 					ChainId:         (*hexutil.Big)(chainId),
 					ForkId:          sonicId[:],
@@ -425,7 +425,7 @@ func TestEIP7910_Config_ReturnsConfigs(t *testing.T) {
 			},
 			wantConfig: func() configResponse {
 				sonicId, err := MakeForkId(opera.MakeUpgradeHeight(opera.GetSonicUpgrades(), 1), common.Hash{0x42})
-				require.NoError(t, err, "makeForkId failed for sonic upgrades")
+				require.NoError(t, err, "makeForkId failed for pano upgrades")
 
 				allegroId, err := MakeForkId(opera.MakeUpgradeHeight(opera.GetAllegroUpgrades(), 5), common.Hash{0x42})
 				require.NoError(t, err, "makeForkId failed for allegro upgrades")

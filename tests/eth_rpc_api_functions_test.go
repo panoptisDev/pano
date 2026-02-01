@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package tests
 
@@ -24,15 +24,15 @@ import (
 	"testing"
 	"time"
 
-	"github.com/0xsoniclabs/sonic/config"
-	"github.com/0xsoniclabs/sonic/ethapi"
-	"github.com/0xsoniclabs/sonic/evmcore"
-	"github.com/0xsoniclabs/sonic/gossip"
-	"github.com/0xsoniclabs/sonic/integration/makefakegenesis"
-	"github.com/0xsoniclabs/sonic/inter"
-	"github.com/0xsoniclabs/sonic/opera"
-	"github.com/0xsoniclabs/sonic/utils"
-	"github.com/0xsoniclabs/sonic/vecmt"
+	"github.com/panoptisDev/pano/config"
+	"github.com/panoptisDev/pano/ethapi"
+	"github.com/panoptisDev/pano/evmcore"
+	"github.com/panoptisDev/pano/gossip"
+	"github.com/panoptisDev/pano/integration/makefakegenesis"
+	"github.com/panoptisDev/pano/inter"
+	"github.com/panoptisDev/pano/opera"
+	"github.com/panoptisDev/pano/utils"
+	"github.com/panoptisDev/pano/vecmt"
 	"github.com/Fantom-foundation/lachesis-base/abft"
 	"github.com/Fantom-foundation/lachesis-base/inter/idx"
 	"github.com/Fantom-foundation/lachesis-base/utils/cachescale"
@@ -44,7 +44,7 @@ import (
 	"go.uber.org/mock/gomock"
 )
 
-// Known missing APIs which are not implemented in Sonic
+// Known missing APIs which are not implemented in Pano
 var (
 	knownMissingAPIs = namespaceMap{
 		"eth": {
@@ -71,21 +71,21 @@ var (
 
 type namespaceMap map[string]map[string]interface{}
 
-// TestRPCApis checks if all go-ethereum RPC APIs are implemented in Sonic
+// TestRPCApis checks if all go-ethereum RPC APIs are implemented in Pano
 func TestRPCApis(t *testing.T) {
 	ethAPIs := parseAPIs(rpc_test_utils.GetRpcApis())
 	sonicAPIs := parseAPIs(getNodeService(t).APIs())
 
-	// look for missing methods which are in go-ethereum and not in Sonic
+	// look for missing methods which are in go-ethereum and not in Pano
 	missingInSonic := findMissingMethods(ethAPIs, sonicAPIs)
 
-	// look for missing methods which are in Sonic and are not in known missing
+	// look for missing methods which are in Pano and are not in known missing
 	missing := findMissingMethods(missingInSonic, knownMissingAPIs)
 	require.Zero(t, len(missing), "missing namespaces %v", missing)
 }
 
 // getNodeService returns a gossip service
-// which includes initialization of RPC APIs for Sonic
+// which includes initialization of RPC APIs for Pano
 func getNodeService(t *testing.T) *gossip.Service {
 	node, err := node.New(&node.Config{})
 	require.NoError(t, err)

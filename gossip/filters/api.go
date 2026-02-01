@@ -26,9 +26,9 @@ import (
 	"time"
 	"weak"
 
-	"github.com/0xsoniclabs/sonic/evmcore"
+	"github.com/panoptisDev/pano/evmcore"
 
-	"github.com/0xsoniclabs/sonic/ethapi"
+	"github.com/panoptisDev/pano/ethapi"
 	"github.com/Fantom-foundation/lachesis-base/inter/idx"
 	ethereum "github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/common"

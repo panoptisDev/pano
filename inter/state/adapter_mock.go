@@ -12,7 +12,7 @@ package state
 import (
 	reflect "reflect"
 
-	witness "github.com/0xsoniclabs/carmen/go/common/witness"
+	witness "github.com/panoptisDev/carmen/go/common/witness"
 	common "github.com/ethereum/go-ethereum/common"
 	state "github.com/ethereum/go-ethereum/core/state"
 	stateless "github.com/ethereum/go-ethereum/core/stateless"

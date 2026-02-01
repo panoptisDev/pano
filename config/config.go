@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package config
 
@@ -28,10 +28,10 @@ import (
 	"regexp"
 	"strings"
 
-	carmen "github.com/0xsoniclabs/carmen/go/state"
-	"github.com/0xsoniclabs/sonic/config/flags"
-	"github.com/0xsoniclabs/sonic/gossip/evmstore"
-	"github.com/0xsoniclabs/sonic/version"
+	carmen "github.com/panoptisDev/carmen/go/state"
+	"github.com/panoptisDev/pano/config/flags"
+	"github.com/panoptisDev/pano/gossip/evmstore"
+	"github.com/panoptisDev/pano/version"
 	"github.com/ethereum/go-ethereum/common/fdlimit"
 
 	"github.com/Fantom-foundation/lachesis-base/abft"
@@ -44,18 +44,18 @@ import (
 	"github.com/syndtr/goleveldb/leveldb/opt"
 	"gopkg.in/urfave/cli.v1"
 
-	"github.com/0xsoniclabs/sonic/evmcore"
-	"github.com/0xsoniclabs/sonic/gossip"
-	emitter_config "github.com/0xsoniclabs/sonic/gossip/emitter/config"
-	"github.com/0xsoniclabs/sonic/integration"
-	"github.com/0xsoniclabs/sonic/utils/caution"
-	"github.com/0xsoniclabs/sonic/utils/memory"
-	"github.com/0xsoniclabs/sonic/vecmt"
+	"github.com/panoptisDev/pano/evmcore"
+	"github.com/panoptisDev/pano/gossip"
+	emitter_config "github.com/panoptisDev/pano/gossip/emitter/config"
+	"github.com/panoptisDev/pano/integration"
+	"github.com/panoptisDev/pano/utils/caution"
+	"github.com/panoptisDev/pano/utils/memory"
+	"github.com/panoptisDev/pano/vecmt"
 )
 
 const (
 	// ClientIdentifier to advertise over the network.
-	ClientIdentifier = "Sonic"
+	ClientIdentifier = "Pano"
 )
 
 // TomlSettings ensure that TOML keys use the same names as Go struct fields.
@@ -322,7 +322,7 @@ func cacheScaler(ctx *cli.Context) cachescale.Func {
 	if !ctx.GlobalIsSet(flags.CacheFlag.Name) {
 		recommendedCache := totalMemory / 2
 		if recommendedCache > baseSize {
-			log.Warn(fmt.Sprintf("Please add '--%s %d' flag to allocate more cache for Sonic. Total memory is %d MB.", flags.CacheFlag.Name, recommendedCache, totalMemory))
+			log.Warn(fmt.Sprintf("Please add '--%s %d' flag to allocate more cache for Pano. Total memory is %d MB.", flags.CacheFlag.Name, recommendedCache, totalMemory))
 		}
 		return cachescale.Identity
 	}
@@ -449,6 +449,6 @@ func DefaultNodeConfig() node.Config {
 	cfg.Version = version.StringWithCommit()
 	cfg.HTTPModules = append(cfg.HTTPModules, "eth", "dag", "abft", "web3")
 	cfg.WSModules = append(cfg.WSModules, "eth", "dag", "abft", "web3")
-	cfg.IPCPath = "sonic.ipc"
+	cfg.IPCPath = "pano.ipc"
 	return cfg
 }

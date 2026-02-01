@@ -29,9 +29,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/0xsoniclabs/sonic/inter/state"
-	"github.com/0xsoniclabs/sonic/opera"
-	"github.com/0xsoniclabs/sonic/utils"
+	"github.com/panoptisDev/pano/inter/state"
+	"github.com/panoptisDev/pano/opera"
+	"github.com/panoptisDev/pano/utils"
 	"github.com/ethereum/go-ethereum/common"
 
 	"github.com/ethereum/go-ethereum/core/tracing"

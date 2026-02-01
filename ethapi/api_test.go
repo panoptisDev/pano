@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package ethapi
 
@@ -27,13 +27,13 @@ import (
 	"testing"
 	"time"
 
-	cc "github.com/0xsoniclabs/carmen/go/common"
-	"github.com/0xsoniclabs/carmen/go/common/amount"
-	"github.com/0xsoniclabs/carmen/go/common/immutable"
-	"github.com/0xsoniclabs/carmen/go/common/witness"
-	"github.com/0xsoniclabs/sonic/inter"
-	"github.com/0xsoniclabs/sonic/inter/state"
-	"github.com/0xsoniclabs/sonic/opera"
+	cc "github.com/panoptisDev/carmen/go/common"
+	"github.com/panoptisDev/carmen/go/common/amount"
+	"github.com/panoptisDev/carmen/go/common/immutable"
+	"github.com/panoptisDev/carmen/go/common/witness"
+	"github.com/panoptisDev/pano/inter"
+	"github.com/panoptisDev/pano/inter/state"
+	"github.com/panoptisDev/pano/opera"
 	"github.com/Fantom-foundation/lachesis-base/inter/idx"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	geth_math "github.com/ethereum/go-ethereum/common/math"
@@ -44,7 +44,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"go.uber.org/mock/gomock"
 
-	"github.com/0xsoniclabs/sonic/evmcore"
+	"github.com/panoptisDev/pano/evmcore"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/core/vm"
@@ -1031,7 +1031,7 @@ func TestAPI_EIP2935_InvokesHistoryStorageContract(t *testing.T) {
 		setupStateDb      func(*state.MockStateDB)
 		call              func(*testing.T, Backend, TransactionArgs, rpc.BlockNumberOrHash)
 	}{
-		"DoCall sonic": {
+		"DoCall pano": {
 			upgrades:     opera.GetSonicUpgrades(),
 			setupStateDb: expectedCallsFromTxCall,
 			call:         executeDoCall,
@@ -1044,7 +1044,7 @@ func TestAPI_EIP2935_InvokesHistoryStorageContract(t *testing.T) {
 			},
 			call: executeDoCall,
 		},
-		"StateAtTransaction sonic": {
+		"StateAtTransaction pano": {
 			upgrades: opera.GetSonicUpgrades(),
 			setupStateDb: func(mockState *state.MockStateDB) {
 				mockState.EXPECT().SetTxContext(gomock.Any(), gomock.Any())
@@ -1069,7 +1069,7 @@ func TestAPI_EIP2935_InvokesHistoryStorageContract(t *testing.T) {
 			},
 			call: executeStateAtTransaction,
 		},
-		"trace_replayBlock sonic": {
+		"trace_replayBlock pano": {
 			upgrades: opera.GetSonicUpgrades(),
 			extraSetupBackend: func(mockBackend *MockBackend) {
 				mockBackend.EXPECT().GetReceiptsByNumber(gomock.Any(), gomock.Any()).

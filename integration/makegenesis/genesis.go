@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package makegenesis
 
@@ -26,9 +26,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/0xsoniclabs/sonic/inter"
-	"github.com/0xsoniclabs/sonic/scc/cert"
-	"github.com/0xsoniclabs/sonic/utils/objstream"
+	"github.com/panoptisDev/pano/inter"
+	"github.com/panoptisDev/pano/scc/cert"
+	"github.com/panoptisDev/pano/utils/objstream"
 	"github.com/ethereum/go-ethereum/core/tracing"
 
 	"github.com/Fantom-foundation/lachesis-base/hash"
@@ -37,25 +37,25 @@ import (
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/rlp"
 
-	"github.com/0xsoniclabs/sonic/evmcore"
-	"github.com/0xsoniclabs/sonic/gossip/blockproc"
-	"github.com/0xsoniclabs/sonic/gossip/blockproc/drivermodule"
-	"github.com/0xsoniclabs/sonic/gossip/blockproc/eventmodule"
-	"github.com/0xsoniclabs/sonic/gossip/blockproc/evmmodule"
-	"github.com/0xsoniclabs/sonic/gossip/blockproc/sealmodule"
-	"github.com/0xsoniclabs/sonic/gossip/evmstore"
-	"github.com/0xsoniclabs/sonic/gossip/gasprice"
-	"github.com/0xsoniclabs/sonic/inter/iblockproc"
-	"github.com/0xsoniclabs/sonic/inter/ibr"
-	"github.com/0xsoniclabs/sonic/inter/ier"
-	"github.com/0xsoniclabs/sonic/inter/state"
-	"github.com/0xsoniclabs/sonic/opera"
-	"github.com/0xsoniclabs/sonic/opera/genesis"
-	"github.com/0xsoniclabs/sonic/opera/genesisstore"
-	"github.com/0xsoniclabs/sonic/utils"
+	"github.com/panoptisDev/pano/evmcore"
+	"github.com/panoptisDev/pano/gossip/blockproc"
+	"github.com/panoptisDev/pano/gossip/blockproc/drivermodule"
+	"github.com/panoptisDev/pano/gossip/blockproc/eventmodule"
+	"github.com/panoptisDev/pano/gossip/blockproc/evmmodule"
+	"github.com/panoptisDev/pano/gossip/blockproc/sealmodule"
+	"github.com/panoptisDev/pano/gossip/evmstore"
+	"github.com/panoptisDev/pano/gossip/gasprice"
+	"github.com/panoptisDev/pano/inter/iblockproc"
+	"github.com/panoptisDev/pano/inter/ibr"
+	"github.com/panoptisDev/pano/inter/ier"
+	"github.com/panoptisDev/pano/inter/state"
+	"github.com/panoptisDev/pano/opera"
+	"github.com/panoptisDev/pano/opera/genesis"
+	"github.com/panoptisDev/pano/opera/genesisstore"
+	"github.com/panoptisDev/pano/utils"
 
-	mptIo "github.com/0xsoniclabs/carmen/go/database/mpt/io"
-	carmen "github.com/0xsoniclabs/carmen/go/state"
+	mptIo "github.com/panoptisDev/carmen/go/database/mpt/io"
+	carmen "github.com/panoptisDev/carmen/go/state"
 )
 
 type GenesisBuilder struct {

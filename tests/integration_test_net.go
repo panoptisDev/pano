@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package tests
 
@@ -39,15 +39,15 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	sonicd "github.com/0xsoniclabs/sonic/cmd/sonicd/app"
-	sonictool "github.com/0xsoniclabs/sonic/cmd/sonictool/app"
-	"github.com/0xsoniclabs/sonic/config"
-	"github.com/0xsoniclabs/sonic/evmcore"
-	"github.com/0xsoniclabs/sonic/gossip/contract/driverauth100"
-	"github.com/0xsoniclabs/sonic/integration/makefakegenesis"
-	"github.com/0xsoniclabs/sonic/inter"
-	"github.com/0xsoniclabs/sonic/opera"
-	"github.com/0xsoniclabs/sonic/opera/contracts/driverauth"
+	sonicd "github.com/panoptisDev/pano/cmd/sonicd/app"
+	sonictool "github.com/panoptisDev/pano/cmd/sonictool/app"
+	"github.com/panoptisDev/pano/config"
+	"github.com/panoptisDev/pano/evmcore"
+	"github.com/panoptisDev/pano/gossip/contract/driverauth100"
+	"github.com/panoptisDev/pano/integration/makefakegenesis"
+	"github.com/panoptisDev/pano/inter"
+	"github.com/panoptisDev/pano/opera"
+	"github.com/panoptisDev/pano/opera/contracts/driverauth"
 	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
@@ -172,7 +172,7 @@ type IntegrationTestNetOptions struct {
 }
 
 // IntegrationTestNet is a in-process test network for integration tests. When
-// started, it runs full Sonic nodes maintaining a chain within the process
+// started, it runs full Pano nodes maintaining a chain within the process
 // containing this object. The network can be used to run transactions on and
 // to perform queries against.
 //
@@ -309,13 +309,13 @@ func StartIntegrationTestNetWithFakeGenesis(
 
 	var upgrades string
 	if *effectiveOptions.Upgrades == opera.GetSonicUpgrades() {
-		upgrades = "sonic"
+		upgrades = "pano"
 	} else if *effectiveOptions.Upgrades == opera.GetAllegroUpgrades() {
 		upgrades = "allegro"
 	} else if *effectiveOptions.Upgrades == opera.GetBrioUpgrades() {
 		upgrades = "brio"
 	} else {
-		t.Fatal("fake genesis only supports sonic, allegro and brio feature sets")
+		t.Fatal("fake genesis only supports pano, allegro and brio feature sets")
 	}
 
 	numNodesString := fmt.Sprintf("%d", effectiveOptions.NumNodes)
@@ -334,7 +334,7 @@ func StartIntegrationTestNetWithFakeGenesis(
 // StartIntegrationTestNetWithJsonGenesis starts a single-node test network for
 // integration tests using the JSON-Genesis procedure. The JSON genesis procedure
 // is the genesis procedure used in long-running production networks like the
-// Sonic mainnet and the testnet.
+// Pano mainnet and the testnet.
 func StartIntegrationTestNetWithJsonGenesis(
 	t testing.TB,
 	options ...IntegrationTestNetOptions,
@@ -461,7 +461,7 @@ func (n *IntegrationTestNet) start() error {
 				}
 			}()
 
-			// start the fakenet sonic node
+			// start the fakenet pano node
 			// equivalent to running `sonicd ...` but in this local process
 			args := append([]string{
 				"sonicd",
@@ -475,7 +475,7 @@ func (n *IntegrationTestNet) start() error {
 
 				// http-client option
 				"--http", "--http.addr", "127.0.0.1", "--http.port", "0",
-				"--http.api", "admin,eth,dag,web3,net,txpool,trace,debug,sonic",
+				"--http.api", "admin,eth,dag,web3,net,txpool,trace,debug,pano",
 
 				// websocket-client options
 				"--ws", "--ws.addr", "127.0.0.1", "--ws.port", "0",
@@ -491,7 +491,7 @@ func (n *IntegrationTestNet) start() error {
 				"--statedb.archivecache", "1",
 				"--statedb.cache", "1024",
 
-				"--ipcpath", fmt.Sprintf("%s/sonic.ipc", tmp),
+				"--ipcpath", fmt.Sprintf("%s/pano.ipc", tmp),
 			},
 				// append extra arguments
 				n.options.ClientExtraArguments...,

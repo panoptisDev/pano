@@ -20,9 +20,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/0xsoniclabs/sonic/evmcore"
-	"github.com/0xsoniclabs/sonic/gossip"
-	emitter_config "github.com/0xsoniclabs/sonic/gossip/emitter/config"
+	"github.com/panoptisDev/pano/evmcore"
+	"github.com/panoptisDev/pano/gossip"
+	emitter_config "github.com/panoptisDev/pano/gossip/emitter/config"
 	"github.com/Fantom-foundation/lachesis-base/utils/cachescale"
 	pcsclite "github.com/gballet/go-libpcsclite"
 	"gopkg.in/urfave/cli.v1"

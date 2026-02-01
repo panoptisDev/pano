@@ -23,8 +23,8 @@ import (
 	"sort"
 	"time"
 
-	"github.com/0xsoniclabs/sonic/gossip/blockproc/subsidies"
-	"github.com/0xsoniclabs/sonic/utils"
+	"github.com/panoptisDev/pano/gossip/blockproc/subsidies"
+	"github.com/panoptisDev/pano/utils"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 )

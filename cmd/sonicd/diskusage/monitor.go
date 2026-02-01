@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package diskusage
 
@@ -35,11 +35,11 @@ func MonitorFreeDiskSpace(stopNodeSig chan os.Signal, path string, freeDiskSpace
 			break
 		}
 		if freeSpace < freeDiskSpaceCritical {
-			log.Error("Low disk space. Gracefully shutting down Sonic to prevent database corruption.", "available", common.StorageSize(freeSpace))
+			log.Error("Low disk space. Gracefully shutting down Pano to prevent database corruption.", "available", common.StorageSize(freeSpace))
 			stopNodeSig <- syscall.SIGTERM
 			break
 		} else if freeSpace < 2*freeDiskSpaceCritical {
-			log.Warn("Disk space is running low. Sonic will shutdown if disk space runs below critical level.", "available", common.StorageSize(freeSpace), "critical_level", common.StorageSize(freeDiskSpaceCritical))
+			log.Warn("Disk space is running low. Pano will shutdown if disk space runs below critical level.", "available", common.StorageSize(freeSpace), "critical_level", common.StorageSize(freeDiskSpaceCritical))
 		}
 		<-ticker.C
 	}

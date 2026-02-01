@@ -34,8 +34,8 @@ import (
 	"github.com/ethereum/go-ethereum/rpc"
 	"github.com/holiman/uint256"
 
-	"github.com/0xsoniclabs/sonic/gossip/gasprice"
-	"github.com/0xsoniclabs/sonic/utils"
+	"github.com/panoptisDev/pano/gossip/gasprice"
+	"github.com/panoptisDev/pano/utils"
 )
 
 // TransactionArgs represents the arguments to construct a new transaction

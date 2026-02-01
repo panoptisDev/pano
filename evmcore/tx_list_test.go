@@ -21,7 +21,7 @@ import (
 	"math/rand/v2"
 	"testing"
 
-	"github.com/0xsoniclabs/sonic/gossip/blockproc/subsidies"
+	"github.com/panoptisDev/pano/gossip/blockproc/subsidies"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/crypto"

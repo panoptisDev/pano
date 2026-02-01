@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package block_header
 
@@ -23,17 +23,17 @@ import (
 	"slices"
 	"testing"
 
-	"github.com/0xsoniclabs/carmen/go/carmen"
-	"github.com/0xsoniclabs/carmen/go/common/immutable"
-	"github.com/0xsoniclabs/carmen/go/database/mpt"
-	"github.com/0xsoniclabs/sonic/opera"
-	"github.com/0xsoniclabs/sonic/opera/contracts/driver"
-	"github.com/0xsoniclabs/sonic/opera/contracts/driverauth"
-	"github.com/0xsoniclabs/sonic/opera/contracts/evmwriter"
-	"github.com/0xsoniclabs/sonic/opera/contracts/netinit"
-	"github.com/0xsoniclabs/sonic/opera/contracts/sfc"
-	"github.com/0xsoniclabs/sonic/tests"
-	"github.com/0xsoniclabs/sonic/tests/contracts/counter_event_emitter"
+	"github.com/panoptisDev/carmen/go/carmen"
+	"github.com/panoptisDev/carmen/go/common/immutable"
+	"github.com/panoptisDev/carmen/go/database/mpt"
+	"github.com/panoptisDev/pano/opera"
+	"github.com/panoptisDev/pano/opera/contracts/driver"
+	"github.com/panoptisDev/pano/opera/contracts/driverauth"
+	"github.com/panoptisDev/pano/opera/contracts/evmwriter"
+	"github.com/panoptisDev/pano/opera/contracts/netinit"
+	"github.com/panoptisDev/pano/opera/contracts/sfc"
+	"github.com/panoptisDev/pano/tests"
+	"github.com/panoptisDev/pano/tests/contracts/counter_event_emitter"
 	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
@@ -53,7 +53,7 @@ func TestBlockHeader_FakeGenesis_SatisfiesInvariants(t *testing.T) {
 func TestBlockHeader_JsonGenesis_SatisfiesInvariants(t *testing.T) {
 
 	upgrades := map[string]opera.Upgrades{
-		"Sonic":   opera.GetSonicUpgrades(),
+		"Pano":   opera.GetSonicUpgrades(),
 		"Allegro": opera.GetAllegroUpgrades(),
 		"Brio":    opera.GetBrioUpgrades(),
 	}

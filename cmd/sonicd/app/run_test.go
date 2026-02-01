@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package app
 
@@ -24,16 +24,16 @@ import (
 
 	"github.com/Fantom-foundation/lachesis-base/utils/cachescale"
 
-	"github.com/0xsoniclabs/sonic/cmd/sonictool/genesis"
-	"github.com/0xsoniclabs/sonic/config"
-	"github.com/0xsoniclabs/sonic/integration/makefakegenesis"
-	"github.com/0xsoniclabs/sonic/opera"
-	futils "github.com/0xsoniclabs/sonic/utils"
+	"github.com/panoptisDev/pano/cmd/sonictool/genesis"
+	"github.com/panoptisDev/pano/config"
+	"github.com/panoptisDev/pano/integration/makefakegenesis"
+	"github.com/panoptisDev/pano/opera"
+	futils "github.com/panoptisDev/pano/utils"
 	"github.com/Fantom-foundation/lachesis-base/inter/idx"
 	"github.com/docker/docker/pkg/reexec"
 	"github.com/ethereum/go-ethereum/common"
 
-	"github.com/0xsoniclabs/sonic/cmd/cmdtest"
+	"github.com/panoptisDev/pano/cmd/cmdtest"
 )
 
 func tmpdir(t *testing.T) string {
@@ -80,8 +80,8 @@ func (tt *testcli) readConfig() {
 }
 
 func init() {
-	// Run the app if we've been exec'd as "sonic-test" in exec().
-	reexec.Register("sonic-test", func() {
+	// Run the app if we've been exec'd as "pano-test" in exec().
+	reexec.Register("pano-test", func() {
 		app := initApp()
 		initAppHelp()
 		if err := app.Run(os.Args); err != nil {
@@ -132,9 +132,9 @@ func exec(t *testing.T, args ...string) *testcli {
 		}()
 	}
 
-	// Boot "sonic". This actually runs the test binary but the TestMain
+	// Boot "pano". This actually runs the test binary but the TestMain
 	// function will prevent any tests from running.
-	tt.Run("sonic-test", args...)
+	tt.Run("pano-test", args...)
 
 	// Read the generated key
 	tt.readConfig()

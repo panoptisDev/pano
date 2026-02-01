@@ -21,10 +21,10 @@ import (
 	"math"
 	"math/big"
 
-	"github.com/0xsoniclabs/sonic/gossip/blockproc/subsidies"
-	"github.com/0xsoniclabs/sonic/gossip/gasprice/gaspricelimits"
-	"github.com/0xsoniclabs/sonic/inter/state"
-	"github.com/0xsoniclabs/sonic/utils"
+	"github.com/panoptisDev/pano/gossip/blockproc/subsidies"
+	"github.com/panoptisDev/pano/gossip/gasprice/gaspricelimits"
+	"github.com/panoptisDev/pano/inter/state"
+	"github.com/panoptisDev/pano/utils"
 	"github.com/ethereum/go-ethereum/core"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/log"
@@ -136,7 +136,7 @@ func ValidateTxForNetwork(tx *types.Transaction, rules NetworkRules, chain State
 		if !rules.eip4844 {
 			return ErrTxTypeNotSupported
 		}
-		// Sonic only supports Blob transactions without blob data.
+		// Pano only supports Blob transactions without blob data.
 		if len(tx.BlobHashes()) > 0 ||
 			(tx.BlobTxSidecar() != nil && len(tx.BlobTxSidecar().BlobHashes()) > 0) {
 			return ErrNonEmptyBlobTx
@@ -241,7 +241,7 @@ func ValidateTxStatic(tx *types.Transaction) error {
 // or if the transaction's gas fee cap is below the minimum required base fee.
 func ValidateTxForBlock(tx *types.Transaction, netRules NetworkRules, chain StateReader) error {
 
-	// Ensure Sonic-specific hard bounds
+	// Ensure Pano-specific hard bounds
 	isSponsorRequest := netRules.gasSubsidies && subsidies.IsSponsorshipRequest(tx)
 	if baseFee := chain.CurrentBaseFee(); !isSponsorRequest && baseFee != nil {
 		limit := gaspricelimits.GetMinimumFeeCapForTransactionPool(baseFee)

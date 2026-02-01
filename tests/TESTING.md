@@ -1,8 +1,8 @@
-# Sonic Integration Testing
+# Pano Integration Testing
 
 This document is designed to help newcomers navigate our integration testing framework. This guide provides an introduction to the framework's core concepts, what kind of test can be written, how to compose them and use helper utilities to write clean and efficient tests.
 
-To run the integration tests run the command `go test /path/to/0xSonicLabs/sonic/tests/... -timeout 30`, the last flag is needed because the default timeout is 10 minutes and the tests take longer than that.
+To run the integration tests run the command `go test /path/to/0xSonicLabs/pano/tests/... -timeout 30`, the last flag is needed because the default timeout is 10 minutes and the tests take longer than that.
 
 ## Framework Scope
 The current implementation enables one to make test that:
@@ -11,7 +11,7 @@ The current implementation enables one to make test that:
 - Deploy different network rules (including hard forks).
 - Deploy custom contracts and interact with them.
 - interact with the full json and websocket RPCs
-- start, stop, and restart instances of the sonic client
+- start, stop, and restart instances of the pano client
 
 
 ## Key Concepts
@@ -41,7 +41,7 @@ Here are some considerations to keep in mind when adding new integration tests:
 	```Go
 	import (
 		"testing"
-		"github.com/0xsoniclabs/sonic/tests"
+		"github.com/panoptisDev/pano/tests"
 		"github.com/stretchr/testify/require"
 	)
 
@@ -63,7 +63,7 @@ Here are some considerations to keep in mind when adding new integration tests:
 
 	Otherwise we highly encourage you to use `session := getIntegrationTestNetSession(t, Upgrade)`
 
-	`Upgrades` indicates which hard fork options the network uses. `opera.Sonic` hard fork is used as a default.
+	`Upgrades` indicates which hard fork options the network uses. `opera.Pano` hard fork is used as a default.
 
 	```Go
 	func TestMultipleSessions_CanSendLegacyTransactionsInBulk(t *testing.T) {
@@ -145,7 +145,7 @@ One can also get *websocket* client to subscribe to different methods like `Test
 
 ## Solidty Contracts
 
-Solidy code can be hand crafted and then used to generate the corresponding Go code. For examples on this please look at [`sonic/tests/contracts/counter`](https://github.com/0xsoniclabs/sonic/tree/main/tests/contracts/counter/), one must write the `.sol` file, such as
+Solidy code can be hand crafted and then used to generate the corresponding Go code. For examples on this please look at [`pano/tests/contracts/counter`](https://github.com/panoptisDev/pano/tree/main/tests/contracts/counter/), one must write the `.sol` file, such as
 ```Solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
@@ -159,7 +159,7 @@ contract Counter {
 }
 ```
 
-and `gen.go` to generate the corresponding `counter.go`. Then it can be used as shown in `sonic/tests/counter_test.go`
+and `gen.go` to generate the corresponding `counter.go`. Then it can be used as shown in `pano/tests/counter_test.go`
 the file `gen.go` must comply to the following pattern:
 ```Go
 package mycontract
@@ -200,7 +200,7 @@ func TestCounter_CanIncrementAndReadCounterFromHead(t *testing.T) {
 
 ## Memory Analysis 
 
-There is an optional tool to get heap memory reports per test, it was added in [PR#350](https://github.com/0xsoniclabs/sonic/pull/350)
+There is an optional tool to get heap memory reports per test, it was added in [PR#350](https://github.com/panoptisDev/pano/pull/350)
 
 To run a test and get a report of its memory peak heap memory usage it must run with the env var:
 `SONIC_TEST_HEAP_PROFILE=on go test ./tests`

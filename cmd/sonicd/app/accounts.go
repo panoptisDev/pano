@@ -18,8 +18,8 @@ package app
 
 import (
 	"fmt"
-	"github.com/0xsoniclabs/sonic/config"
-	"github.com/0xsoniclabs/sonic/config/flags"
+	"github.com/panoptisDev/pano/config"
+	"github.com/panoptisDev/pano/config/flags"
 	"github.com/ethereum/go-ethereum/accounts/keystore"
 	"github.com/ethereum/go-ethereum/node"
 	"gopkg.in/urfave/cli.v1"

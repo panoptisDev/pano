@@ -36,11 +36,11 @@ import (
 	"github.com/ethereum/go-ethereum/metrics"
 	"github.com/ethereum/go-ethereum/params"
 
-	"github.com/0xsoniclabs/sonic/gossip/blockproc/subsidies"
-	"github.com/0xsoniclabs/sonic/inter/state"
-	"github.com/0xsoniclabs/sonic/opera"
-	"github.com/0xsoniclabs/sonic/utils"
-	"github.com/0xsoniclabs/sonic/utils/txtime"
+	"github.com/panoptisDev/pano/gossip/blockproc/subsidies"
+	"github.com/panoptisDev/pano/inter/state"
+	"github.com/panoptisDev/pano/opera"
+	"github.com/panoptisDev/pano/utils"
+	"github.com/panoptisDev/pano/utils/txtime"
 )
 
 //go:generate mockgen -source=tx_pool.go -destination=tx_pool_mock.go -package=evmcore
@@ -1339,7 +1339,7 @@ func (pool *TxPool) runReorg(done chan struct{}, reset *txpoolResetRequest, dirt
 	if reset != nil {
 		pool.demoteUnexecutables()
 		if baseFee := pool.chain.CurrentBaseFee(); baseFee != nil {
-			// Sonic-specific base fee
+			// Pano-specific base fee
 			pool.priced.SetBaseFee(baseFee)
 		} else {
 			// for tests only
@@ -1381,7 +1381,7 @@ func (pool *TxPool) runReorg(done chan struct{}, reset *txpoolResetRequest, dirt
 // reset retrieves the current state of the blockchain and ensures the content
 // of the transaction pool is valid with regard to the chain state.
 func (pool *TxPool) reset(oldHead, newHead *EvmHeader) {
-	// update chain config (Sonic-specific)
+	// update chain config (Pano-specific)
 	if newConfig := pool.chain.CurrentConfig(); newConfig != nil {
 		pool.chainconfig = newConfig
 	}

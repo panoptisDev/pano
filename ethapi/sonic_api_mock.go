@@ -13,9 +13,9 @@ import (
 	iter "iter"
 	reflect "reflect"
 
-	scc "github.com/0xsoniclabs/sonic/scc"
-	cert "github.com/0xsoniclabs/sonic/scc/cert"
-	result "github.com/0xsoniclabs/sonic/utils/result"
+	scc "github.com/panoptisDev/pano/scc"
+	cert "github.com/panoptisDev/pano/scc/cert"
+	result "github.com/panoptisDev/pano/utils/result"
 	idx "github.com/Fantom-foundation/lachesis-base/inter/idx"
 	gomock "go.uber.org/mock/gomock"
 )

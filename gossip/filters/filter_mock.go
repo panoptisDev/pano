@@ -14,9 +14,9 @@ import (
 	big "math/big"
 	reflect "reflect"
 
-	evmcore "github.com/0xsoniclabs/sonic/evmcore"
-	evmstore "github.com/0xsoniclabs/sonic/gossip/evmstore"
-	topicsdb "github.com/0xsoniclabs/sonic/topicsdb"
+	evmcore "github.com/panoptisDev/pano/evmcore"
+	evmstore "github.com/panoptisDev/pano/gossip/evmstore"
+	topicsdb "github.com/panoptisDev/pano/topicsdb"
 	common "github.com/ethereum/go-ethereum/common"
 	types "github.com/ethereum/go-ethereum/core/types"
 	event "github.com/ethereum/go-ethereum/event"

@@ -12,8 +12,8 @@ package throttler
 import (
 	reflect "reflect"
 
-	inter "github.com/0xsoniclabs/sonic/inter"
-	opera "github.com/0xsoniclabs/sonic/opera"
+	inter "github.com/panoptisDev/pano/inter"
+	opera "github.com/panoptisDev/pano/opera"
 	idx "github.com/Fantom-foundation/lachesis-base/inter/idx"
 	pos "github.com/Fantom-foundation/lachesis-base/inter/pos"
 	gomock "go.uber.org/mock/gomock"

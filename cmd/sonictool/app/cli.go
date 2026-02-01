@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package app
 
@@ -20,8 +20,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/0xsoniclabs/sonic/config/flags"
-	"github.com/0xsoniclabs/sonic/utils/caution"
+	"github.com/panoptisDev/pano/config/flags"
+	"github.com/panoptisDev/pano/utils/caution"
 	"github.com/ethereum/go-ethereum/console"
 	"github.com/ethereum/go-ethereum/rpc"
 	"gopkg.in/urfave/cli.v1"
@@ -43,16 +43,16 @@ var (
 	}
 )
 
-// remoteConsole will connect to a remote sonic instance, attaching a JavaScript
+// remoteConsole will connect to a remote pano instance, attaching a JavaScript
 // console to it.
 func remoteConsole(ctx *cli.Context) (err error) {
-	// Attach to a remotely running sonic instance and start the JavaScript console
+	// Attach to a remotely running pano instance and start the JavaScript console
 	endpoint := ctx.Args().First()
 	if endpoint == "" {
 		if !ctx.GlobalIsSet(flags.DataDirFlag.Name) {
 			return fmt.Errorf("the --%s flag is missing and the IPC endpoint path is not specified", flags.DataDirFlag.Name)
 		}
-		endpoint = fmt.Sprintf("%s/sonic.ipc", ctx.GlobalString(flags.DataDirFlag.Name))
+		endpoint = fmt.Sprintf("%s/pano.ipc", ctx.GlobalString(flags.DataDirFlag.Name))
 	}
 	client, err := rpc.Dial(endpoint)
 	if err != nil {

@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package evmstore
 
@@ -24,14 +24,14 @@ import (
 	"os"
 	"path/filepath"
 
-	cc "github.com/0xsoniclabs/carmen/go/common"
-	"github.com/0xsoniclabs/carmen/go/common/amount"
-	"github.com/0xsoniclabs/carmen/go/database/mpt"
-	mptio "github.com/0xsoniclabs/carmen/go/database/mpt/io"
-	carmen "github.com/0xsoniclabs/carmen/go/state"
-	"github.com/0xsoniclabs/sonic/opera/genesis"
-	"github.com/0xsoniclabs/sonic/utils/adapters/kvdb2ethdb"
-	"github.com/0xsoniclabs/sonic/utils/caution"
+	cc "github.com/panoptisDev/carmen/go/common"
+	"github.com/panoptisDev/carmen/go/common/amount"
+	"github.com/panoptisDev/carmen/go/database/mpt"
+	mptio "github.com/panoptisDev/carmen/go/database/mpt/io"
+	carmen "github.com/panoptisDev/carmen/go/state"
+	"github.com/panoptisDev/pano/opera/genesis"
+	"github.com/panoptisDev/pano/utils/adapters/kvdb2ethdb"
+	"github.com/panoptisDev/pano/utils/caution"
 	"github.com/Fantom-foundation/lachesis-base/kvdb/nokeyiserr"
 	"github.com/Fantom-foundation/lachesis-base/kvdb/pebble"
 	"github.com/Fantom-foundation/lachesis-base/kvdb/table"
@@ -46,7 +46,7 @@ import (
 
 var emptyCodeHash = crypto.Keccak256(nil)
 
-// ImportLiveWorldState imports Sonic World State data from the live state genesis section.
+// ImportLiveWorldState imports Pano World State data from the live state genesis section.
 // Must be called before the first Open call.
 func (s *Store) ImportLiveWorldState(liveReader io.Reader) error {
 	liveDir := filepath.Join(s.parameters.Directory, "live")
@@ -59,7 +59,7 @@ func (s *Store) ImportLiveWorldState(liveReader io.Reader) error {
 	return nil
 }
 
-// ImportArchiveWorldState imports Sonic World State data from the archive state genesis section.
+// ImportArchiveWorldState imports Pano World State data from the archive state genesis section.
 // Must be called before the first Open call.
 func (s *Store) ImportArchiveWorldState(archiveReader io.Reader) error {
 	if s.parameters.Archive == carmen.NoArchive {
@@ -83,7 +83,7 @@ func (s *Store) ImportArchiveWorldState(archiveReader io.Reader) error {
 	return fmt.Errorf("archive is used, but cannot be initialized from FWS live genesis section")
 }
 
-// InitializeArchiveWorldState imports Sonic World State data from the live state genesis section.
+// InitializeArchiveWorldState imports Pano World State data from the live state genesis section.
 // Must be called before the first Open call.
 func (s *Store) InitializeArchiveWorldState(liveReader io.Reader, blockNum uint64) error {
 	if s.parameters.Archive == carmen.NoArchive {
@@ -102,7 +102,7 @@ func (s *Store) InitializeArchiveWorldState(liveReader io.Reader, blockNum uint6
 	return fmt.Errorf("archive is used, but cannot be initialized from FWS live genesis section")
 }
 
-// ExportLiveWorldState exports Sonic World State data for the live state genesis section.
+// ExportLiveWorldState exports Pano World State data for the live state genesis section.
 // The Store must be closed during the call.
 func (s *Store) ExportLiveWorldState(ctx context.Context, out io.Writer) error {
 	liveDir := filepath.Join(s.parameters.Directory, "live")
@@ -112,7 +112,7 @@ func (s *Store) ExportLiveWorldState(ctx context.Context, out io.Writer) error {
 	return nil
 }
 
-// ExportArchiveWorldState exports Sonic World State data for the archive state genesis section.
+// ExportArchiveWorldState exports Pano World State data for the archive state genesis section.
 // The Store must be closed during the call.
 func (s *Store) ExportArchiveWorldState(ctx context.Context, out io.Writer) error {
 	archiveDir := filepath.Join(s.parameters.Directory, "archive")

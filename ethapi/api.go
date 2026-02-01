@@ -26,18 +26,18 @@ import (
 	"slices"
 	"time"
 
-	cc "github.com/0xsoniclabs/carmen/go/common"
-	"github.com/0xsoniclabs/carmen/go/common/immutable"
-	"github.com/0xsoniclabs/sonic/gossip/evmstore"
-	"github.com/0xsoniclabs/sonic/gossip/gasprice/gaspricelimits"
+	cc "github.com/panoptisDev/carmen/go/common"
+	"github.com/panoptisDev/carmen/go/common/immutable"
+	"github.com/panoptisDev/pano/gossip/evmstore"
+	"github.com/panoptisDev/pano/gossip/gasprice/gaspricelimits"
 	bip39 "github.com/tyler-smith/go-bip39"
 
-	"github.com/0xsoniclabs/sonic/evmcore"
-	"github.com/0xsoniclabs/sonic/gossip/gasprice"
-	"github.com/0xsoniclabs/sonic/inter/state"
-	"github.com/0xsoniclabs/sonic/opera"
-	"github.com/0xsoniclabs/sonic/utils"
-	"github.com/0xsoniclabs/sonic/utils/signers/internaltx"
+	"github.com/panoptisDev/pano/evmcore"
+	"github.com/panoptisDev/pano/gossip/gasprice"
+	"github.com/panoptisDev/pano/inter/state"
+	"github.com/panoptisDev/pano/opera"
+	"github.com/panoptisDev/pano/utils"
+	"github.com/panoptisDev/pano/utils/signers/internaltx"
 	"github.com/Fantom-foundation/lachesis-base/inter/idx"
 	"github.com/davecgh/go-spew/spew"
 	"github.com/ethereum/go-ethereum/accounts"
@@ -86,7 +86,7 @@ func NewPublicEthereumAPI(b Backend) *PublicEthereumAPI {
 // GasPrice returns a suggestion for a gas price for legacy transactions.
 func (s *PublicEthereumAPI) GasPrice(ctx context.Context) (*hexutil.Big, error) {
 	// Right now, we are not suggesting any tips since those have no real
-	// effect on the Sonic network. So the suggested gas price is a slightly
+	// effect on the Pano network. So the suggested gas price is a slightly
 	// increased base fee to provide a buffer for short-term price fluctuations.
 	price := s.b.CurrentBlock().Header().BaseFee
 	price = gaspricelimits.GetSuggestedGasPriceForNewTransactions(price)
@@ -691,7 +691,7 @@ func (s *PublicBlockChainAPI) GetEpochBlock(ctx context.Context, epoch rpc.Block
 
 // ChainId is the EIP-155 replay-protection chain id for the current ethereum chain config.
 func (s *PublicBlockChainAPI) ChainId() (*hexutil.Big, error) {
-	// Sonic is always EIP-155 compliant, so we can safely return the chain ID
+	// Pano is always EIP-155 compliant, so we can safely return the chain ID
 	return (*hexutil.Big)(s.b.ChainID()), nil
 }
 
@@ -718,7 +718,7 @@ func (s *PublicBlockChainAPI) GetBalance(ctx context.Context, address common.Add
 type configResponse struct {
 	// current is the config active at the latest block number.
 	Current *config `json:"current"`
-	// Next will remain nil since Sonic config activation does not depend on time.
+	// Next will remain nil since Pano config activation does not depend on time.
 	Next *config `json:"next"`
 	// Last is the config active before the current one and could be nil if only one upgrades heights exists.
 	Last *config `json:"last"`
@@ -728,7 +728,7 @@ type configResponse struct {
 type config struct {
 	// ActivationTime is the timestamp of the first block where this config is active.
 	ActivationTime uint64 `json:"activationTime"`
-	// BlobSchedule will remain nil because in Sonic this is not relevant
+	// BlobSchedule will remain nil because in Pano this is not relevant
 	BlobSchedule *params.BlobConfig `json:"blobSchedule"`
 
 	ChainId *hexutil.Big `json:"chainId"`
@@ -750,12 +750,12 @@ type contractRegistry map[string]common.Address
 // Config returns the current and previous (if any) network configs following the structure
 // described in https://eips.ethereum.org/EIPS/eip-7910.
 //
-// In Sonic, config changes are based on block heights (upgrade heights) rather than
+// In Pano, config changes are based on block heights (upgrade heights) rather than
 // activation times. Therefore, the "Next" config is always nil, as there is no time-based
 // activation. The "Current" config corresponds to the config active at the current block,
 // and the "Last" config (if available) corresponds to the config active before the current one.
 //
-// BlobSchedule field is not relevant in Sonic, hence is always nil.
+// BlobSchedule field is not relevant in Pano, hence is always nil.
 func (s *PublicBlockChainAPI) Config(ctx context.Context) (*configResponse, error) {
 
 	currentHeader := s.b.CurrentBlock().Header()
@@ -1253,7 +1253,7 @@ func DoEstimateGas(ctx context.Context, b Backend, args TransactionArgs, blockNr
 		hi = b.MaxGasLimit()
 	}
 
-	// Cap the maximum gas allowance according to EIP-7825. In Sonic the max gas
+	// Cap the maximum gas allowance according to EIP-7825. In Pano the max gas
 	// limit for a transaction is limited by MaxGasLimit starting with Osaka.
 	hi, err := capMaxGas(ctx, b, blockNrOrHash, blockOverrides, hi)
 	if err != nil {
@@ -1590,7 +1590,7 @@ func newRPCTransaction(tx *types.Transaction, blockHash common.Hash, blockNumber
 		copyAccessList(tx, result)
 		copyDynamicPricingFields(tx, result)
 	case types.BlobTxType:
-		// BLOB NOTE: the current sonic network supports blobTx so long as they don not contain blobs
+		// BLOB NOTE: the current pano network supports blobTx so long as they don not contain blobs
 		// for this reason they are equivalent to the dynamic fee tx type
 		copyAccessList(tx, result)
 		copyDynamicPricingFields(tx, result)
@@ -2602,7 +2602,7 @@ func stateAtTransaction(ctx context.Context, block *evmcore.EvmBlock, txIndex in
 			return msg, statedb, nil
 		}
 
-		// For now, Sonic only supports Blob transactions without blob data.
+		// For now, Pano only supports Blob transactions without blob data.
 		if msg.BlobHashes != nil {
 			if len(msg.BlobHashes) > 0 {
 				continue // blob data is not supported - this tx will be skipped

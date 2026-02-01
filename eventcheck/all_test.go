@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package eventcheck
 
@@ -20,16 +20,16 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/0xsoniclabs/sonic/eventcheck/basiccheck"
-	"github.com/0xsoniclabs/sonic/eventcheck/epochcheck"
-	"github.com/0xsoniclabs/sonic/eventcheck/gaspowercheck"
-	"github.com/0xsoniclabs/sonic/eventcheck/heavycheck"
-	"github.com/0xsoniclabs/sonic/eventcheck/parentscheck"
-	"github.com/0xsoniclabs/sonic/eventcheck/proposalcheck"
-	"github.com/0xsoniclabs/sonic/evmcore"
-	"github.com/0xsoniclabs/sonic/inter"
-	"github.com/0xsoniclabs/sonic/inter/validatorpk"
-	"github.com/0xsoniclabs/sonic/opera"
+	"github.com/panoptisDev/pano/eventcheck/basiccheck"
+	"github.com/panoptisDev/pano/eventcheck/epochcheck"
+	"github.com/panoptisDev/pano/eventcheck/gaspowercheck"
+	"github.com/panoptisDev/pano/eventcheck/heavycheck"
+	"github.com/panoptisDev/pano/eventcheck/parentscheck"
+	"github.com/panoptisDev/pano/eventcheck/proposalcheck"
+	"github.com/panoptisDev/pano/evmcore"
+	"github.com/panoptisDev/pano/inter"
+	"github.com/panoptisDev/pano/inter/validatorpk"
+	"github.com/panoptisDev/pano/opera"
 	parentscheckbase "github.com/Fantom-foundation/lachesis-base/eventcheck/parentscheck"
 	"github.com/Fantom-foundation/lachesis-base/inter/idx"
 	"github.com/Fantom-foundation/lachesis-base/inter/pos"

@@ -29,8 +29,8 @@ import (
 	"github.com/ethereum/go-ethereum/core/types"
 	lru "github.com/hashicorp/golang-lru"
 
-	"github.com/0xsoniclabs/sonic/opera"
-	"github.com/0xsoniclabs/sonic/utils"
+	"github.com/panoptisDev/pano/opera"
+	"github.com/panoptisDev/pano/utils"
 
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/ethereum/go-ethereum/params"

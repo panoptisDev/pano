@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package gossip
 
@@ -30,19 +30,19 @@ import (
 	"github.com/ethereum/go-ethereum/metrics"
 	"github.com/ethereum/go-ethereum/p2p/enode"
 
-	"github.com/0xsoniclabs/sonic/eventcheck"
-	"github.com/0xsoniclabs/sonic/eventcheck/epochcheck"
-	"github.com/0xsoniclabs/sonic/eventcheck/heavycheck"
-	"github.com/0xsoniclabs/sonic/eventcheck/parentlesscheck"
-	"github.com/0xsoniclabs/sonic/evmcore"
-	"github.com/0xsoniclabs/sonic/gossip/protocols/dag/dagstream"
-	"github.com/0xsoniclabs/sonic/gossip/protocols/dag/dagstream/dagstreamleecher"
-	"github.com/0xsoniclabs/sonic/gossip/protocols/dag/dagstream/dagstreamseeder"
-	"github.com/0xsoniclabs/sonic/gossip/topology"
-	"github.com/0xsoniclabs/sonic/inter"
-	"github.com/0xsoniclabs/sonic/logger"
-	"github.com/0xsoniclabs/sonic/utils/caution"
-	"github.com/0xsoniclabs/sonic/utils/txtime"
+	"github.com/panoptisDev/pano/eventcheck"
+	"github.com/panoptisDev/pano/eventcheck/epochcheck"
+	"github.com/panoptisDev/pano/eventcheck/heavycheck"
+	"github.com/panoptisDev/pano/eventcheck/parentlesscheck"
+	"github.com/panoptisDev/pano/evmcore"
+	"github.com/panoptisDev/pano/gossip/protocols/dag/dagstream"
+	"github.com/panoptisDev/pano/gossip/protocols/dag/dagstream/dagstreamleecher"
+	"github.com/panoptisDev/pano/gossip/protocols/dag/dagstream/dagstreamseeder"
+	"github.com/panoptisDev/pano/gossip/topology"
+	"github.com/panoptisDev/pano/inter"
+	"github.com/panoptisDev/pano/logger"
+	"github.com/panoptisDev/pano/utils/caution"
+	"github.com/panoptisDev/pano/utils/txtime"
 	"github.com/Fantom-foundation/lachesis-base/gossip/dagprocessor"
 	"github.com/Fantom-foundation/lachesis-base/gossip/itemsfetcher"
 	"github.com/Fantom-foundation/lachesis-base/hash"
@@ -180,8 +180,8 @@ type handler struct {
 	logger.Instance
 }
 
-// newHandler returns a new Sonic sub protocol manager. The Sonic sub protocol manages peers capable
-// with the Sonic network.
+// newHandler returns a new Pano sub protocol manager. The Pano sub protocol manages peers capable
+// with the Pano network.
 func newHandler(
 	c handlerConfig,
 ) (
@@ -462,7 +462,7 @@ func (h *handler) Start(maxPeers int) {
 }
 
 func (h *handler) Stop() {
-	log.Info("Stopping Sonic protocol")
+	log.Info("Stopping Pano protocol")
 
 	h.dagLeecher.Stop()
 	h.dagSeeder.Stop()
@@ -500,7 +500,7 @@ func (h *handler) Stop() {
 	h.wg.Wait()
 	h.peerWG.Wait()
 
-	log.Info("Sonic protocol stopped")
+	log.Info("Pano protocol stopped")
 }
 
 func (h *handler) myProgress() PeerProgress {
@@ -529,7 +529,7 @@ func (h *handler) highestPeerProgress() PeerProgress {
 func isUseless(node *enode.Node, name string) bool {
 	useless := discfilter.Banned(node.ID(), node.Record())
 	lowerName := strings.ToLower(name)
-	if !useless && !strings.Contains(lowerName, "opera") && !strings.Contains(lowerName, "sonic") {
+	if !useless && !strings.Contains(lowerName, "opera") && !strings.Contains(lowerName, "pano") {
 		useless = true
 		discfilter.Ban(node.ID())
 	}

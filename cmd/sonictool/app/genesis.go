@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package app
 
@@ -22,15 +22,15 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/0xsoniclabs/sonic/cmd/sonictool/db"
-	"github.com/0xsoniclabs/sonic/cmd/sonictool/genesis"
-	"github.com/0xsoniclabs/sonic/config/flags"
-	"github.com/0xsoniclabs/sonic/integration/makefakegenesis"
-	"github.com/0xsoniclabs/sonic/opera"
-	"github.com/0xsoniclabs/sonic/opera/genesisstore"
-	futils "github.com/0xsoniclabs/sonic/utils"
-	"github.com/0xsoniclabs/sonic/utils/caution"
-	"github.com/0xsoniclabs/sonic/utils/memory"
+	"github.com/panoptisDev/pano/cmd/sonictool/db"
+	"github.com/panoptisDev/pano/cmd/sonictool/genesis"
+	"github.com/panoptisDev/pano/config/flags"
+	"github.com/panoptisDev/pano/integration/makefakegenesis"
+	"github.com/panoptisDev/pano/opera"
+	"github.com/panoptisDev/pano/opera/genesisstore"
+	futils "github.com/panoptisDev/pano/utils"
+	"github.com/panoptisDev/pano/utils/caution"
+	"github.com/panoptisDev/pano/utils/memory"
 	"github.com/Fantom-foundation/lachesis-base/inter/idx"
 	"github.com/Fantom-foundation/lachesis-base/utils/cachescale"
 	"github.com/ethereum/go-ethereum/log"
@@ -50,8 +50,8 @@ var (
 	}
 	FakeUpgrades = cli.StringFlag{
 		Name:  "upgrades",
-		Usage: "Feature set enabled in the fake network, sonic|allegro.",
-		Value: "sonic",
+		Usage: "Feature set enabled in the fake network, pano|allegro.",
+		Value: "pano",
 	}
 )
 
@@ -168,14 +168,14 @@ func fakeGenesisImport(ctx *cli.Context) (err error) {
 	var upgrades opera.Upgrades
 	upgradesString := ctx.String(FakeUpgrades.Name)
 	switch upgradesString {
-	case "sonic":
+	case "pano":
 		upgrades = opera.GetSonicUpgrades()
 	case "allegro":
 		upgrades = opera.GetAllegroUpgrades()
 	case "brio":
 		upgrades = opera.GetBrioUpgrades()
 	default:
-		return fmt.Errorf("invalid profile %v - must be 'sonic', 'allegro', or 'brio'", upgradesString)
+		return fmt.Errorf("invalid profile %v - must be 'pano', 'allegro', or 'brio'", upgradesString)
 	}
 
 	genesisStore := makefakegenesis.FakeGenesisStore(

@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package opera
 
@@ -93,7 +93,7 @@ func TestUpdateRules_CanUpdateHardForks(t *testing.T) {
 			want: Upgrades{
 				Berlin:  true,
 				London:  true,
-				Sonic:   true,
+				Pano:   true,
 				Allegro: true,
 			},
 		},
@@ -103,7 +103,7 @@ func TestUpdateRules_CanUpdateHardForks(t *testing.T) {
 			want: Upgrades{
 				Berlin:  true,
 				London:  true,
-				Sonic:   true,
+				Pano:   true,
 				Allegro: true,
 				Brio:    true,
 			},
@@ -141,7 +141,7 @@ func TestUpgradesRLP_CanBeEncodedAndDecoded(t *testing.T) {
 		func(u *Upgrades) { u.Berlin = true },
 		func(u *Upgrades) { u.London = true },
 		func(u *Upgrades) { u.Llr = true },
-		func(u *Upgrades) { u.Sonic = true },
+		func(u *Upgrades) { u.Pano = true },
 		func(u *Upgrades) { u.Allegro = true },
 		func(u *Upgrades) { u.SingleProposerBlockFormation = true },
 		func(u *Upgrades) { u.Brio = true },
@@ -209,7 +209,7 @@ func TestGasRulesLLRCompatibilityRLP(t *testing.T) {
 }
 
 func TestUpdateRules_RuleValidationIsPerformedStartingFromAllegro(t *testing.T) {
-	hardforks := []string{"Sonic", "Allegro", "Brio"}
+	hardforks := []string{"Pano", "Allegro", "Brio"}
 
 	for _, hardfork := range hardforks {
 		base := FakeNetRules(GetSonicUpgrades())
@@ -218,8 +218,8 @@ func TestUpdateRules_RuleValidationIsPerformedStartingFromAllegro(t *testing.T) 
 		update := fmt.Sprintf(`{"Dag":{"MaxParents":1}, "Upgrades":{"%s":true}}`, hardfork)
 
 		_, err := UpdateRules(base, []byte(update))
-		if hardfork == "Sonic" {
-			require.NoError(t, err, "should not validate rules for Sonic hardfork")
+		if hardfork == "Pano" {
+			require.NoError(t, err, "should not validate rules for Pano hardfork")
 		} else {
 			require.Error(t, err, "should validate rules for %s hardfork", hardfork)
 		}

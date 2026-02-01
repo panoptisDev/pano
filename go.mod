@@ -1,26 +1,26 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
-module github.com/0xsoniclabs/sonic
+module github.com/panoptisDev/pano
 
 go 1.25.0
 
 require (
-	github.com/0xsoniclabs/carmen/go v0.0.0-20251024091706-e1c5a32d4310
-	github.com/0xsoniclabs/tosca v0.0.0-20251023131117-f542dea83f5b
+	github.com/panoptisDev/carmen/go v0.0.0-20251024091706-e1c5a32d4310
+	github.com/panoptisDev/tosca v0.0.0-20251023131117-f542dea83f5b
 	github.com/Fantom-foundation/lachesis-base v0.0.0-20240116072301-a75735c4ef00
 	github.com/cespare/cp v1.1.1
 	github.com/consensys/gnark-crypto v0.18.0
@@ -143,6 +143,6 @@ require (
 	pgregory.net/rand v1.0.2 // indirect
 )
 
-replace github.com/ethereum/go-ethereum => github.com/0xsoniclabs/go-ethereum v0.0.0-20251022155730-949ae6d396a5
+replace github.com/ethereum/go-ethereum => github.com/panoptisDev/go-ethereum v0.0.0-20251022155730-949ae6d396a5
 
-replace github.com/Fantom-foundation/lachesis-base => github.com/Fantom-foundation/lachesis-base-sonic v0.0.0-20250701061954-44075d09185c
+replace github.com/Fantom-foundation/lachesis-base => github.com/Fantom-foundation/lachesis-base-pano v0.0.0-20250701061954-44075d09185c

@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package genesis
 
@@ -23,16 +23,16 @@ import (
 	"os"
 	"path"
 
-	"github.com/0xsoniclabs/sonic/gossip"
-	"github.com/0xsoniclabs/sonic/inter/ibr"
-	"github.com/0xsoniclabs/sonic/inter/ier"
-	"github.com/0xsoniclabs/sonic/opera/genesis"
-	"github.com/0xsoniclabs/sonic/opera/genesisstore"
-	"github.com/0xsoniclabs/sonic/opera/genesisstore/fileshash"
-	"github.com/0xsoniclabs/sonic/scc"
-	"github.com/0xsoniclabs/sonic/scc/cert"
-	"github.com/0xsoniclabs/sonic/utils/devnullfile"
-	"github.com/0xsoniclabs/sonic/utils/objstream"
+	"github.com/panoptisDev/pano/gossip"
+	"github.com/panoptisDev/pano/inter/ibr"
+	"github.com/panoptisDev/pano/inter/ier"
+	"github.com/panoptisDev/pano/opera/genesis"
+	"github.com/panoptisDev/pano/opera/genesisstore"
+	"github.com/panoptisDev/pano/opera/genesisstore/fileshash"
+	"github.com/panoptisDev/pano/scc"
+	"github.com/panoptisDev/pano/scc/cert"
+	"github.com/panoptisDev/pano/utils/devnullfile"
+	"github.com/panoptisDev/pano/utils/objstream"
 	"github.com/Fantom-foundation/lachesis-base/common/bigendian"
 	"github.com/Fantom-foundation/lachesis-base/hash"
 	"github.com/Fantom-foundation/lachesis-base/inter/idx"
@@ -247,7 +247,7 @@ func exportBlockCertificates(ctx context.Context, gdb *gossip.Store, writer *uni
 }
 
 func exportFwsSection(ctx context.Context, gdb *gossip.Store, writer *unitWriter) error {
-	log.Info("Exporting Sonic World State Live data")
+	log.Info("Exporting Pano World State Live data")
 	if err := gdb.EvmStore().ExportLiveWorldState(ctx, writer); err != nil {
 		return err
 	}
@@ -255,13 +255,13 @@ func exportFwsSection(ctx context.Context, gdb *gossip.Store, writer *unitWriter
 	if err != nil {
 		return err
 	}
-	log.Info("Exported Sonic World State Live data")
+	log.Info("Exported Pano World State Live data")
 	fmt.Printf("- FWS hash: %v \n", fwsHash.String())
 	return nil
 }
 
 func exportFwaSection(ctx context.Context, gdb *gossip.Store, writer *unitWriter) error {
-	log.Info("Exporting Sonic World State Archive data")
+	log.Info("Exporting Pano World State Archive data")
 	if err := gdb.EvmStore().ExportArchiveWorldState(ctx, writer); err != nil {
 		return err
 	}
@@ -270,7 +270,7 @@ func exportFwaSection(ctx context.Context, gdb *gossip.Store, writer *unitWriter
 	if err != nil {
 		return err
 	}
-	log.Info("Exported Sonic World State Archive data")
+	log.Info("Exported Pano World State Archive data")
 	fmt.Printf("- FWA hash: %v \n", fwaHash.String())
 	return nil
 }

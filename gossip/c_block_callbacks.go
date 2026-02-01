@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package gossip
 
@@ -26,9 +26,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/0xsoniclabs/sonic/evmcore"
-	"github.com/0xsoniclabs/sonic/scc/cert"
-	scc_node "github.com/0xsoniclabs/sonic/scc/node"
+	"github.com/panoptisDev/pano/evmcore"
+	"github.com/panoptisDev/pano/scc/cert"
+	scc_node "github.com/panoptisDev/pano/scc/node"
 
 	"github.com/Fantom-foundation/lachesis-base/hash"
 	"github.com/Fantom-foundation/lachesis-base/inter/dag"
@@ -42,18 +42,18 @@ import (
 	"github.com/ethereum/go-ethereum/metrics"
 	"github.com/ethereum/go-ethereum/params"
 
-	"github.com/0xsoniclabs/sonic/gossip/blockproc"
-	"github.com/0xsoniclabs/sonic/gossip/blockproc/subsidies"
-	"github.com/0xsoniclabs/sonic/gossip/blockproc/verwatcher"
-	"github.com/0xsoniclabs/sonic/gossip/emitter"
-	"github.com/0xsoniclabs/sonic/gossip/evmstore"
-	"github.com/0xsoniclabs/sonic/gossip/randao"
-	"github.com/0xsoniclabs/sonic/gossip/scrambler"
-	"github.com/0xsoniclabs/sonic/inter"
-	"github.com/0xsoniclabs/sonic/inter/iblockproc"
-	"github.com/0xsoniclabs/sonic/inter/validatorpk"
-	"github.com/0xsoniclabs/sonic/opera"
-	"github.com/0xsoniclabs/sonic/utils"
+	"github.com/panoptisDev/pano/gossip/blockproc"
+	"github.com/panoptisDev/pano/gossip/blockproc/subsidies"
+	"github.com/panoptisDev/pano/gossip/blockproc/verwatcher"
+	"github.com/panoptisDev/pano/gossip/emitter"
+	"github.com/panoptisDev/pano/gossip/evmstore"
+	"github.com/panoptisDev/pano/gossip/randao"
+	"github.com/panoptisDev/pano/gossip/scrambler"
+	"github.com/panoptisDev/pano/inter"
+	"github.com/panoptisDev/pano/inter/iblockproc"
+	"github.com/panoptisDev/pano/inter/validatorpk"
+	"github.com/panoptisDev/pano/opera"
+	"github.com/panoptisDev/pano/utils"
 )
 
 //go:generate mockgen -source=c_block_callbacks.go -package=gossip -destination=c_block_callbacks_mock.go
@@ -206,7 +206,7 @@ func consensusCallbackBeginBlockFn(
 				// is different than the official BlockGasLimit, which is
 				// announced as part of the block, constant over the duration of
 				// a block, and must be large enough to include internal
-				// transactions. In Sonic, the Block's GasLimit is a network
+				// transactions. In Pano, the Block's GasLimit is a network
 				// rule parameter.
 				// The limit defined here is the dynamically adjusted gas limit
 				// used to regulate the traffic on the network. Block proposals
@@ -250,7 +250,7 @@ func consensusCallbackBeginBlockFn(
 					}
 
 					signer := types.LatestSignerForChainID(chainCfg.ChainID)
-					proposal.Transactions = scrambler.GetExecutionOrder(unorderedTxs, signer, es.Rules.Upgrades.Sonic)
+					proposal.Transactions = scrambler.GetExecutionOrder(unorderedTxs, signer, es.Rules.Upgrades.Pano)
 				}
 
 				// Filter invalid transactions from the proposal.

@@ -1,18 +1,18 @@
-// Copyright 2025 Sonic Operations Ltd
-// This file is part of the Sonic Client
+// Copyright 2025 Pano Operations Ltd
+// This file is part of the Pano Client
 //
-// Sonic is free software: you can redistribute it and/or modify
+// Pano is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Sonic is distributed in the hope that it will be useful,
+// Pano is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with Sonic. If not, see <http://www.gnu.org/licenses/>.
+// along with Pano. If not, see <http://www.gnu.org/licenses/>.
 
 package app_test
 
@@ -27,14 +27,14 @@ import (
 	"strings"
 	"testing"
 
-	sonictool "github.com/0xsoniclabs/sonic/cmd/sonictool/app"
-	"github.com/0xsoniclabs/sonic/cmd/sonictool/genesis"
-	"github.com/0xsoniclabs/sonic/opera"
-	ogenesis "github.com/0xsoniclabs/sonic/opera/genesis"
-	"github.com/0xsoniclabs/sonic/opera/genesisstore"
-	"github.com/0xsoniclabs/sonic/tests"
-	"github.com/0xsoniclabs/sonic/utils/caution"
-	"github.com/0xsoniclabs/sonic/utils/prompt"
+	sonictool "github.com/panoptisDev/pano/cmd/sonictool/app"
+	"github.com/panoptisDev/pano/cmd/sonictool/genesis"
+	"github.com/panoptisDev/pano/opera"
+	ogenesis "github.com/panoptisDev/pano/opera/genesis"
+	"github.com/panoptisDev/pano/opera/genesisstore"
+	"github.com/panoptisDev/pano/tests"
+	"github.com/panoptisDev/pano/utils/caution"
+	"github.com/panoptisDev/pano/utils/prompt"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/core/types"
@@ -160,7 +160,7 @@ func TestSonicTool_account_ExecutesWithoutErrors(t *testing.T) {
 func TestSonicTool_genesis_CreatesDataDirWithAllowedUpgrades(t *testing.T) {
 
 	upgrades := []string{
-		"sonic",
+		"pano",
 		"allegro",
 		"brio",
 	}
@@ -185,7 +185,7 @@ func TestSonicTool_genesis_ReturnsErrorIfHardforkIsInvalid(t *testing.T) {
 		"genesis", "fake",
 		"--upgrades", "invalid",
 		"1")
-	require.ErrorContains(t, err, "invalid profile invalid - must be 'sonic', 'allegro', or 'brio'")
+	require.ErrorContains(t, err, "invalid profile invalid - must be 'pano', 'allegro', or 'brio'")
 }
 
 func TestSonicTool_genesis_ExportsAndSigns_WithoutErrors(t *testing.T) {

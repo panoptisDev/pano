@@ -28,8 +28,8 @@ import (
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/trie"
 
-	"github.com/0xsoniclabs/sonic/inter"
-	"github.com/0xsoniclabs/sonic/opera"
+	"github.com/panoptisDev/pano/inter"
+	"github.com/panoptisDev/pano/opera"
 	"github.com/Fantom-foundation/lachesis-base/inter/idx"
 )
 
@@ -64,12 +64,12 @@ type (
 	}
 )
 
-// GetCoinbase returns the coinbase to be used by blocks on Sonic networks.
+// GetCoinbase returns the coinbase to be used by blocks on Pano networks.
 func GetCoinbase() common.Address {
 	return common.Address{}
 }
 
-// GetBlobBaseFee returns the blob base fee to be used by blocks on Sonic networks.
+// GetBlobBaseFee returns the blob base fee to be used by blocks on Pano networks.
 func GetBlobBaseFee() uint256.Int {
 	return uint256.Int{}
 }
@@ -95,17 +95,17 @@ func ToEvmHeader(block *inter.Block, prevHash common.Hash, rules opera.Rules) *E
 	baseFee := rules.Economy.MinGasPrice
 	if !rules.Upgrades.London {
 		baseFee = nil
-	} else if rules.Upgrades.Sonic {
+	} else if rules.Upgrades.Pano {
 		baseFee = block.BaseFee
 	}
 
 	prevRandao := common.Hash{}
-	if rules.Upgrades.Sonic {
+	if rules.Upgrades.Pano {
 		prevRandao = block.PrevRandao
 	}
 
 	var withdrawalsHash *common.Hash = nil
-	if rules.Upgrades.Sonic {
+	if rules.Upgrades.Pano {
 		withdrawalsHash = &types.EmptyWithdrawalsHash
 	}
 

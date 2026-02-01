@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog documents updates relevant to users and downstream integrations. The scope of each version includes changes to the following interfaces:
-- Interactions with other nodes in the Sonic network.
+- Interactions with other nodes in the Pano network.
 - Command-line interface and configuration files.
 - Execution support for Ethereum transactions and Ethereum-compatible contracts.
 - RPC interfaces, including JSON-RPC, WebSockets, and Unix sockets.
@@ -22,7 +22,7 @@ For optimal compatibility and stability, it is recommended to use the most recen
 - Introduce support for the Brio hard-fork upgrade.
 - Implement CLZ VM instruction [EIP-7939](https://eips.ethereum.org/EIPS/eip-7939) when Brio upgrade is enabled.
 - Add precompiled contract for secp256r1 Curve Support [EIP-7951](https://eips.ethereum.org/EIPS/eip-7951)  when Brio upgrade is enabled.
-- Introduce eth_Config RPC method tailored for the Sonic network.
+- Introduce eth_Config RPC method tailored for the Pano network.
 
 ### Changed
 
@@ -97,17 +97,17 @@ For optimal compatibility and stability, it is recommended to use the most recen
 
 ## [2.0.2] - 10 Feb 2025
 
-- Implements eth_getAccount RPC method (Fantom-foundation/Sonic#370)
-- Handle "finalized" and "safe" block number tags (Fantom-foundation/Sonic#388)
-- Events fetching improved (Fantom-foundation/Sonic#372)
-- Fixes gas capping in RPC calls (Fantom-foundation/Sonic#391)
+- Implements eth_getAccount RPC method (Fantom-foundation/Pano#370)
+- Handle "finalized" and "safe" block number tags (Fantom-foundation/Pano#388)
+- Events fetching improved (Fantom-foundation/Pano#372)
+- Fixes gas capping in RPC calls (Fantom-foundation/Pano#391)
 
 
 ## [2.0.1] - 10 Feb 2025
--  Adds the new Sonic VM for faster contract code processing.
--  Improves upon the Sonic DB performance with additional optimizations, especially for the new features.
+-  Adds the new Pano VM for faster contract code processing.
+-  Improves upon the Pano DB performance with additional optimizations, especially for the new features.
 -  Adds support for Cancun/Deneb including transient storage and new VM opcodes.
--  The Prevrandao is now fully supported in the VM and is ready to be used in contracts. Please note Prevrandao on Sonic can not be influenced by a validator not proposing a block.
+-  The Prevrandao is now fully supported in the VM and is ready to be used in contracts. Please note Prevrandao on Pano can not be influenced by a validator not proposing a block.
 -  Offers limited support for Type 3 transactions. The BLOB storage has not been implemented and non-empty BLOB transactions are rejected if submitted.
 -  Includes an updated consensus control for stable TTF with improved security of the blocks building.
 -  Built-in topology heuristics optimizes the network responsiveness.
@@ -116,4 +116,4 @@ For optimal compatibility and stability, it is recommended to use the most recen
 
 ## [2.0.0] - 10 Feb 2025
 
-Initial release of the Sonic client for the Sonic network.
+Initial release of the Pano client for the Pano network.
