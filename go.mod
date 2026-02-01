@@ -144,14 +144,14 @@ require (
 	pgregory.net/rand v1.0.2 // indirect
 )
 
-replace github.com/ethereum/go-ethereum => /tmp/pano-deps/go-ethereum
+replace github.com/ethereum/go-ethereum => ./deps/go-ethereum
 
-replace github.com/panoptisDev/carmen/go => /tmp/pano-deps/carmen/go
+replace github.com/panoptisDev/carmen/go => ./deps/carmen/go
 
-replace github.com/panoptisDev/tosca => /tmp/pano-deps/tosca
+replace github.com/panoptisDev/tosca => ./deps/tosca
 
-replace github.com/panoptisDev/lachesis-base-pano => /tmp/pano-deps/lachesis-base-pano
+replace github.com/panoptisDev/lachesis-base-pano => ./deps/lachesis-base-pano
 
-replace github.com/Fantom-foundation/lachesis-base => /tmp/pano-deps/lachesis-base-pano
+replace github.com/Fantom-foundation/lachesis-base => ./deps/lachesis-base-pano
 
-replace github.com/panoptisDev/tracy => /tmp/pano-deps/tracy
+replace github.com/panoptisDev/tracy => ./deps/tracy
