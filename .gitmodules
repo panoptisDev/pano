@@ -1,0 +1,15 @@
+[submodule "deps/go-ethereum"]
+	path = deps/go-ethereum
+	url = https://github.com/panoptisDev/go-ethereum.git
+[submodule "deps/carmen"]
+	path = deps/carmen
+	url = https://github.com/panoptisDev/carmen.git
+[submodule "deps/tosca"]
+	path = deps/tosca
+	url = https://github.com/panoptisDev/tosca.git
+[submodule "deps/lachesis-base-pano"]
+	path = deps/lachesis-base-pano
+	url = https://github.com/panoptisDev/lachesis-base-pano.git
+[submodule "deps/tracy"]
+	path = deps/tracy
+	url = https://github.com/panoptisDev/tracy.git
