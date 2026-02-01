@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/panoptisDev/pano/cmd/sonicd/app"
+	"github.com/panoptisDev/pano/cmd/panod/app"
 )
 
 func main() {

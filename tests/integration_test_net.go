@@ -39,8 +39,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	sonicd "github.com/panoptisDev/pano/cmd/sonicd/app"
-	sonictool "github.com/panoptisDev/pano/cmd/sonictool/app"
+	sonicd "github.com/panoptisDev/pano/cmd/panod/app"
+	sonictool "github.com/panoptisDev/pano/cmd/panotool/app"
 	"github.com/panoptisDev/pano/config"
 	"github.com/panoptisDev/pano/evmcore"
 	"github.com/panoptisDev/pano/gossip/contract/driverauth100"

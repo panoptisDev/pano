@@ -23,7 +23,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	sonicd "github.com/panoptisDev/pano/cmd/sonicd/app"
+	sonicd "github.com/panoptisDev/pano/cmd/panod/app"
 	"github.com/panoptisDev/pano/tests"
 
 	"github.com/stretchr/testify/require"

@@ -26,8 +26,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/panoptisDev/pano/cmd/sonicd/diskusage"
-	"github.com/panoptisDev/pano/cmd/sonicd/metrics"
+	"github.com/panoptisDev/pano/cmd/panod/diskusage"
+	"github.com/panoptisDev/pano/cmd/panod/metrics"
 	"github.com/panoptisDev/pano/config"
 	"github.com/panoptisDev/pano/config/flags"
 	"github.com/panoptisDev/pano/version"

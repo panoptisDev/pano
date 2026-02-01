@@ -21,7 +21,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/panoptisDev/pano/cmd/sonictool/genesis"
+	"github.com/panoptisDev/pano/cmd/panotool/genesis"
 	ogenesis "github.com/panoptisDev/pano/opera/genesis"
 	"github.com/panoptisDev/pano/opera/genesisstore"
 	"github.com/panoptisDev/pano/utils"

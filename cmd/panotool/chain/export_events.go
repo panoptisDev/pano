@@ -22,7 +22,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/panoptisDev/pano/cmd/sonictool/db"
+	"github.com/panoptisDev/pano/cmd/panotool/db"
 	"github.com/panoptisDev/pano/gossip"
 	"github.com/panoptisDev/pano/utils/caution"
 	"github.com/Fantom-foundation/lachesis-base/utils/cachescale"

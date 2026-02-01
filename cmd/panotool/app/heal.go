@@ -30,7 +30,7 @@ import (
 
 	"github.com/panoptisDev/carmen/go/database/mpt"
 	mptio "github.com/panoptisDev/carmen/go/database/mpt/io"
-	"github.com/panoptisDev/pano/cmd/sonictool/db"
+	"github.com/panoptisDev/pano/cmd/panotool/db"
 	"github.com/panoptisDev/pano/config"
 	"github.com/panoptisDev/pano/config/flags"
 	"github.com/panoptisDev/pano/utils/caution"

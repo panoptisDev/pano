@@ -25,8 +25,8 @@ import (
 	"path/filepath"
 	"syscall"
 
-	"github.com/panoptisDev/pano/cmd/sonictool/db"
-	"github.com/panoptisDev/pano/cmd/sonictool/genesis"
+	"github.com/panoptisDev/pano/cmd/panotool/db"
+	"github.com/panoptisDev/pano/cmd/panotool/genesis"
 	"github.com/panoptisDev/pano/config/flags"
 	"github.com/panoptisDev/pano/integration"
 	"github.com/panoptisDev/pano/utils/caution"

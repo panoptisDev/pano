@@ -23,7 +23,7 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/panoptisDev/pano/cmd/sonicd/cmdhelper"
+	"github.com/panoptisDev/pano/cmd/panod/cmdhelper"
 
 	cli "gopkg.in/urfave/cli.v1"
 

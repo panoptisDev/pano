@@ -29,7 +29,7 @@ import (
 	"github.com/Fantom-foundation/lachesis-base/inter/idx"
 )
 
-//go:generate mockgen -source=sonic_api.go -package=ethapi -destination=sonic_api_mock.go
+//go:generate mockgen -source=pano_api.go -package=ethapi -destination=pano_api_mock.go
 
 // PublicSccApi provides an API to access certificates of the Pano
 // Certification Chain.

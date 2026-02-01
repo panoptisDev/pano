@@ -21,7 +21,7 @@ go 1.25.0
 require (
 	github.com/panoptisDev/carmen/go v0.0.0-20251024091706-e1c5a32d4310
 	github.com/panoptisDev/tosca v0.0.0-20251023131117-f542dea83f5b
-	github.com/Fantom-foundation/lachesis-base v0.0.0-20240116072301-a75735c4ef00
+	github.com/panoptisDev/lachesis-base-pano v0.0.0-20240116072301-a75735c4ef00
 	github.com/cespare/cp v1.1.1
 	github.com/consensys/gnark-crypto v0.18.0
 	github.com/davecgh/go-spew v1.1.1
@@ -143,6 +143,10 @@ require (
 	pgregory.net/rand v1.0.2 // indirect
 )
 
-replace github.com/ethereum/go-ethereum => github.com/panoptisDev/go-ethereum v0.0.0-20251022155730-949ae6d396a5
 
-replace github.com/Fantom-foundation/lachesis-base => github.com/Fantom-foundation/lachesis-base-pano v0.0.0-20250701061954-44075d09185c
+replace github.com/ethereum/go-ethereum => /tmp/pano-deps/go-ethereum
+replace github.com/panoptisDev/carmen/go => /tmp/pano-deps/carmen/go
+replace github.com/panoptisDev/tosca => /tmp/pano-deps/tosca
+replace github.com/panoptisDev/lachesis-base-pano => /tmp/pano-deps/lachesis-base-pano
+replace github.com/Fantom-foundation/lachesis-base => /tmp/pano-deps/lachesis-base-pano
+replace github.com/panoptisDev/tracy => /tmp/pano-deps/tracy

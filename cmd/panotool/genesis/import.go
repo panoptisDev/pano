@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/panoptisDev/pano/cmd/sonictool/db"
+	"github.com/panoptisDev/pano/cmd/panotool/db"
 	"github.com/panoptisDev/pano/opera/genesis"
 	"github.com/panoptisDev/pano/opera/genesisstore"
 	"github.com/panoptisDev/pano/utils/caution"

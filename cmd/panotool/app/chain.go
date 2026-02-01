@@ -24,10 +24,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/panoptisDev/pano/cmd/sonictool/db"
+	"github.com/panoptisDev/pano/cmd/panotool/db"
 	"github.com/panoptisDev/pano/utils/caution"
 
-	"github.com/panoptisDev/pano/cmd/sonictool/chain"
+	"github.com/panoptisDev/pano/cmd/panotool/chain"
 	"github.com/panoptisDev/pano/config/flags"
 	"github.com/Fantom-foundation/lachesis-base/inter/idx"
 	"github.com/ethereum/go-ethereum/log"

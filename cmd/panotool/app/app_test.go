@@ -27,8 +27,8 @@ import (
 	"strings"
 	"testing"
 
-	sonictool "github.com/panoptisDev/pano/cmd/sonictool/app"
-	"github.com/panoptisDev/pano/cmd/sonictool/genesis"
+	sonictool "github.com/panoptisDev/pano/cmd/panotool/app"
+	"github.com/panoptisDev/pano/cmd/panotool/genesis"
 	"github.com/panoptisDev/pano/opera"
 	ogenesis "github.com/panoptisDev/pano/opera/genesis"
 	"github.com/panoptisDev/pano/opera/genesisstore"

@@ -24,7 +24,7 @@ import (
 
 	"github.com/Fantom-foundation/lachesis-base/utils/cachescale"
 
-	"github.com/panoptisDev/pano/cmd/sonictool/genesis"
+	"github.com/panoptisDev/pano/cmd/panotool/genesis"
 	"github.com/panoptisDev/pano/config"
 	"github.com/panoptisDev/pano/integration/makefakegenesis"
 	"github.com/panoptisDev/pano/opera"

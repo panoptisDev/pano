@@ -11,7 +11,7 @@ sonicd:
 	    -ldflags "-s -w -X github.com/0xsoniclabs/sonic/version.gitCommit=$${GIT_COMMIT} \
 	                    -X github.com/0xsoniclabs/sonic/version.gitDate=$${GIT_DATE}" \
 	    -o build/sonicd \
-	    ./cmd/sonicd && \
+	    ./cmd/panod && \
 	    ./build/sonicd version
 
 sonictool:
@@ -22,7 +22,7 @@ sonictool:
 	    -ldflags "-s -w -X github.com/0xsoniclabs/sonic/version.gitCommit=$${GIT_COMMIT} \
 	                    -X github.com/0xsoniclabs/sonic/version.gitDate=$${GIT_DATE}" \
 	    -o build/sonictool \
-	    ./cmd/sonictool && \
+	    ./cmd/panotool && \
 	    ./build/sonictool --version
 
 TAG ?= "latest"

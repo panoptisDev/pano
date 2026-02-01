@@ -19,7 +19,7 @@ package app
 import (
 	"context"
 	"fmt"
-	"github.com/panoptisDev/pano/cmd/sonictool/check"
+	"github.com/panoptisDev/pano/cmd/panotool/check"
 	"github.com/panoptisDev/pano/config/flags"
 	"gopkg.in/urfave/cli.v1"
 	"os/signal"
